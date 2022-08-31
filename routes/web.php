@@ -14,4 +14,4 @@ use App\Http\Controllers\AcceuilController;
 |
 */
 
-Route::get('/layout/app', [AcceuilController::class, 'index'] );
+Route::get('/content', [AcceuilController::class, 'index'] );

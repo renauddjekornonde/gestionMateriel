@@ -18,6 +18,11 @@
 
         <!-- preloader css -->
         <link rel="stylesheet" href="{{ asset('assets/css/preloader.min.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/materialize.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style-mob.css') }}">
 
         <!-- Bootstrap Css -->
         <link href="{{ asset('assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
@@ -43,10 +48,10 @@
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
-            <div class="main-content">
+            {{-- <div class="main-content">
 
                 <div class="page-content">
-                    <div class="container-fluid">
+                    <div class="container-fluid"> --}}
 
 @include('layout.title')
 
