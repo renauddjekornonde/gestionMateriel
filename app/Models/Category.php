@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Model\Materiel;
 
 class Category extends Model
 {
@@ -14,7 +15,7 @@ class Category extends Model
     ];
 
      //Permet de recuperer tous les materiels de la categorie
-     public function materiel()
+     public function materiels()
      {
          return $this->hasMany(Materiel::class);
      }

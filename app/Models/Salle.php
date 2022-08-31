@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Model\Campus;
+use App\Model\Affectation;
 
 class Salle extends Model
 {
@@ -19,5 +21,11 @@ class Salle extends Model
     public function campus()
     {
         return $this->belongsTo(Campus::class);
+    }
+
+    // cette fonction permet de repucerer les affectations de chaque salle
+    public function affectationSalles()
+    {
+        return $this->hasMany(Affectation::class);
     }
 }

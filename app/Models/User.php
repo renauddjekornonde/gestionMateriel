@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Model\Operation;
 
 class User extends Authenticatable
 {
@@ -43,4 +44,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     //Permet de recuperer toutes les utilisateurs qui ont fait une operation
+     public function operations()
+     {
+         return $this->hasMany(Operation::class);
+     }
+ 
+      
 }
