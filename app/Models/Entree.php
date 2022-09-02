@@ -14,11 +14,7 @@ class Entree extends Model
         'matricule',
     ];
 
-    //Permet de recuperer les entrees
-    public function operationEntree()
-    {
-        return $this->belongsTo(Operation::class);
-    }
+    
 
      //Permet de recuperer toutes les entrees dans une operation
      public function operationEntrees()

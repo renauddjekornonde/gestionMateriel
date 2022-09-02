@@ -4780,8 +4780,9 @@ left: 0;
     /* background:#fff; */
 
     margin-top: 20px;
-    margin-left: 400px;
+    /* margin-left: 400px;
     margin-right: 100px;
+    margin-bottom: 20px; */
 }
 .list-img {} .list-img img {
     width: 30px;
@@ -4901,7 +4902,7 @@ left: 0;
 /*-------------------------------------------------------*/
 
 .tab-inn {
-    padding: 25px;
+    padding: 15px;
 }
 .tab-posi {
     position: relative;

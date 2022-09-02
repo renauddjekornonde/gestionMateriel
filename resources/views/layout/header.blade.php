@@ -15,9 +15,9 @@
                     </a>
 
                     <a href="index.html" class="logo logo-light">
-                        <span class="logo-sm">
+                         <span class="logo-sm">
                             <img src="{{ asset('assets/images/logo-sm.svg') }}" alt="" height="24">
-                        </span>
+                        </span> 
                         <span class="logo-lg">
                             <img src="{{ asset('assets/images/logo1.jfif') }}" alt="" height="24"> <span class="logo-txt"></span>
                         </span>

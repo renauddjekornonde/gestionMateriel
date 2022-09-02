@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Model\category;
 use App\Model\Operation;
+use App\Model\Fournisseur;
 
 class Materiel extends Model
 {
@@ -14,7 +15,6 @@ class Materiel extends Model
     protected $fillable =[
         'matricule',
         'intitule',
-        'quantite',
         'description',
     ];
 
@@ -28,5 +28,11 @@ class Materiel extends Model
     public function operationMateriel()
     {
         return $this->hasMany(Operation::class);
+    }
+
+    // cette fonction permet de repucerer les fournisseurs
+    public function fournisseur()
+    {
+        return $this->belongsTo(Fournisseur::class);
     }
 }

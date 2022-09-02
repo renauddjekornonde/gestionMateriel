@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('matricule');
             $table->string('intitule');
-            $table->integer('quantite');
             $table->string('description');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->unsignedBigInteger('fournisseur_id');
+            $table->foreign('fournisseur_id')->references('id')->on('fournisseurs')->onDelete('cascade')->onUpdate('cascade');
 
 
             $table->timestamps();

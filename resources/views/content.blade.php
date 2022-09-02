@@ -1,6 +1,7 @@
 @extends('layout.app')
 
 @section('content')
+
 <div class="sb2-2-3">
         <div class="row">
             <div class="col-md-12">
@@ -14,136 +15,32 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Image</th>
-                                        <th>Titre</th>
-                                        <th>Contenu</th>
-                                        <th>Publier le</th>
-                                        <th>Id</th>
-                                        <th>Status</th>
-                                        <th>View</th>
+                                        
+                                        <th>Nom</th>
+                                        <th>Identifiant</th>
+                                        <th>Acheter le</th>
+                                        <th>Modifier</th>
+                                        <th>Supprimer</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td><span class="list-img"><img src="{{ asset('images/user/1.png') }}" alt=""></span>
+                                        {{-- <td><span class="list-img"><img src="{{ asset('images/user/1.png') }}" alt=""></span>
                                         </td>
                                         <td><a href="#"><span class="list-enq-name">Marsha Hogan</span><span class="list-enq-city">Illunois, United States</span></a>
-                                        </td>
+                                        </td> --}}
                                         <!--<td>+01 3214 6522</td>
                                         <td>chadengle@dummy.com</td>
                                         <td>united states</td>
                                         <td>ST17241</td>
                                         <td>03 Jun 1990</td>-->
                                         <td>
-                                            <span class="label label-success">Active</span>
+                                            <span class="label label-success">Modifier</span>
                                         </td>
-                                        <td><a href="admin-student-details.html" class="ad-st-view">View</a></td>
+                                        <td><a href="admin-student-details.html" class="ad-st-view">Supprimer</a></td>
                                     </tr>
-                                    <tr>
-                                        <td><span class="list-img"><img src="{{ asset('images/user/2.png') }}" alt=""></span>
-                                        </td>
-                                        <td><a href="#"><span class="list-enq-name">Lucas Caden</span><span class="list-enq-city">Illunois, United States</span></a>
-                                        </td>
-                                        <!--<td>+01 8574 6854</td>
-                                        <td>lucas@gmail.com</td>
-                                        <td>Illinois</td>
-                                        <td>ST10231</td>
-                                        <td>16 Feb 1987</td>-->
-                                        <td>
-                                            <span class="label label-success">Active</span>
-                                        </td>
-                                        <td><a href="admin-student-details.html" class="ad-st-view">View</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="list-img"><img src="{{ asset('images/user/4.png') }}" alt=""></span>
-                                        </td>
-                                        <td><a href="#"><span class="list-enq-name">Ethan Oliver</span><span class="list-enq-city">Illunois, United States</span></a>
-                                        </td>
-                                        <!--<td>+01 8574 6854</td>
-                                        <td>Ethan@gmail.com</td>
-                                        <td>Illinois</td>
-                                        <td>ST32168</td>
-                                        <td>21 Jun 1992</td>-->
-                                        <td>
-                                            <span class="label label-success">Active</span>
-                                        </td>
-                                        <td><a href="admin-student-details.html" class="ad-st-view">View</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="list-img"><img src="{{ asset('images/user/5.png') }}" alt=""></span>
-                                        </td>
-                                        <td><a href="#"><span class="list-enq-name">Ethan Oliver</span><span class="list-enq-city">Illunois, United States</span></a>
-                                        </td>
-                                        <!--<td>+01 8574 6854</td>
-                                        <td>Ethan@gmail.com</td>
-                                        <td>Illinois</td>
-                                        <td>ST32168</td>
-                                        <td>21 Jun 1992</td>-->
-                                        <td>
-                                            <span class="label label-success">Active</span>
-                                        </td>
-                                        <td><a href="admin-student-details.html" class="ad-st-view">View</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="list-img"><img src="{{ asset('images/user/1.png') }}" alt=""></span>
-                                        </td>
-                                        <td><a href="#"><span class="list-enq-name">Marsha Hogan</span><span class="list-enq-city">Illunois, United States</span></a>
-                                        </td>
-                                       <!-- <td>+01 3214 6522</td>
-                                        <td>chadengle@dummy.com</td>
-                                        <td>united states</td>
-                                        <td>ST17241</td>
-                                        <td>03 Jun 1990</td>-->
-                                        <td>
-                                            <span class="label label-success">Active</span>
-                                        </td>
-                                        <td><a href="admin-student-details.html" class="ad-st-view">View</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="list-img"><img src="images/user/2.png" alt=""></span>
-                                        </td>
-                                        <td><a href="#"><span class="list-enq-name">Lucas Caden</span><span class="list-enq-city">Illunois, United States</span></a>
-                                        </td>
-                                        <!--<td>+01 8574 6854</td>
-                                        <td>lucas@gmail.com</td>
-                                        <td>Illinois</td>
-                                        <td>ST10231</td>
-                                        <td>16 Feb 1987</td>-->
-                                        <td>
-                                            <span class="label label-success">Active</span>
-                                        </td>
-                                        <td><a href="admin-student-details.html" class="ad-st-view">View</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="list-img"><img src="images/user/4.png" alt=""></span>
-                                        </td>
-                                        <td><a href="#"><span class="list-enq-name">Ethan Oliver</span><span class="list-enq-city">Illunois, United States</span></a>
-                                        </td>
-                                        <!--<td>+01 8574 6854</td>
-                                        <td>Ethan@gmail.com</td>
-                                        <td>Illinois</td>
-                                        <td>ST32168</td>
-                                        <td>21 Jun 1992</td>-->
-                                        <td>
-                                            <span class="label label-success">Active</span>
-                                        </td>
-                                        <td><a href="admin-student-details.html" class="ad-st-view">View</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="list-img"><img src="images/user/5.png" alt=""></span>
-                                        </td>
-                                        <td><a href="#"><span class="list-enq-name">Ethan Oliver</span><span class="list-enq-city">Illunois, United States</span></a>
-                                        </td>
-                                        <!--<td>+01 8574 6854</td>
-                                        <td>Ethan@gmail.com</td>
-                                        <td>Illinois</td>
-                                        <td>ST32168</td>
-                                        <td>21 Jun 1992</td>-->
-                                        <td>
-                                            <span class="label label-success">Active</span>
-                                        </td>
-                                        <td><a href="admin-student-details.html" class="ad-st-view">View</a></td>
-                                    </tr>
+                                   
+                                   
                                 </tbody>
                             </table>
                         </div>
@@ -152,4 +49,5 @@
             </div>
         </div>
     </div>
+
 @endsection

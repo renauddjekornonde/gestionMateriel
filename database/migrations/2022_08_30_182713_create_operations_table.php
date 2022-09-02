@@ -15,19 +15,21 @@ return new class extends Migration
     {
         Schema::create('operations', function (Blueprint $table) {
             $table->id();
+            $table->integer('quantite');
+            $table->string('typeOperation');
             $table->timestamps();
 
             $table->unsignedBigInteger('materiel_id');
-            $table->foreign('materiel_id')->references('id')->on('materiel')-> onDelete('cascade')-> onUpdate('cascade');
+            $table->foreign('materiel_id')->references('id')->on('materiels')-> onDelete('cascade')-> onUpdate('cascade');
 
             $table->unsignedBigInteger('entree_id');
-            $table->foreign('entree_id')->references('id')->on('entree')-> onDelete('cascade')-> onUpdate('cascade');
+            $table->foreign('entree_id')->references('id')->on('entrees')-> onDelete('cascade')-> onUpdate('cascade');
 
             $table->unsignedBigInteger('affectation_id');
-            $table->foreign('affectation_id')->references('id')->on('affectation')-> onDelete('cascade')-> onUpdate('cascade');
+            $table->foreign('affectation_id')->references('id')->on('affectations')-> onDelete('cascade')-> onUpdate('cascade');
 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('user')-> onDelete('cascade')-> onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')-> onDelete('cascade')-> onUpdate('cascade');
         });
     }
 
