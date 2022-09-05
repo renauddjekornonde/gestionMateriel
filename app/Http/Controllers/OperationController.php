@@ -4,22 +4,41 @@ namespace App\Http\Controllers;
 
 use App\Models\Operation;
 use Illuminate\Http\Request;
-use App\Models\Operatiion;
-use App\Models\User;
-use App\Models\Materiel;
-use App\Models\Entree;
-use App\Models\Affectation;
 
 class OperationController extends Controller
 {
-     //cette fonction permet de recuperer toutes les operations et les retourner
-     public function index(){
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    //cette fonction permet de recuperer toutes les operations et les retourner
+    public function index()
+    {
         $operations= Operation::get();
         return view('operation.index', compact('operations'));
     }
 
-    //cette fonction permet d'ajouter une operation
-    public function addNewOperation(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+         // cette function nous renvoie à la page ou se trouve le formulaire d'ajout
+
+    public function create()
+    {
+        return view('operation.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+          //cette fonction permet d'ajouter une operation
+    public function store(Request $request)
     {
         $data = $request->all();
         $operation = new Operation();
@@ -35,7 +54,40 @@ class OperationController extends Controller
         return redirect()->back();
     }
 
-    //cette fonction permet de modifier les operations
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+      //Cette fonction permet de voir une operation en detaille
+    public function show($id)
+    {
+        $operations= Operation::findOrFail($id);
+         return view('operation.show', compact('operations'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+     //Cette fonction permet de renvoyer la page d'edition d'une operation
+    public function edit($id)
+    {
+        $operations= Operation::findOrFail($id);
+        return view('operation.edit', compact('operations'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+        //cette fonction permet de modifier les operations
     public function update(Request $request, $id)
     {
 
@@ -68,8 +120,15 @@ class OperationController extends Controller
         return redirect()->route('operation.index')->with('sucess', 'Modification Effectuer Avec Succes');
     }
 
-    //Fonction permettant de supprimer une operation
-     public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+     //Fonction permettant de supprimer une operation
+    public function destroy($id)
     {
         Operation::find($id)->delete();
 
@@ -77,18 +136,4 @@ class OperationController extends Controller
 
         return redirect()->route('operation.index')->with('sucess', 'Supprimer');
     }
-
-     //Cette fonction permet de voir une operation en detaille
-     public function show($id)
-     {
-         $operations= Operation::findOrFail($id);
-         return view('operation.show', compact('operations'));
-     }
- 
-    //Cette fonction permet de renvoyer la page d'edition d'une operation
-     public function edit($id)
-     {
-         $operations= Operation::findOrFail($id);
-         return view('operation.edit', compact('operations'));
-     }
 }

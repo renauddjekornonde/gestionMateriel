@@ -2,19 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Entree;
+use Illuminate\Http\Request;
 
 class EntreeController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     //cette fonction permet de recuperer toutes les Entree et les retourner
-    public function index(){
+    public function index()
+    {
         $entrees= Entree::get();
         return view('entree.index', compact('entrees'));
     }
 
-    //cette fonction permet d'ajouter une entree
-    public function addNewEntree(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    // cette function nous renvoie à la page ou se trouve le formulaire d'ajout
+    public function create()
+    {
+        return view('entree.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+     //cette fonction permet d'ajouter une entree
+    public function store(Request $request)
     {
         $data = $request->all();
         $entree = new Entree();
@@ -25,16 +48,49 @@ class EntreeController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+     //Cette fonction permet de voir une entree en detaille
+    public function show($id)
+    {
+        $entrees= Entree::findOrFail($id);
+        return view('entree.show', compact('entrees'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+        //Cette fonction permet de renvoyer la page d'edition d'une entree
+    public function edit($id)
+    {
+        $entrees= Entree::findOrFail($id);
+        return view('entree.edit', compact('entrees'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     //cette fonction permet de modifier les entrees
     public function update(Request $request, $id)
     {
-
-        //cette requete oblige à ne pas laisser les champs vides
-        $request->validate([
+         //cette requete oblige à ne pas laisser les champs vides
+         $request->validate([
             'matricule'=> 'required',
             'created_at'=> 'required',
             'updated_at'=> 'required',
-           
+
 
         ]);
 
@@ -49,8 +105,14 @@ class EntreeController extends Controller
         return redirect()->route('entree.index')->with('sucess', 'Modification Effectuer Avec Succes');
     }
 
-    //Fonction permettant de supprimer une entree
-     public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+     //Fonction permettant de supprimer une categorie
+    public function destroy($id)
     {
         Entree::find($id)->delete();
 
@@ -58,18 +120,4 @@ class EntreeController extends Controller
 
         return redirect()->route('entree.index')->with('sucess', 'Supprimer');
     }
-
-     //Cette fonction permet de voir une entree en detaille
-     public function show($id)
-     {
-         $entrees= Entree::findOrFail($id);
-         return view('entree.show', compact('entrees'));
-     }
- 
-    //Cette fonction permet de renvoyer la page d'edition d'une entree
-     public function edit($id)
-     {
-         $entrees= Entree::findOrFail($id);
-         return view('entree.edit', compact('entrees'));
-     }
 }

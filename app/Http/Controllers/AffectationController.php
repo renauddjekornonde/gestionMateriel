@@ -3,19 +3,49 @@
 namespace App\Http\Controllers;
 
 use App\Models\Affectation;
+use App\Models\Category;
+use App\Models\Entree;
+use App\Models\Fournisseur;
+use App\Models\Materiel;
 use Illuminate\Http\Request;
-use App\Models\Salle;
 
 class AffectationController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     //cette fonction permet de recuperer toutes les affectations et les retourner
-    public function index(){
+    public function index()
+    {
+        $entrees= Entree::get();
+        $categories= Category::get();
         $affectations= Affectation::get();
-        return view('affectation.index', compact('affectations'));
+        $materiels= Materiel::get();
+        $fournisseurs= Fournisseur::get();
+        return view('affectation.index', compact('affectations', 'entrees', 'categories', 'affectations', 'materiels','fournisseurs' ));
     }
 
-    //cette fonction permet d'ajouter une affectation
-    public function addNewAffectation(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    // cette function nous renvoie à la page ou se trouve le formulaire d'ajout
+    public function create()
+    {
+        return view('affectation.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+        //cette fonction permet d'ajouter une affectation
+    public function store(Request $request)
     {
         $data = $request->all();
         $affectation = new Affectation();
@@ -23,10 +53,51 @@ class AffectationController extends Controller
         $affectation->updated_at = $data['updated_at'];
         $affectation->salle_id = $data['salle'];
         $affectation->save();
-        return redirect()->back();
+        return redirect()->route('affectation.index')->with('sucess', 'Affecation ajouter avec sucess');
     }
 
-    //cette fonction permet de modifier les affectations
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+     //Cette fonction permet de voir une affectation en detaille
+    public function show($id)
+    {
+        $affectations= Affectation::findOrFail($id);
+        $entrees= Entree::get();
+        $categories=Category::get();
+        $materiels=Materiel::get();
+        return view('affectation.show', compact('affectations', 'entrees', 'categories', 'materiels'));
+
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    //  cette fonction permet de renvoyer la page ou se trouve le formulaire d'ffectation
+    public function edit($id)
+    {
+        $affectations= Affectation::findOrFail($id);
+        $entrees= Entree::get();
+        $categories=Category::get();
+        $materiels=Materiel::get();
+         return view('affectation.edit', compact('affectations',  'entrees', 'categories', 'materiels'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    // cette fontion permet de modifier les affecations
     public function update(Request $request, $id)
     {
 
@@ -49,8 +120,14 @@ class AffectationController extends Controller
         return redirect()->route('affectation.index')->with('sucess', 'Modification effectuer avec succes');
     }
 
-    //Fonction permettant de supprimer une affectation
-     public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+     //Fonction permettant de supprimer une affectation
+    public function destroy($id)
     {
         Affectation::find($id)->delete();
 
@@ -58,18 +135,4 @@ class AffectationController extends Controller
 
         return redirect()->route('affectation.index')->with('sucess', 'Supprimer');
     }
-
-     //Cette fonction permet de voir une affectation en detaille
-     public function show($id)
-     {
-         $affectations= Affectation::findOrFail($id);
-         return view('affectation.show', compact('affectations'));
-     }
- 
-    //Cette fonction permet de renvoyer la page d'edition d'une affectation
-     public function edit($id)
-     {
-         $affectations= Affectation::findOrFail($id);
-         return view('affectation.edit', compact('affectations'));
-     }
 }

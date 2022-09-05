@@ -2,20 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Campus;
-use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-     //cette fonction permet de recuperer tous les category et les retourner
-     public function index(){
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+         //cette fonction permet de recuperer tous les category et les retourner
+    public function index()
+    {
         $categories= Category::get();
         return view('category.index', compact('categories'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+            // cette function nous renvoie à la page ou se trouve le formulaire d'ajout
+
+    public function create()
+    {
+        return view('category.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
     //cette fonction permet d'ajouter une categorie
-    public function addNewCategory(Request $request)
+    public function store(Request $request)
     {
         $data = $request->all();
         $category = new Category();
@@ -26,10 +50,41 @@ class CategoryController extends Controller
         return redirect()->back();
     }
 
-    //cette fonction permet de modifier les données d'une categorie
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    //Cette fonction permet de voir une category en detaille
+    public function show($id)
+    {
+        $categories= Category::findOrFail($id);
+        return view('category.show', compact('categories'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $categories= Category::findOrFail($id);
+        return view('category.edit', compact('categories'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+        //cette fonction permet de modifier les données d'une categorie
     public function update(Request $request, $id)
     {
-
         //cette requete oblige à ne pas laisser les champs vides
         $request->validate([
             'intitule'=> 'required',
@@ -49,27 +104,20 @@ class CategoryController extends Controller
         return redirect()->route('category.index')->with('sucess', 'Modification effectuer avec succes');
     }
 
-    //Fonction permettant de supprimer une categorie
-     public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+      //Fonction permettant de supprimer une categorie
+    public function destroy($id)
     {
+
         Category::find($id)->delete();
 
         //retourne la liste des categorie avec une message de confirmation de la suppression
 
         return redirect()->route('category.index')->with('sucess', 'Supprimer');
     }
-
-     //Cette fonction permet de voir une category en detaille
-     public function show($id)
-     {
-         $categories= Category::findOrFail($id);
-         return view('category.show', compact('categories'));
-     }
- 
-    //Cette fonction permet de renvoyer la page d'edition d'une category
-     public function edit($id)
-     {
-         $categories= Category::findOrFail($id);
-         return view('category.edit', compact('categories'));
-     }
 }

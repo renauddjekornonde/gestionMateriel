@@ -2,19 +2,50 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Affectation;
 use App\Models\Campus;
+use App\Models\Category;
+use App\Models\Entree;
+use App\Models\Materiel;
+use Illuminate\Http\Request;
 
 class CampusController extends Controller
 {
-     //cette fonction permet de recuperer tous les campus et les retourner
-     public function index(){
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    //cette fonction permet de recuperer tous les campus et les retourner
+    public function index()
+    {
         $campus= Campus::get();
-        return view('campus.index', compact('campus'));
+        $entrees= Entree::get();
+        $categories= Category::get();
+        $affectations= Affectation::get();
+        $materiels= Materiel::get();
+        return view('campus.index', compact('campus', 'entrees', 'categories','affectations','materiels'));
     }
 
-    //cette fonction permet d'ajouter un campus
-    public function addNewCampus(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+        // cette function nous renvoie à la page ou se trouve le formulaire d'ajout
+    public function create()
+    {
+        return view('campus.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+            //cette fonction permet d'ajouter une campus
+    public function store(Request $request)
     {
         $data = $request->all();
         $campus = new Campus();
@@ -24,10 +55,45 @@ class CampusController extends Controller
         $campus->created_at = $data['created_at'];
         $campus->updated_at = $data['updated_at'];
         $campus->save();
-        return redirect()->back();
+        return redirect()->route('campus.index')->with('sucess', 'Campus ajouter avec sucess');
+
     }
 
-    //cette fonction permet de modifier les données d'un campus
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+         //Cette fonction permet de voir une affectation en detaille
+    public function show($id)
+    {
+        $campus= Campus::findOrFail($id);
+         return view('campus.show', compact('campus'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+        //  cette fonction permet de renvoyer la page ou se trouve le formulaire d'ffectation
+
+    public function edit($id)
+    {
+        $campus= Campus::findOrFail($id);
+        return view('campus.edit', compact('campus'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+        // cette fontion permet de modifier les affecations
     public function update(Request $request, $id)
     {
 
@@ -54,8 +120,14 @@ class CampusController extends Controller
         return redirect()->route('campus.index')->with('sucess', 'Modification effectuer avec succes');
     }
 
-    //Fonction permettant de supprimer une campus
-     public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+         //Fonction permettant de supprimer une affectation
+    public function destroy($id)
     {
         Campus::find($id)->delete();
 
@@ -63,18 +135,4 @@ class CampusController extends Controller
 
         return redirect()->route('campus.index')->with('sucess', 'Supprimer');
     }
-
-     //Cette fonction permet de voir une campus en detaille
-     public function show($id)
-     {
-         $campus= Campus::findOrFail($id);
-         return view('campus.show', compact('campus'));
-     }
- 
-    //Cette fonction permet de renvoyer la page d'edition d'un campus
-     public function edit($id)
-     {
-         $campus= Campus::findOrFail($id);
-         return view('campus.edit', compact('campus'));
-     }
 }
