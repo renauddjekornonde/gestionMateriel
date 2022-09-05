@@ -58,4 +58,18 @@ class CategoryController extends Controller
 
         return redirect()->route('category.index')->with('sucess', 'Supprimer');
     }
+
+     //Cette fonction permet de voir une category en detaille
+     public function show($id)
+     {
+         $categories= Category::findOrFail($id);
+         return view('category.show', compact('categories'));
+     }
+ 
+    //Cette fonction permet de renvoyer la page d'edition d'une category
+     public function edit($id)
+     {
+         $categories= Category::findOrFail($id);
+         return view('category.edit', compact('categories'));
+     }
 }

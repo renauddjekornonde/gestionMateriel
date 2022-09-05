@@ -1,6 +1,6 @@
-<section>
+{{-- <section>
                             <!-- start page title -->
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-12">
                                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                         <h4 class="mb-sm-0 font-size-18">Tableau de bord</h4>
@@ -14,10 +14,10 @@
 
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <!-- end page title -->
 
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="col-xl-3 col-md-6">
                                     <!-- card -->
                                     <div class="card card-h-100">
@@ -34,18 +34,18 @@
                                                 <div class="col-6">
                                                     <div id="mini-chart1" data-colors='["#5156be"]' class="apex-charts mb-2"></div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <!-- <div class="text-nowrap">
                                                 <span class="badge bg-soft-success text-success"></span>
                                                 <span class="ms-1 text-muted font-size-13">Since last week</span>
                                             </div> -->
-                                        </div><!-- end card body -->
-                                    </div><!-- end card -->
-                                </div><!-- end col -->
+                                        {{-- </div><!-- end card body --> --}}
+                                    {{-- </div><!-- end card --> --}}
+                                {{-- </div><!-- end col --> --}}
 
-                                <div class="col-xl-3 col-md-6">
+                                {{-- <div class="col-xl-3 col-md-6"> --}}
                                     <!-- card -->
-                                    <div class="card card-h-100">
+                                    {{-- <div class="card card-h-100">
                                         <!-- card body -->
                                         <div class="card-body">
                                             <div class="row align-items-center">
@@ -65,9 +65,9 @@
                                             </div>
                                         </div><!-- end card body -->
                                     </div><!-- end card -->
-                                </div><!-- end col-->
+                                </div><!-- end col--> --}}
 
-                                <div class="col-xl-3 col-md-6">
+                                {{-- <div class="col-xl-3 col-md-6">
                                     <!-- card -->
                                     <div class="card card-h-100">
                                         <!-- card body -->
@@ -89,9 +89,9 @@
                                             </div>
                                         </div><!-- end card body -->
                                     </div><!-- end card -->
-                                </div><!-- end col -->
+                                </div><!-- end col --> --}}
 
-                                <div class="col-xl-3 col-md-6">
+                                {{-- <div class="col-xl-3 col-md-6">
                                     <!-- card -->
                                     <div class="card card-h-100">
                                         <!-- card body -->
@@ -114,5 +114,8 @@
                                         </div><!-- end card body -->
                                     </div><!-- end card -->
                                 </div><!-- end col -->
-                            </div><!-- end row-->
+                            </div><!-- end row--> --}}
+{{-- </section> --}}
+<section>
+
 </section>

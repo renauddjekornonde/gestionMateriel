@@ -77,4 +77,18 @@ class OperationController extends Controller
 
         return redirect()->route('operation.index')->with('sucess', 'Supprimer');
     }
+
+     //Cette fonction permet de voir une operation en detaille
+     public function show($id)
+     {
+         $operations= Operation::findOrFail($id);
+         return view('operation.show', compact('operations'));
+     }
+ 
+    //Cette fonction permet de renvoyer la page d'edition d'une operation
+     public function edit($id)
+     {
+         $operations= Operation::findOrFail($id);
+         return view('operation.edit', compact('operations'));
+     }
 }

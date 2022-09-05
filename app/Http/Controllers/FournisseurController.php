@@ -54,7 +54,7 @@ class FournisseurController extends Controller
         return redirect()->route('fournisseur.index')->with('sucess', 'Modification Effectuer Avec Succes');
     }
 
-    //Fonction permettant de supprimer une affectation
+    //Fonction permettant de supprimer un fournisseur
      public function destroy($id)
     {
         Fournisseur::find($id)->delete();
@@ -63,4 +63,18 @@ class FournisseurController extends Controller
 
         return redirect()->route('fournisseur.index')->with('sucess', 'Supprimer');
     }
+
+     //Cette fonction permet de voir une fournisseur en detaille
+     public function show($id)
+     {
+         $fournisseurs= Fournisseur::findOrFail($id);
+         return view('fournisseur.show', compact('fournisseurs'));
+     }
+ 
+    //Cette fonction permet de renvoyer la page d'edition d'une fournisseur
+     public function edit($id)
+     {
+         $fournisseurs= Fournisseur::findOrFail($id);
+         return view('fournisseur.edit', compact('fournisseurs'));
+     }
 }

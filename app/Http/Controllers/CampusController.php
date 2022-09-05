@@ -63,4 +63,18 @@ class CampusController extends Controller
 
         return redirect()->route('campus.index')->with('sucess', 'Supprimer');
     }
+
+     //Cette fonction permet de voir une campus en detaille
+     public function show($id)
+     {
+         $campus= Campus::findOrFail($id);
+         return view('campus.show', compact('campus'));
+     }
+ 
+    //Cette fonction permet de renvoyer la page d'edition d'un campus
+     public function edit($id)
+     {
+         $campus= Campus::findOrFail($id);
+         return view('campus.edit', compact('campus'));
+     }
 }

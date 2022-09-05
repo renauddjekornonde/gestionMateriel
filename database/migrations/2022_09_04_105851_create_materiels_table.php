@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('materiel', function (Blueprint $table) {
+        Schema::create('materiels', function (Blueprint $table) {
             $table->id();
             $table->string('matricule');
             $table->string('intitule');
-            $table->string('description');
+            $table->mediumText('description');
+            
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
 
@@ -36,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materiel');
+        Schema::dropIfExists('materiels');
     }
 };

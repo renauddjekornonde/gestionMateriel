@@ -24,7 +24,7 @@ class Salle extends Model
     }
 
     // cette fonction permet de repucerer les affectations de chaque salle
-    public function affectationSalles()
+    public function affectations()
     {
         return $this->hasMany(Affectation::class);
     }

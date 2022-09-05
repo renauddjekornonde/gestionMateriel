@@ -3,20 +3,52 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Affectation;
 use App\Models\Materiel;
 use App\Models\Category;
+use App\Models\Entree;
 use App\Models\Fournisseur;
 
 class MaterielController extends Controller
 {
-    //cette fonction permet de recuperer toutes les materiels et les retourner
-    public function index(){
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+     //cette fonction permet de recuperer toutes les materiels et les retourner
+    public function index()
+    {
+        $entrees= Entree::get();
+        $categories= Category::get();
+        $affectations= Affectation::get();
         $materiels= Materiel::get();
-        return view('materiel.index', compact('materiels'));
+        $fournisseurs= Fournisseur::get();
+        return view('materiel.index', compact('materiels', 'fournisseurs', 'categories', 'entrees', 'affectations'));
     }
 
-    //cette fonction permet d'ajouter un materiel
-    public function addNewMateriel(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    //fonction permettant de nous diriger vers la page d'insertion de materiel
+    public function create()
+    {
+        return view('materiel.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+     //cette fonction permet de creer un materiel
+    public function store(Request $request)
     {
         $data = $request->all();
         $materiel = new Materiel();
@@ -28,15 +60,51 @@ class MaterielController extends Controller
         $materiel->category_id = $data['category'];
         $materiel->fournisseur_id = $data['fournisseur'];
         $materiel->save();
-        return redirect()->back();
+
+        return redirect()->route('materiel.index')->with('sucess', 'Materiel ajoute avec succes');
     }
 
-    //cette fonction permet de modifier les materiels
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+      //Cette fonction permet de voir un materiel en detaille
+    public function show($id)
+    {
+        $materiels= Materiel::findOrFail($id);
+        return view('materiel.show', compact('materiels'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+     //Cette fonction permet de renvoyer la page d'edition d'un materiel
+    public function edit($id)
+    {
+        $materiels= Materiel::findOrFail($id);
+        return view('materiel.edit', compact('materiels'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+      //cette fonction permet de modifier les materiels
     public function update(Request $request, $id)
     {
-
-        //cette requete oblige à ne pas laisser les champs vides
-        $request->validate([
+          //cette requete oblige à ne pas laisser les champs vides
+          $request->validate([
             'matricule'=> 'required',
             'intitule'=> 'required',
             'description'=> 'required',
@@ -62,8 +130,15 @@ class MaterielController extends Controller
         return redirect()->route('materiel.index')->with('sucess', 'Modification Effectuer Avec Succes');
     }
 
-    //Fonction permettant de supprimer un materiel
-     public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+      //Fonction permettant de supprimer un materiel
+    public function destroy($id)
     {
         Materiel::find($id)->delete();
 

@@ -12,13 +12,13 @@ class Affectation extends Model
     use HasFactory;
 
      // cette fonction permet de repucerer les salles
-     public function salleAffectation()
+     public function salle()
      {
          return $this->belongsTo(Salle::class);
      }
 
      //Permet de recuperer toutes les affectations dans une operation
-     public function operationAffectations()
+     public function operations()
      {
          return $this->hasMany(Operation::class);
      }

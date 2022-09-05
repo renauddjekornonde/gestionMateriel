@@ -61,4 +61,18 @@ public function update(Request $request, $id)
 
     return redirect()->route('salle.index')->with('sucess', 'Supprimer');
 }
+
+    //Cette fonction permet de voir une salle en detaille
+    public function show($id)
+    {
+        $salles= Salle::findOrFail($id);
+        return view('salle.show', compact('salles'));
+    }
+
+    //Cette fonction permet de renvoyer la page d'edition d'une salle
+    public function edit($id)
+    {
+        $salle= Salle::findOrFail($id);
+        return view('salle.edit', compact('salles'));
+    }
 }

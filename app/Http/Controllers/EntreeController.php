@@ -58,4 +58,18 @@ class EntreeController extends Controller
 
         return redirect()->route('entree.index')->with('sucess', 'Supprimer');
     }
+
+     //Cette fonction permet de voir une entree en detaille
+     public function show($id)
+     {
+         $entrees= Entree::findOrFail($id);
+         return view('entree.show', compact('entrees'));
+     }
+ 
+    //Cette fonction permet de renvoyer la page d'edition d'une entree
+     public function edit($id)
+     {
+         $entrees= Entree::findOrFail($id);
+         return view('entree.edit', compact('entrees'));
+     }
 }

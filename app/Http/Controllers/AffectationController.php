@@ -58,4 +58,18 @@ class AffectationController extends Controller
 
         return redirect()->route('affectation.index')->with('sucess', 'Supprimer');
     }
+
+     //Cette fonction permet de voir une affectation en detaille
+     public function show($id)
+     {
+         $affectations= Affectation::findOrFail($id);
+         return view('affectation.show', compact('affectations'));
+     }
+ 
+    //Cette fonction permet de renvoyer la page d'edition d'une affectation
+     public function edit($id)
+     {
+         $affectations= Affectation::findOrFail($id);
+         return view('affectation.edit', compact('affectations'));
+     }
 }

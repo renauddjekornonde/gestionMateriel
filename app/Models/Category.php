@@ -14,7 +14,7 @@ class Category extends Model
         'intitule',
     ];
 
-     //Permet de recuperer tous les materiels de la categorie
+     //Permet de recuperer tous les materiels d'une categorie
      public function materiels()
      {
          return $this->hasMany(Materiel::class);

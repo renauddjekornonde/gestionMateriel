@@ -17,7 +17,7 @@ class Entree extends Model
     
 
      //Permet de recuperer toutes les entrees dans une operation
-     public function operationEntrees()
+     public function operations()
      {
          return $this->hasMany(Operation::class);
      }

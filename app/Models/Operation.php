@@ -33,11 +33,11 @@ class Operation extends Model
       //Permet de recuperer toutes les materiels dans une operation
     public function materiel()
     {
-        return $this->belongsTo(Materiel::class);
+        return $this->belongsTo(Materiel::class, 'materiel_id');
     }
 
      //Permet de recuperer toutes les utilisateurs qui ont effectuer une operation
-     public function utilisaeur()
+     public function user()
      {
          return $this->belongsTo(User::class);
      }
