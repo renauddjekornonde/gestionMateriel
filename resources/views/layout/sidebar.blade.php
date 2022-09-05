@@ -153,6 +153,11 @@
                     <span>Parametre</span></a>
                 </li> 
 
+                 <li> 
+                    <a href="{{url('campus/index')}}"><span class=""><ion-icon name="settings-outline"></ion-icon></span>
+                    <span>Campus</span></a>
+                </li> 
+
                 <!-- <div class="menu">
                     <ul>
                         <li>
