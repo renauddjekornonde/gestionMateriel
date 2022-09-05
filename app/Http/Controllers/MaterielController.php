@@ -75,7 +75,10 @@ class MaterielController extends Controller
     public function show($id)
     {
         $materiels= Materiel::findOrFail($id);
-        return view('materiel.show', compact('materiels'));
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+        return view('materiel.show', compact('materiels', 'entrees', 'affectations', 'categories'));
     }
 
     /**
@@ -146,4 +149,5 @@ class MaterielController extends Controller
 
         return redirect()->route('materiel.index')->with('sucess', 'Supprimer');
     }
+    
 }

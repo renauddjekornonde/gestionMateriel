@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,9 @@
 
 
 </head>
-<body>
+<body> --}}
+@extends('layout.app')
+@section('content')
 
 <div id="{{url('materiel.show')}}" class="modal">
   <div class="modal_content">
@@ -42,6 +44,4 @@
     </form>
   </div>
 </div>
-
-</body>
-</html>
+@endsection

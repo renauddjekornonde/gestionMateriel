@@ -24,4 +24,5 @@ class AcceuilController extends Controller
 
         return view('home', compact('fournisseurs', 'materiels', 'categories', 'entrees', 'affectations'));
     }
+    
 }
