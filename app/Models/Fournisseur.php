@@ -22,5 +22,10 @@ class Fournisseur extends Model
      {
          return $this->hasMany(Materiel::class);
      }
+ //Permet de recuperer toutes les materiels fournis par un fournisseur
+ public function entree()
+ {
+     return $this->belongsTo(Entree::class);
+ }
 
 }

@@ -14,13 +14,19 @@ class Entree extends Model
         'matricule',
     ];
 
-    
+
 
      //Permet de recuperer toutes les entrees dans une operation
      public function operations()
      {
          return $this->hasMany(Operation::class);
      }
- 
-     
+
+          //Permet de recuperer toutes les entrees d'un fournisseur
+          public function fournisseurs()
+          {
+              return $this->hasMany(Fournisseur::class);
+          }
+
+
 }

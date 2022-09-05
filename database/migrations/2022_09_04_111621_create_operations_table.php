@@ -22,10 +22,10 @@ return new class extends Migration
             $table->unsignedBigInteger('materiel_id');
             $table->foreign('materiel_id')->references('id')->on('materiels')-> onDelete('cascade')-> onUpdate('cascade');
 
-            $table->unsignedBigInteger('entree_id');
+            $table->unsignedBigInteger('entree_id')->nullable();
             $table->foreign('entree_id')->references('id')->on('entrees')-> onDelete('cascade')-> onUpdate('cascade');
 
-            $table->unsignedBigInteger('affectation_id');
+            $table->unsignedBigInteger('affectation_id')->nullable();
             $table->foreign('affectation_id')->references('id')->on('affectations')-> onDelete('cascade')-> onUpdate('cascade');
 
             $table->unsignedBigInteger('user_id');
