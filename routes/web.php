@@ -45,4 +45,6 @@ Route::get('/opeartion/index', [OperationController::class, 'index'] );
 
 Route::resource('materiel', MaterielController::class);
 
+Route::resource('category', CategoryController::class);
+
 
