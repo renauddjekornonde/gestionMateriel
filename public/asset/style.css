@@ -531,7 +531,7 @@ tr td:last-child {
     color: #fff;
     text-decoration: none;
 } */
-fieldset{
+/* fieldset{
     margin-top: 70px;
     width:27%;
     background-color: var(--main-color);
@@ -555,11 +555,11 @@ hr{
     border-radius: 10px;
     width: 40%;
 }
-ul li{
+/* ul li{
     margin-left: 20px;
     color: white;
-}
-#submit{
+} */
+/* #submit{
     margin: 20px 35px;
     color: #318ce7;
     background-color: white;
@@ -572,8 +572,8 @@ ul li{
 #submit:hover{
     color: white;
     background-color: #318ce7;
-}
-input{
+} */
+/* input{ 
     font-size: 10px;
     border: none;
     outline: none;
@@ -583,7 +583,7 @@ input{
     width: 100%;
 }
  
-
+ */
 
 
 
