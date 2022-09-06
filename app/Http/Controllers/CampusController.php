@@ -19,12 +19,12 @@ class CampusController extends Controller
     //cette fonction permet de recuperer tous les campus et les retourner
     public function index()
     {
-        $campus= Campus::get();
+        $campuses= Campus::get();
         $entrees= Entree::get();
         $categories= Category::get();
         $affectations= Affectation::get();
-        $materiels= Materiel::get();
-        return view('campus.index', compact('campus', 'entrees', 'categories','affectations','materiels'));
+         $materiels= Materiel::get();
+        return view('campus.index', compact('campuses', 'entrees', 'categories','affectations','materiels'));
     }
 
     /**
@@ -48,13 +48,13 @@ class CampusController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $campus = new Campus();
-        $campus->intitule = $data['intitule'];
-        $campus->lieu = $data['lieu'];
-        $campus->telephone = $data['telephone'];
-        $campus->created_at = $data['created_at'];
-        $campus->updated_at = $data['updated_at'];
-        $campus->save();
+        $campuses = new Campus();
+        $campuses->intitule = $data['intitule'];
+        $campuses->lieu = $data['lieu'];
+        $campuses->telephone = $data['telephone'];
+        $campuses->created_at = $data['created_at'];
+        $campuses->updated_at = $data['updated_at'];
+        $campuses->save();
         return redirect()->route('campus.index')->with('sucess', 'Campus ajouter avec sucess');
 
     }
@@ -68,8 +68,12 @@ class CampusController extends Controller
          //Cette fonction permet de voir une affectation en detaille
     public function show($id)
     {
-        $campus= Campus::findOrFail($id);
-         return view('campus.show', compact('campus'));
+        $campuses= Campus::findOrFail($id);
+        $entrees= Entree::get();
+        $categories= Category::get();
+        $affectations= Affectation::get();
+        $materiels= Materiel::get();
+         return view('campus.show', compact('campuses', 'entrees', 'categories','affectations','materiels'));
     }
 
     /**
@@ -82,8 +86,8 @@ class CampusController extends Controller
 
     public function edit($id)
     {
-        $campus= Campus::findOrFail($id);
-        return view('campus.edit', compact('campus'));
+        $campuses= Campus::findOrFail($id);
+        return view('campus.edit', compact('campuses'));
     }
 
     /**
@@ -107,13 +111,13 @@ class CampusController extends Controller
 
         ]);
 
-        $campus= Campus::find($id);
-        $campus->intitule= $request->intitule;
-        $campus->lieu= $request->lieu;
-        $campus->telephone= $request->telephone;
-        $campus->created_at= $request->created_at;
-        $campus->updated_at= $request->updated_at;
-        $campus->save();
+        $campuses= Campus::find($id);
+        $campuses->intitule= $request->intitule;
+        $campuses->lieu= $request->lieu;
+        $campuses->telephone= $request->telephone;
+        $campuses->created_at= $request->created_at;
+        $campuses->updated_at= $request->updated_at;
+        $campuses->save();
 
         //redirection dans la page index contenant les campus apres modification et accompagner d'un message de confirmation
 

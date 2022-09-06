@@ -47,4 +47,16 @@ Route::resource('materiel', MaterielController::class);
 
 Route::resource('category', CategoryController::class);
 
+Route::resource('campus', CampusController::class);
+
+Route::resource('salle', SalleController::class);
+
+Route::resource('entree', EntreeController::class);
+
+Route::resource('fournisseur', FournisseurController::class);
+
+Route::resource('affectation', AffectationController::class);
+
+Route::resource('operation', OperationController::class);
+
 

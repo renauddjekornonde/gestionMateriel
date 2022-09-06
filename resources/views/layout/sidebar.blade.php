@@ -148,15 +148,20 @@
                     <a href="{{url('affectation/index')}}"><span class=""><ion-icon name="desktop-outline"></ion-icon> </span>
                     <span>Affectation</span></ion-icon></a>
                 </li>
-                <li> 
-                    <a href="{{url('parametre/index')}}"><span class=""><ion-icon name="settings-outline"></ion-icon></span>
-                    <span>Parametre</span></a>
-                </li> 
+                
 
                  <li> 
-                    <a href="{{url('campus/index')}}"><span class=""><ion-icon name="settings-outline"></ion-icon></span>
+                    <a href="{{url('campus/index')}}"><span class=""><ion-icon name="business-outline"></ion-icon></span>
                     <span>Campus</span></a>
                 </li> 
+                <li> 
+                    <a href="{{url('salle/index')}}"><span class=""><ion-icon name="briefcase-outline"></ion-icon></span>
+                    <span>Salle</span></a>
+                </li>
+                <li> 
+                    <a href="{{url('category/index')}}"><span class=""><ion-icon name="construct-outline"></ion-icon></span>
+                    <span>Category</span></a>
+                </li>
 
                 <!-- <div class="menu">
                     <ul>

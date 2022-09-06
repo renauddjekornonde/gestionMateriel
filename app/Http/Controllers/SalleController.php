@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Affectation;
+use App\Models\Materiel;
+use App\Models\Category;
+use App\Models\Entree;
 use App\Models\Salle;
 use Illuminate\Http\Request;
 
@@ -16,7 +19,12 @@ class SalleController extends Controller
     public function index()
     {
         $salles= Salle::get();
-        return view('salle.index', compact('salles'));
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+     
+        return view('salle.index', compact('salles','materiels', 'entrees', 'affectations', 'categories'));
     }
 
     /**
@@ -44,7 +52,7 @@ class SalleController extends Controller
         $salle->intitule = $data['intitule'];
         $salle->created_at = $data['created_at'];
         $salle->updated_at = $data['updated_at'];
-        $salle->campus_id = $data['campus'];
+        $salle->campue_id = $data['campue'];
         $salle->save();
         return redirect()->back();
     }
@@ -60,7 +68,12 @@ class SalleController extends Controller
     public function show($id)
     {
         $salles= Salle::findOrFail($id);
-        return view('salle.show', compact('salles'));
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+     
+        return view('salle.show', compact('salles','materiels', 'entrees', 'affectations', 'categories'));
     }
 
     /**
@@ -99,7 +112,7 @@ class SalleController extends Controller
     $salle->intitule= $request->intitule;
     $salle->created_at= $request->created_at;
     $salle->updated_at= $request->updated_at;
-    $salle->campus_id= $request->campus_id;
+    $salle->campue_id= $request->campue_id;
     $salle->save();
 
     //redirection dans la page index contenant les salles apres modification de la salle accompagner d'un message de confirmation

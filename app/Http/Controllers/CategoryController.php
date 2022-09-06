@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Affectation;
+use App\Models\Materiel;
+use App\Models\Entree;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -16,7 +18,10 @@ class CategoryController extends Controller
     public function index()
     {
         $categories= Category::get();
-        return view('category.index', compact('categories'));
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+        return view('category.index', compact('categories', 'materiels', 'entrees', 'affectations'));
     }
 
     /**
@@ -60,7 +65,11 @@ class CategoryController extends Controller
     public function show($id)
     {
         $categories= Category::findOrFail($id);
-        return view('category.show', compact('categories'));
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+
+        return view('category.show', compact('categories', 'materiels', 'entrees', 'affectations'));
     }
 
     /**

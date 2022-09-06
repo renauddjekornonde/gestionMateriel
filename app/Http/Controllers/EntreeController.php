@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Affectation;
+use App\Models\Materiel;
+use App\Models\Category;
+use App\Models\Fournisseur;
 use App\Models\Entree;
 use Illuminate\Http\Request;
 
@@ -15,8 +18,12 @@ class EntreeController extends Controller
     //cette fonction permet de recuperer toutes les Entree et les retourner
     public function index()
     {
-        $entrees= Entree::get();
-        return view('entree.index', compact('entrees'));
+    
+        $entrees= Entree::get();  
+        $materiels= Materiel::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+        return view('entree.index', compact('entrees', 'materiels', 'affectations', 'categories'));
     }
 
     /**
@@ -59,7 +66,10 @@ class EntreeController extends Controller
     public function show($id)
     {
         $entrees= Entree::findOrFail($id);
-        return view('entree.show', compact('entrees'));
+        $materiels= Materiel::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+        return view('entree.show', compact('entrees', 'materiels', 'affectations', 'categories'));
     }
 
     /**

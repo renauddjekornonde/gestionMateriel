@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Affectation;
+use App\Models\Materiel;
+use App\Models\Category;
+use App\Models\Entree;
 use App\Models\Fournisseur;
 use Illuminate\Http\Request;
 
@@ -16,7 +19,11 @@ class FournisseurController extends Controller
     public function index()
     {
         $fournisseurs= Fournisseur::get();
-        return view('fournisseur.index', compact('fournisseurs'));
+        $entrees= Entree::get();
+        $categories= Category::get();
+        $affectations= Affectation::get();
+        $materiels= Materiel::get();
+        return view('fournisseur.index', compact('fournisseurs', 'entrees', 'affectations', 'materiels', 'categories'));
     }
 
     /**
@@ -61,7 +68,11 @@ class FournisseurController extends Controller
     public function show($id)
     {
         $fournisseurs= Fournisseur::findOrFail($id);
-        return view('fournisseur.show', compact('fournisseurs'));
+        $entrees= Entree::get();
+        $categories= Category::get();
+        $affectations= Affectation::get();
+        $materiels= Materiel::get();
+        return view('fournisseur.show', compact('fournisseurs', 'entrees','categories', 'affectations','materiels'));
     }
 
     /**

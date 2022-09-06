@@ -24,7 +24,7 @@ class AffectationController extends Controller
         $affectations= Affectation::get();
         $materiels= Materiel::get();
         $fournisseurs= Fournisseur::get();
-        return view('affectation.index', compact('affectations', 'entrees', 'categories', 'affectations', 'materiels','fournisseurs' ));
+        return view('affectation.index', compact('affectations', 'entrees', 'categories', 'materiels','fournisseurs' ));
     }
 
     /**
@@ -70,7 +70,8 @@ class AffectationController extends Controller
         $entrees= Entree::get();
         $categories=Category::get();
         $materiels=Materiel::get();
-        return view('affectation.show', compact('affectations', 'entrees', 'categories', 'materiels'));
+        $fournisseurs= Fournisseur::get();
+        return view('affectation.show', compact('affectations', 'entrees', 'categories', 'materiels','fournisseurs'));
 
     }
 

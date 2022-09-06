@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Operation;
 use Illuminate\Http\Request;
+use App\Models\Affectation;
+use App\Models\Materiel;
+use App\Models\Category;
+use App\Models\Entree;
+use App\Models\Fournisseur;
 
 class OperationController extends Controller
 {

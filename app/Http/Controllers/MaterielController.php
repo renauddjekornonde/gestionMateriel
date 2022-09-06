@@ -20,10 +20,10 @@ class MaterielController extends Controller
      //cette fonction permet de recuperer toutes les materiels et les retourner
     public function index()
     {
+        $materiels= Materiel::get();
         $entrees= Entree::get();
         $categories= Category::get();
         $affectations= Affectation::get();
-        $materiels= Materiel::get();
         $fournisseurs= Fournisseur::get();
         return view('materiel.index', compact('materiels', 'fournisseurs', 'categories', 'entrees', 'affectations'));
     }
@@ -78,7 +78,8 @@ class MaterielController extends Controller
         $entrees= Entree::get();
         $affectations= Affectation::get();
         $categories= Category::get();
-        return view('materiel.show', compact('materiels', 'entrees', 'affectations', 'categories'));
+        $fournisseurs= Fournisseur::get();
+        return view('materiel.show', compact('materiels', 'entrees', 'affectations', 'categories', 'fournisseurs'));
     }
 
     /**
