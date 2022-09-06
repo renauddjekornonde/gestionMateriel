@@ -32,12 +32,11 @@ use App\Http\Controllers\OperationController;
 
 Route::get('/home', [AcceuilController::class, 'index'] );
 Route::get('/materiel/index', [MaterielController::class, 'index'] );
-
 // Route::get('/materiel/index', [FournisseurController::class, 'index'] );
 
 Route::get('/campus/index', [CampusController::class, 'index'] );
 Route::get('/fournisseur/index', [FournisseurController::class, 'index'] );
-Route::get('/category/index', [CategoryController::class, 'index'] );
+ Route::get('/category/index', [CategoryController::class, 'index'] );
 Route::get('/salle/index', [SalleController::class, 'index'] );
 Route::get('/entree/index', [EntreeController::class, 'index'] );
 Route::get('/affectation/index', [AffectationController::class, 'index'] );
