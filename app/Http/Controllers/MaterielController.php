@@ -37,7 +37,11 @@ class MaterielController extends Controller
     //fonction permettant de nous diriger vers la page d'insertion de materiel
     public function create()
     {
-        return view('materiel.create');
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+        return view('materiel.create', compact('materiels', 'entrees', 'affectations', 'categories'));
     }
 
     /**

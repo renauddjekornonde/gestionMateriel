@@ -7,7 +7,11 @@
                         <div class="card-header">
                             <h3>Category</h3>
                             
+<<<<<<< HEAD
                              <a href="{{url('category/create')}}">
+=======
+                             <a href="{{url('category.create')}}">
+>>>>>>> 1d297fc (ajout de la create à tous les niveau)
                             <button> <ion-icon name="add-sharp" style="font-size: 1.5rem"></ion-icon></button>
                             </a>
                         </div>

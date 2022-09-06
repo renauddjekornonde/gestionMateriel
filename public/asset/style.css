@@ -531,6 +531,57 @@ tr td:last-child {
     color: #fff;
     text-decoration: none;
 } */
+fieldset{
+    margin-top: 70px;
+    width:27%;
+    background-color: var(--main-color);
+    border: 0px;
+    padding-left: 10px;
+    border-radius: 20px 20px 20px 20px;
+    color: white;
+    height: 430px;
+}
+td{
+    letter-spacing: 1px;
+}
+h1{
+    font-family: sans-serif;
+    letter-spacing: 3px;
+    text-align: center;
+    color: white;
+}
+hr{
+    border: 5px solid white;
+    border-radius: 10px;
+    width: 40%;
+}
+ul li{
+    margin-left: 20px;
+    color: white;
+}
+#submit{
+    margin: 20px 35px;
+    color: #318ce7;
+    background-color: white;
+    width: 80%;
+    font-size: 17px;
+    border-radius: 20px;
+    border: 1px solidwhite;
+    padding: 10px;
+}
+#submit:hover{
+    color: white;
+    background-color: #318ce7;
+}
+input{
+    font-size: 10px;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 1px solid white;
+    color: white;
+    width: 100%;
+}
  
 
 
