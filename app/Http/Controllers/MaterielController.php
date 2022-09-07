@@ -41,7 +41,8 @@ class MaterielController extends Controller
         $entrees= Entree::get();
         $affectations= Affectation::get();
         $categories= Category::get();
-        return view('materiel.create', compact('materiels', 'entrees', 'affectations', 'categories'));
+        $fournisseurs= Fournisseur::get();
+        return view('materiel.create', compact('materiels', 'entrees', 'affectations', 'categories', 'fournisseurs'));
     }
 
     /**
@@ -54,18 +55,24 @@ class MaterielController extends Controller
      //cette fonction permet de creer un materiel
     public function store(Request $request)
     {
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+        $fournisseurs= Fournisseur::get();
+
         $data = $request->all();
         $materiel = new Materiel();
         $materiel->matricule = $data['matricule'];
         $materiel->intitule = $data['intitule'];
         $materiel->description = $data['description'];
         $materiel->created_at = $data['created_at'];
-        $materiel->updated_at = $data['updated_at'];
+        
         $materiel->category_id = $data['category'];
         $materiel->fournisseur_id = $data['fournisseur'];
         $materiel->save();
 
-        return redirect()->route('materiel.index')->with('sucess', 'Materiel ajoute avec succes');
+        return redirect()->route('materiel.index',  compact('materiels', 'entrees', 'affectations', 'categories', 'fournisseurs'))->with('sucess', 'Materiel ajoute avec succes');
     }
 
     /**

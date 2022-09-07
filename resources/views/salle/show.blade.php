@@ -32,7 +32,7 @@
                                             <td><h6>
                                               {{-- <a href="#" class="modal_close">&times;</a> --}}
 
-                                      <a href="{{route('salle.edit', $salles->id)}}" style="color: blue;">Modifier</a></h6>
+                                      <a href="{{route('salle.edit', $salles->id)}}" style="color: blue; text-decoration: none;">Modifier</a></h6>
                                       </td>
                                       <td>
                                       <h6>
