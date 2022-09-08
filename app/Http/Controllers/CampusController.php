@@ -63,7 +63,7 @@ class CampusController extends Controller
         $campuses->intitule = $data['intitule'];
         $campuses->lieu = $data['lieu'];
         $campuses->telephone = $data['telephone'];
-        $campuses->created_at = $data['created_at'];
+        // $campuses->created_at = $data['created_at'];
         // $campuses->updated_at = $data['updated_at'];
         $campuses->save();
         return redirect()->route('campus.index', compact('campuses', 'entrees', 'categories','affectations','materiels'))->with('sucess', 'Campus ajouter avec sucess');
@@ -122,7 +122,6 @@ class CampusController extends Controller
             'intitule'=> 'required',
             'lieu'=> 'required',
             'telephone'=> 'required',
-            'created_at'=> 'required',
             // 'updated_at'=> 'required',
 
         ]);
@@ -130,6 +129,7 @@ class CampusController extends Controller
         $categories= Category::get();
         $affectations= Affectation::get();
         $materiels= Materiel::get();
+        $campuses= Campus::get();
 
         $campuses= Campus::find($id);
         $campuses->intitule= $request->intitule;
@@ -141,7 +141,7 @@ class CampusController extends Controller
 
         //redirection dans la page index contenant les campus apres modification et accompagner d'un message de confirmation
 
-        return redirect()->route('campus.index',, compact('campuses', 'entrees', 'categories','affectations','materiels'))->with('sucess', 'Modification effectuer avec succes');
+        return redirect()->route('campus.index',compact('campuses', 'entrees', 'categories','affectations','materiels'))->with('sucess', 'Modification effectuer avec succes');
     }
 
     /**

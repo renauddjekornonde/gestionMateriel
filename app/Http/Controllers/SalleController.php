@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Affectation;
 use App\Models\Materiel;
 use App\Models\Category;
+use App\Models\Campus;
 use App\Models\Entree;
 use App\Models\Salle;
 use Illuminate\Http\Request;
@@ -23,8 +24,9 @@ class SalleController extends Controller
         $entrees= Entree::get();
         $affectations= Affectation::get();
         $categories= Category::get();
+        $campuses= Campus::get();
      
-        return view('salle.index', compact('salles','materiels', 'entrees', 'affectations', 'categories'));
+        return view('salle.index', compact('salles', 'campuses','materiels', 'entrees', 'affectations', 'categories'));
     }
 
     /**
@@ -36,14 +38,14 @@ class SalleController extends Controller
     public function create()
 
     {
-           
+        $campuses= Campus::get();
         $materiels= Materiel::get();
         $entrees= Entree::get();
         $affectations= Affectation::get();
         $categories= Category::get();
         $salles= Salle::get();
         
-        return view('salle.create',   compact('materiels', 'entrees', 'affectations', 'categories', 'salles'));
+        return view('salle.create',   compact('materiels','campuses', 'entrees', 'affectations', 'categories', 'salles'));
     }
 
     /**
@@ -57,6 +59,7 @@ class SalleController extends Controller
     {
       
         $materiels= Materiel::get();
+        $campuses= Campus::get();
         $entrees= Entree::get();
         $affectations= Affectation::get();
         $categories= Category::get();
@@ -64,11 +67,10 @@ class SalleController extends Controller
      
         $data = $request->all();
         $salle = new Salle();
-        $salle->intitule = $data['numeroSalle'];
-        $salle->created_at = $data['created_at'];
-        $salle->campue_id = $data['campue'];
+        $salle->numeroSalle = $data['numeroSalle'];
+        $salle->campus_id = $data['campus'];
         $salle->save();
-        return redirect()->route('salle.index',  compact('materiels', 'entrees', 'affectations', 'categories', 'salles'))->with('sucess', 'Salle ajoute avec succes');
+        return redirect()->route('salle.index',  compact('materiels','campuses', 'entrees', 'affectations', 'categories', 'salles'))->with('sucess', 'Salle ajoute avec succes');
     }
 
 
@@ -99,8 +101,15 @@ class SalleController extends Controller
         //Cette fonction permet de renvoyer la page d'edition d'une salle
     public function edit($id)
     {
+        $materiels= Materiel::get();
+        $campuses= Campus::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+        $salles= Salle::get();
+
         $salle= Salle::findOrFail($id);
-        return view('salle.edit', compact('salles'));
+        return view('salle.edit', compact('salles','salle', 'materiels', 'entrees', 'affectations', 'categories', 'campuses' ));
     }
 
     /**
@@ -116,22 +125,19 @@ class SalleController extends Controller
          //cette requete oblige à ne pas laisser les champs vides
     $request->validate([
         'intitule'=> 'required',
-        'created_at'=> 'required',
-        'updated_at'=> 'required',
-        'campus_id'=> 'required',
+         'campus_id'=> 'required',
 
     ]);
-
+    $salles= Salle::get();
     $salle= Salle::find($id);
     $salle->intitule= $request->intitule;
-    $salle->created_at= $request->created_at;
-    $salle->updated_at= $request->updated_at;
-    $salle->campue_id= $request->campue_id;
+
+    $salle->campus_id= $request->campus;
     $salle->save();
 
     //redirection dans la page index contenant les salles apres modification de la salle accompagner d'un message de confirmation
 
-    return redirect()->route('salle.index')->with('sucess', 'Modification Mffectuer Avec Succes');
+    return redirect()->route('salle.index', compact('salles'))->with('sucess', 'Modification Mffectuer Avec Succes');
     }
 
     /**
