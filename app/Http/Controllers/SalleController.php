@@ -34,8 +34,16 @@ class SalleController extends Controller
      */
         // cette function nous renvoie à la page ou se trouve le formulaire d'ajout
     public function create()
+
     {
-        return view('salle.create');
+           
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+        $salles= Salle::get();
+        
+        return view('salle.create',   compact('materiels', 'entrees', 'affectations', 'categories', 'salles'));
     }
 
     /**
@@ -47,14 +55,20 @@ class SalleController extends Controller
     //cette fonction permet d'ajouter une salle
     public function store(Request $request)
     {
+      
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+        $salles= Salle::get();
+     
         $data = $request->all();
         $salle = new Salle();
-        $salle->intitule = $data['intitule'];
+        $salle->intitule = $data['numeroSalle'];
         $salle->created_at = $data['created_at'];
-        $salle->updated_at = $data['updated_at'];
         $salle->campue_id = $data['campue'];
         $salle->save();
-        return redirect()->back();
+        return redirect()->route('salle.index',  compact('materiels', 'entrees', 'affectations', 'categories', 'salles'))->with('sucess', 'Salle ajoute avec succes');
     }
 
 

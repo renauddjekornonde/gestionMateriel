@@ -33,7 +33,12 @@ class CategoryController extends Controller
 
     public function create()
     {
-        return view('category.create');
+        $categories= Category::get();
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+
+        return view('category.create', compact('categories', 'materiels', 'entrees', 'affectations'));
     }
 
     /**
@@ -46,13 +51,18 @@ class CategoryController extends Controller
     //cette fonction permet d'ajouter une categorie
     public function store(Request $request)
     {
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+     
         $data = $request->all();
         $category = new Category();
         $category->intitule = $data['intitule'];
         $category->created_at = $data['created_at'];
-        $category->updated_at = $data['updated_at'];
+        // $category->updated_at = $data['updated_at'];
         $category->save();
-        return redirect()->back();
+        return redirect()->route('category.index',  compact('materiels', 'entrees', 'affectations', 'categories'))->with('sucess', 'Category ajoute avec succes');
     }
 
     /**
@@ -81,7 +91,12 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $categories= Category::findOrFail($id);
-        return view('category.edit', compact('categories'));
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+
+        $categories= Category::findOrFail($id);
+        return view('category.edit', compact('categories', 'materiels', 'entrees', 'affectations'));
     }
 
     /**

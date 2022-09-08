@@ -12,7 +12,7 @@ class Salle extends Model
     use HasFactory;
 
     protected $fillable =[
-        'intitule',
+        'numeroSalle',
     ];
 
 

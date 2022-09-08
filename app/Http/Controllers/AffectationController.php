@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Entree;
 use App\Models\Fournisseur;
 use App\Models\Materiel;
+use App\Models\Salle;
 use Illuminate\Http\Request;
 
 class AffectationController extends Controller
@@ -35,7 +36,13 @@ class AffectationController extends Controller
     // cette function nous renvoie à la page ou se trouve le formulaire d'ajout
     public function create()
     {
-        return view('affectation.create');
+        
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+        $salles= Salle::get();
+        return view('affectation.create', compact('affectations', 'entrees', 'categories', 'materiels','salles' ));
     }
 
     /**
@@ -47,13 +54,19 @@ class AffectationController extends Controller
         //cette fonction permet d'ajouter une affectation
     public function store(Request $request)
     {
+         
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+        $salles= Salle::get();
+     
         $data = $request->all();
         $affectation = new Affectation();
         $affectation->created_at = $data['created_at'];
-        $affectation->updated_at = $data['updated_at'];
         $affectation->salle_id = $data['salle'];
         $affectation->save();
-        return redirect()->route('affectation.index')->with('sucess', 'Affecation ajouter avec sucess');
+        return redirect()->route('affectation.index', compact('affectations', 'entrees', 'categories', 'materiels','salles' ))->with('sucess', 'Affecation ajouter avec sucess');
     }
 
     /**
