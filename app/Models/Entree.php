@@ -11,7 +11,7 @@ class Entree extends Model
     use HasFactory;
 
     protected $fillable=[
-        'matricule',
+        // 'matricule',
     ];
 
 

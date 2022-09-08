@@ -1,41 +1,38 @@
 @extends('layout.app')
 
 @section('content')
-                              <center>
-        <fieldset style="width: 70%;">
-            <form action="{{route('fournisseur.store')}}" method="POST">
-                <h1>Ajouter Materiel</h1>
-                <hr>
-                <table>
-                    <tr>
-                        <td>Nom</td><td><input type="text" name="name" value=""><br><br></td>
-                    </tr>
-                    <tr>
-                        <td>Adresse</td><td><input type="text" name="adresse" value=""><br><br></td>
-                    </tr>
-                    <tr>
-                        <td>Telephone</td><td><input type="text" name="tel" value=""><br><br></td>
-                    </tr>
-                    <tr>
-                        <td>Email</td><td><input type="mail" name="email" value=""><br><br></td>
-                    </tr>
-                    <tr>
-                        <td>Mot de passe</td><td><input type="password" name="pwd1" value=""><br><br></td>
-                    </tr>
-                    <tr>
-                        <td>Confirmer</td><td><input type="password" name="pwd2" value=""><br><br></td>
-                    </tr>
-                    <tr>
-                        <td colspane="2"><input type="submit" id="submit" name="" value="Soumetre"><br><br></td>
-                    </tr>
-                </table>
-            </form>
-        </fieldset>
-    </center>
-                    </div>
-                          
-                </div>
-             </div>
-         </div>
-    </div>
+    
+                                <form action="{{route('fournisseur.store')}}" method="POST">
+                        @csrf
+            <fieldset>
+              <legend>Ajouter un Fournisseur</legend>
+              
+              <div class="mb-3">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" id="nom" class="form-control" placeholder="Nom" name="nom">
+              </div>
+              <div class="mb-3">
+                <label for="prenom" class="form-label">Prenom</label>
+                <input type="text" id="prenom" class="form-control" placeholder="Prenom" name="prenom">
+              </div>
+              <div class="mb-3">
+                <label for="telephone" class="form-label">Telephone</label>
+                <input type="number" id="telephone" class="form-control" placeholder="Telephone" name="telephone">
+              </div>
+              <div class="mb-3">
+                <label for="boutique" class="form-label">Nom de Boutique</label>
+                <input type="text" id="boutique" class="form-control" placeholder="Boutique" name="boutique">
+              </div>
+             
+             
+              <div class="mb-3">
+                <label for="date_creation" class="form-label">Date</label>
+                <input type="date" id="date_creation" class="form-control" placeholder="Date de creation" name="created_at">
+              </div>
+             
+              <button type="submit" class="btn btn-primary">Ajouter</button>
+              
+               <a href="{{back()}}"><button type="" class="btn btn-danger">Annuler</button></a>
+            </fieldset>
+          </form>       
 @endsection

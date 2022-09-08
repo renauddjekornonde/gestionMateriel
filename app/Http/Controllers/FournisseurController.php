@@ -34,7 +34,13 @@ class FournisseurController extends Controller
      // cette function nous renvoie à la page ou se trouve le formulaire d'ajout
     public function create()
     {
-        return view('fournisseur.create');
+        
+        $fournisseurs= Fournisseur::get();
+        $entrees= Entree::get();
+        $categories= Category::get();
+        $affectations= Affectation::get();
+        $materiels= Materiel::get();
+        return view('fournisseur.create', compact('fournisseurs', 'entrees', 'affectations', 'materiels', 'categories'));
     }
 
     /**
@@ -47,15 +53,22 @@ class FournisseurController extends Controller
     //cette fonction permet d'ajouter un fournisseur
     public function store(Request $request)
     {
+        $fournisseurs= Fournisseur::get();
+        $entrees= Entree::get();
+        $categories= Category::get();
+        $affectations= Affectation::get();
+        $materiels= Materiel::get();
+
         $data = $request->all();
         $fournisseur = new Fournisseur();
         $fournisseur->nom = $data['nom'];
         $fournisseur->prenom = $data['prenom'];
+        $fournisseur->telephone = $data['telephone'];
         $fournisseur->boutique = $data['boutique'];
         $fournisseur->created_at = $data['created_at'];
-        $fournisseur->updated_at = $data['updated_at'];
+        // $fournisseur->updated_at = $data['updated_at'];
         $fournisseur->save();
-        return redirect()->back();
+        return view('fournisseur.index', compact('fournisseurs', 'entrees', 'affectations', 'materiels', 'categories'));
     }
 
     /**
@@ -84,8 +97,14 @@ class FournisseurController extends Controller
       //Cette fonction permet de renvoyer la page d'edition d'une fournisseur
     public function edit($id)
     {
+        $fournisseurs= Fournisseur::get();
+        $entrees= Entree::get();
+        $categories= Category::get();
+        $affectations= Affectation::get();
+        $materiels= Materiel::get();
+
         $fournisseurs= Fournisseur::findOrFail($id);
-        return view('fournisseur.edit', compact('fournisseurs'));
+        return view('fournisseur.edit', compact('fournisseurs', 'entrees','categories', 'affectations','materiels'));
     }
 
     /**
@@ -105,21 +124,27 @@ class FournisseurController extends Controller
         'prenom'=> 'required',
         'boutique'=> 'required',
         'created_at'=> 'required',
-        'updated_at'=> 'required',
+        'telephone'=> 'required',
 
     ]);
+    $fournisseurs= Fournisseur::get();
+    $entrees= Entree::get();
+    $categories= Category::get();
+    $affectations= Affectation::get();
+    $materiels= Materiel::get();
 
     $fournisseur= Fournisseur::find($id);
     $fournisseur->nom= $request->nom;
     $fournisseur->prenom= $request->prenom;
+    $fournisseur->telephone= $request->telephone;
     $fournisseur->boutique= $request->boutique;
     $fournisseur->created_at= $request->created_at;
-    $fournisseur->updated_at= $request->updated_at;
+    // $fournisseur->updated_at= $request->updated_at;
     $fournisseur->save();
 
     //redirection dans la page index contenant les coordonnées du fournisseurs apres modification et accompagner d'un message de confirmation
 
-    return redirect()->route('fournisseur.index')->with('sucess', 'Modification Effectuer Avec Succes');
+    return redirect()->route('fournisseur.index', compact('fournisseurs', 'entrees','categories', 'affectations','materiels'))->with('sucess', 'Modification Effectuer Avec Succes');
     }
 
     /**

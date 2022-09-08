@@ -1,41 +1,26 @@
 @extends('layout.app')
 
 @section('content')
-                              <center>
-        <fieldset style="width: 70%;">
-            <form action="{{route('entree.store')}}" method="POST">
-                <h1>Ajouter Materiel</h1>
-                <hr>
-                <table>
-                    <tr>
-                        <td>Nom</td><td><input type="text" name="name" value=""><br><br></td>
-                    </tr>
-                    <tr>
-                        <td>Adresse</td><td><input type="text" name="adresse" value=""><br><br></td>
-                    </tr>
-                    <tr>
-                        <td>Telephone</td><td><input type="text" name="tel" value=""><br><br></td>
-                    </tr>
-                    <tr>
-                        <td>Email</td><td><input type="mail" name="email" value=""><br><br></td>
-                    </tr>
-                    <tr>
-                        <td>Mot de passe</td><td><input type="password" name="pwd1" value=""><br><br></td>
-                    </tr>
-                    <tr>
-                        <td>Confirmer</td><td><input type="password" name="pwd2" value=""><br><br></td>
-                    </tr>
-                    <tr>
-                        <td colspane="2"><input type="submit" id="submit" name="" value="Soumetre"><br><br></td>
-                    </tr>
-                </table>
-            </form>
-        </fieldset>
-    </center>
-                    </div>
-                          
-                </div>
-             </div>
-         </div>
-    </div>
+                     <form action="{{route('entree.store')}}" method="POST">
+                        @csrf
+            <fieldset>
+              <legend>Ajouter une Entree</legend>
+            
+              <div class="mb-3">
+                <select id="fournisseur" name="fournisseur" class="form-select">
+                   <option value= "..." >Fournisseur</option>
+                        @foreach ($fournisseurs as $fournisseur)
+                            <option value="{{ $fournisseur->id }}">{{ $fournisseur->boutique }}</option>
+                        @endforeach
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="date_creation" class="form-label">Date</label>
+                <input type="date" id="date_creation" class="form-control" placeholder="Date de creation" name="created_at">
+              </div>
+            
+              <button type="submit" class="btn btn-primary">Ajouter</button>
+               <a href="{{back()}}"><button type="" class="btn btn-danger">Annuler</button></a>
+            </fieldset>
+          </form>
 @endsection

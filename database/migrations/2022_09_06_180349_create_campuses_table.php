@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('campuses', function (Blueprint $table) {
             $table->id();
             $table->string('intitule');
-            $table->string('lieu');
+            $table->string('lieu')->nullable();
             $table->integer('telephone');
             $table->timestamps();
         });

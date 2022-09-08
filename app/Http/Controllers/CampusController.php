@@ -35,7 +35,12 @@ class CampusController extends Controller
         // cette function nous renvoie à la page ou se trouve le formulaire d'ajout
     public function create()
     {
-        return view('campus.create');
+        $campuses= Campus::get();
+        $entrees= Entree::get();
+        $categories= Category::get();
+        $affectations= Affectation::get();
+         $materiels= Materiel::get();
+        return view('campus.create', compact('campuses', 'entrees', 'categories','affectations','materiels'));
     }
 
     /**
@@ -47,15 +52,21 @@ class CampusController extends Controller
             //cette fonction permet d'ajouter une campus
     public function store(Request $request)
     {
+        $campuses= Campus::get();
+        $entrees= Entree::get();
+        $categories= Category::get();
+        $affectations= Affectation::get();
+         $materiels= Materiel::get();
+
         $data = $request->all();
         $campuses = new Campus();
         $campuses->intitule = $data['intitule'];
         $campuses->lieu = $data['lieu'];
         $campuses->telephone = $data['telephone'];
         $campuses->created_at = $data['created_at'];
-        $campuses->updated_at = $data['updated_at'];
+        // $campuses->updated_at = $data['updated_at'];
         $campuses->save();
-        return redirect()->route('campus.index')->with('sucess', 'Campus ajouter avec sucess');
+        return redirect()->route('campus.index', compact('campuses', 'entrees', 'categories','affectations','materiels'))->with('sucess', 'Campus ajouter avec sucess');
 
     }
 
@@ -86,8 +97,13 @@ class CampusController extends Controller
 
     public function edit($id)
     {
+        $entrees= Entree::get();
+        $categories= Category::get();
+        $affectations= Affectation::get();
+        $materiels= Materiel::get();
+        
         $campuses= Campus::findOrFail($id);
-        return view('campus.edit', compact('campuses'));
+        return view('campus.edit', compact('campuses', 'entrees', 'categories','affectations','materiels'));
     }
 
     /**
@@ -107,9 +123,13 @@ class CampusController extends Controller
             'lieu'=> 'required',
             'telephone'=> 'required',
             'created_at'=> 'required',
-            'updated_at'=> 'required',
+            // 'updated_at'=> 'required',
 
         ]);
+        $entrees= Entree::get();
+        $categories= Category::get();
+        $affectations= Affectation::get();
+        $materiels= Materiel::get();
 
         $campuses= Campus::find($id);
         $campuses->intitule= $request->intitule;
@@ -121,7 +141,7 @@ class CampusController extends Controller
 
         //redirection dans la page index contenant les campus apres modification et accompagner d'un message de confirmation
 
-        return redirect()->route('campus.index')->with('sucess', 'Modification effectuer avec succes');
+        return redirect()->route('campus.index',, compact('campuses', 'entrees', 'categories','affectations','materiels'))->with('sucess', 'Modification effectuer avec succes');
     }
 
     /**

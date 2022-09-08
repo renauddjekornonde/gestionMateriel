@@ -4,6 +4,14 @@
       <div class="recents-grids">
                 <div class="projects">
                     <div class="card">
+                    <div class="card-header">
+                            <h3>Fournisseur</h3>
+                            
+                             <a href="{{url('fournisseur/create')}}">
+                             <a href="{{route('fournisseur.create')}}">
+                            <button> <ion-icon name="add-sharp" style="font-size: 1.5rem"></ion-icon></button>
+                            </a>
+                        </div>
                       <div class="card-body">
 
                             <div class="table-responsive">
