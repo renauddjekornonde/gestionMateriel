@@ -2,20 +2,20 @@
 
 @section('content')
         
-                      <form action="{{route('salle.update', $salles->id)}}" method="POST">
+                      <form action="{{route('salle.update', $salle->id)}}" method="POST">
                       @csrf
                     @method('PATCH')
             <fieldset>
               <legend>Modification</legend>
               <div class="mb-3">
                 <label for="numeroSalle" class="form-label">Salle</label>
-                <input type="text" id="numeroSalle" class="form-control" placeholder="Numero" name="numeroSalle" value="{{$salles->numeroSalle}}">
+                <input type="text" id="numeroSalle" class="form-control" placeholder="Numero" name="numeroSalle" value="{{$salle->numeroSalle}}">
               </div>
               <div class="mb-3">
-                <select id="campus_id" name="campus"  class="form-select">
+                <select id="campus_id" name="campus_id"  class="form-select">
                    <option value= "..." >Campus</option>
                         @foreach ($campuses as $campus)
-                        @if ($campus->id == $salles->campus_id)
+                        @if ($campus->id == $salle->campus_id)
                             <option value="{{ $campus->id }}" selected>{{ $campus->intitule }}</option>
                         @endif
                             <option value="{{ $campus->id }}">{{ $campus->intitule }}</option>

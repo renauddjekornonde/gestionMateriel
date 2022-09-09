@@ -124,15 +124,14 @@ class SalleController extends Controller
     {
          //cette requete oblige à ne pas laisser les champs vides
     $request->validate([
-        'intitule'=> 'required',
-         'campus_id'=> 'required',
+
 
     ]);
     $salles= Salle::get();
     $salle= Salle::find($id);
-    $salle->intitule= $request->intitule;
+    $salle->numeroSalle= $request->numeroSalle;
 
-    $salle->campus_id= $request->campus;
+    $salle->campus_id= $request->campus_id;
     $salle->save();
 
     //redirection dans la page index contenant les salles apres modification de la salle accompagner d'un message de confirmation

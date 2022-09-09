@@ -11,7 +11,7 @@
 <option value= "..." >Salle</option>
     @foreach ($salles as $salle)
     @if ($salle->id==$affectation->salle_id)
-         <option value="{{ $salle->id }}">{{ $salle->numeroSalle}}</option>
+         <option value="{{ $salle->id }}" selected>{{ $salle->numeroSalle}}</option>
     @endif
         <option value="{{ $salle->id }}">{{ $salle->numeroSalle}}</option>
     @endforeach
