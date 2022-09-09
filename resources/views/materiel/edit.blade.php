@@ -21,7 +21,7 @@
               </div>
               <div class="mb-3">
                 <select id="category" name="category"  class="form-select">
-                   <option value= "..." >Catégorie</option>
+                   <option value= "..." >Categorie</option>
                         @foreach ($categories as $category)
                              @if ($materiels->category_id==$category->id )
                             <option value="{{ $category->id }}" selected>{{ $category->intitule }}</option>

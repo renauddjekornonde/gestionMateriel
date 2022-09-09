@@ -59,8 +59,6 @@ class CategoryController extends Controller
         $data = $request->all();
         $category = new Category();
         $category->intitule = $data['intitule'];
-        // $category->created_at = $data['created_at'];
-        // $category->updated_at = $data['updated_at'];
         $category->save();
         return redirect()->route('category.index',  compact('materiels', 'entrees', 'affectations', 'categories'))->with('sucess', 'Category ajoute avec succes');
     }
@@ -74,12 +72,13 @@ class CategoryController extends Controller
     //Cette fonction permet de voir une category en detaille
     public function show($id)
     {
-        $categories= Category::findOrFail($id);
+        $category= Category::findOrFail($id);
         $materiels= Materiel::get();
         $entrees= Entree::get();
         $affectations= Affectation::get();
+        $categories= Category::get();
 
-        return view('category.show', compact('categories', 'materiels', 'entrees', 'affectations'));
+        return view('category.show', compact('categories', 'category', 'materiels', 'entrees', 'affectations'));
     }
 
     /**
@@ -90,13 +89,13 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $categories= Category::findOrFail($id);
+        $categories= Category::get();
         $materiels= Materiel::get();
         $entrees= Entree::get();
         $affectations= Affectation::get();
 
-        $categories= Category::findOrFail($id);
-        return view('category.edit', compact('categories', 'materiels', 'entrees', 'affectations'));
+        $category= Category::findOrFail($id);
+        return view('category.edit', compact('categories', 'category', 'materiels', 'entrees', 'affectations'));
     }
 
     /**
@@ -109,23 +108,14 @@ class CategoryController extends Controller
         //cette fonction permet de modifier les données d'une categorie
     public function update(Request $request, $id)
     {
-        //cette requete oblige à ne pas laisser les champs vides
-        $request->validate([
-            'intitule'=> 'required',
-            // 'created_at'=> 'required',
-            // 'updated_at'=> 'required',
-
-        ]);
-
+        $categories= Category::get();
         $category= Category::find($id);
         $category->intitule= $request->intitule;
-        // $category->created_at= $request->created_at;
-        // $category->updated_at= $request->updated_at;
         $category->save();
 
         //redirection dans la page index contenant les categories apres la modification et accompagner d'un message de confirmation
 
-        return redirect()->route('category.index')->with('sucess', 'Modification effectuer avec succes');
+        return redirect()->route('category.index', compact('categories'))->with('sucess', 'Modification effectuer avec succes');
     }
 
     /**
