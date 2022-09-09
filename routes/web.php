@@ -18,6 +18,7 @@ use App\Http\Controllers\AffectationController;
 use App\Http\Controllers\EntreeController;
 
 use App\Http\Controllers\OperationController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,8 @@ Route::get('/salle/index', [SalleController::class, 'index'] );
 Route::get('/entree/index', [EntreeController::class, 'index'] );
 Route::get('/affectation/index', [AffectationController::class, 'index'] );
 Route::get('/opeartion/index', [OperationController::class, 'index'] );
+Route::get('/user/index', [UserController::class, 'index'] );
+Route::get('/profil', [AcceuilController::class, 'index'] );
 
 Route::resource('materiel', MaterielController::class);
 
@@ -57,5 +60,6 @@ Route::resource('fournisseur', FournisseurController::class);
 Route::resource('affectation', AffectationController::class);
 
 Route::resource('operation', OperationController::class);
+Route::resource('user', UserController::class);
 
 

@@ -9,6 +9,7 @@ use App\Models\Fournisseur;
 use App\Models\Operation;
 use App\Models\Category;
 use App\Models\Entree;
+use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 
 class AcceuilController extends Controller
@@ -26,5 +27,8 @@ class AcceuilController extends Controller
         // dd($operations);
         return view('home', compact('fournisseurs', 'materiels','categories', 'entrees', 'affectations'));
     }
-    
+    public function profil()
+    {
+         return view('/profil');
+    }
 }

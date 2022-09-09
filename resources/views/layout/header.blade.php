@@ -289,7 +289,7 @@
 
                     </div>
                     <div class="dropdown-content">
-                       <a href=""> <p> Profil </p> </a>
+                       <a href=""{{url('profil')}}> Profil </p></a>
                         <a href=""><p>Deconnexion</p> </a>
                     </div>
 

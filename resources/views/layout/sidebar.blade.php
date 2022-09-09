@@ -49,7 +49,7 @@
                 
 
                 <li> 
-                    <a href="{{url('utilisateur/index')}}"><span class=""> <ion-icon name="person-circle-outline"></ion-icon></span>
+                    <a href="{{url('user/index')}}"><span class=""> <ion-icon name="person-circle-outline"></ion-icon></span>
                     <span>Utilisateurs</span></a>
                 </li>
                 <li> 

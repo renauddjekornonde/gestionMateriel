@@ -124,8 +124,6 @@ class SalleController extends Controller
     {
          //cette requete oblige à ne pas laisser les champs vides
     $request->validate([
-
-
     ]);
     $salles= Salle::get();
     $salle= Salle::find($id);
