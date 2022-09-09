@@ -4,7 +4,7 @@
                                 <form action="{{route('category.store')}}" method="POST">
                                     @csrf
                         <fieldset>
-                          <legend>Ajouter un category</legend>
+                          <legend>Ajouter une category</legend>
                           <div class="mb-3">
                             <label for="intitule" class="form-label">Nom categorie</label>
                             <input type="text" id="intitule" class="form-control" placeholder="intitule" name="intitule">

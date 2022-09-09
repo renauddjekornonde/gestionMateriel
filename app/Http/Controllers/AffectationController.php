@@ -80,11 +80,12 @@ class AffectationController extends Controller
     {
         $affectations= Affectation::findOrFail($id);
         $entrees= Entree::get();
+        $salles= Salle::get();
         $affectation= Affectation::get();
         $categories=Category::get();
         $materiels=Materiel::get();
         $fournisseurs= Fournisseur::get();
-        return view('affectation.show', compact('affectation', 'affectations','entrees', 'categories', 'materiels','fournisseurs'));
+        return view('affectation.show', compact('affectation', 'affectations','entrees', 'categories', 'materiels','fournisseurs', 'salles'));
 
     }
 
@@ -100,9 +101,10 @@ class AffectationController extends Controller
         $affectations= Affectation::findOrFail($id);
         $affectation= Affectation::get();
         $entrees= Entree::get();
+        $salles= Salle::get();
         $categories=Category::get();
         $materiels=Materiel::get();
-         return view('affectation.edit', compact('affectations','affectation',   'entrees', 'categories', 'materiels'));
+         return view('affectation.edit', compact('affectations','affectation',   'entrees', 'categories', 'materiels', 'salles'));
     }
 
     /**
@@ -123,7 +125,7 @@ class AffectationController extends Controller
             'salle_id'=> 'required',
 
         ]);
-
+        $salles= Salle::get();
         $affectation= Affectation::find($id);
         // $affectation->created_at= $request->created_at;
         // $affectation->updated_at= $request->updated_at;
@@ -132,7 +134,7 @@ class AffectationController extends Controller
 
         //redirection dans la page index contenant les affectations apres modification de l'affectation accompagner d'un message de confirmation
 
-        return redirect()->route('affectation.index')->with('sucess', 'Modification effectuer avec succes');
+        return redirect()->route('affectation.index', compact('salles'))->with('sucess', 'Modification effectuer avec succes');
     }
 
     /**

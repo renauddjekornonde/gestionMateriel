@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-<form action="{{route('materiel.store')}}" method="POST">
+<form action="{{route('affectation.store')}}" method="POST">
     @csrf
 <fieldset>
 <legend>Ajouter affectation</legend>

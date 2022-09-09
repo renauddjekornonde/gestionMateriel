@@ -35,9 +35,21 @@
                                             </td>
                                             <td>
                                                 <a href="{{route('operation.show',$operation->id)}}">
-                                                    <button style=" background: var(--main-color); border-radius: 9px; color: #fff; font-size: .6rem; padding: .5rem 1rem; border: 1px solid var(--main-color);">Voir Plus  </button>
+                                                    {{-- <button style=" background: var(--main-color); border-radius: 9px; color: #fff; font-size: .6rem; padding: .5rem 1rem; border: 1px solid var(--main-color);">Voir Plus  </button> --}}
+                                                    Voir Plus 
                                                </a>
                                             </td>
+                                             <td><h6>
+                                      <a href="{{route('operation.edit', $operation->id)}}" style="color: blue; text-decoration: none;">Modifier</a></h6>
+                                      </td>
+                                      <td>
+                                      <h6>
+                                      <form action="{{route('operation.destroy', $operation->id)}}" method="POST">
+                                          @csrf
+                                          @method('DELETE')
+                                          <input type="submit" style="color: red; border: none; background: white;" value="Supprimer">
+                                      </form>
+                                             </h6></td>
                                         </tr>
                                     </tbody>
                                     @endforeach
