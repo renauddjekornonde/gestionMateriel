@@ -67,12 +67,11 @@ class MaterielController extends Controller
         $materiel->matricule = $data['matricule'];
         $materiel->intitule = $data['intitule'];
         $materiel->description = $data['description'];
-        $materiel->created_at = $data['created_at'];
         $materiel->category_id = $data['category'];
-        $materiel->fournisseur_id = $data['fournisseur'];
+       
         $materiel->save();
 
-        return redirect()->route('materiel.index',  compact('materiels', 'entrees', 'affectations', 'categories', 'fournisseurs'))->with('sucess', 'Materiel ajoute avec succes');
+        return redirect()->route('materiel.index')->with('sucess', 'Materiel ajoute avec succes');
     }
 
     /**
@@ -124,35 +123,18 @@ class MaterielController extends Controller
     public function update(Request $request, $id)
     {
           //cette requete oblige à ne pas laisser les champs vides
-          $request->validate([
-            'matricule'=> 'required',
-            'intitule'=> 'required',
-           
-            'description'=> 'required',
-            'created_at'=> 'required',
-            'category_id'=> 'required',
-            'fournisseur_id'=> 'required',
+         
 
-        ]);
-        $materiels= Materiel::get();
-        $entrees= Entree::get();
-        $affectations= Affectation::get();
-        $categories= Category::get();
-        $fournisseurs= Fournisseur::get();
-        
         $materiel= Materiel::find($id);
         $materiel->matricule= $request->matricule;
         $materiel->intitule= $request->intitule;
         $materiel->description= $request->description;
-        $materiel->created_at= $request->created_at;
-        // $materiel->updated_at= $request->updated_at;
-        $materiel->category_id= $request->category_id;
-        $materiel->fournisseur_id= $request->fournisseur_id;
+        $materiel->category_id= $request->category;
         $materiel->save();
 
         //redirection dans la page index contenant les materiels apres modification de données du materiel accompagner d'un message de confirmation
 
-        return redirect()->route('materiel.index', compact('materiels', 'entrees', 'affectations', 'categories', 'fournisseurs'))->with('sucess', 'Modification Effectuer Avec Succes');
+        return redirect()->route('materiel.index')->with('sucess', 'Modification Effectuer Avec Succes');
     }
 
     /**

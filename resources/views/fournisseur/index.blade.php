@@ -37,10 +37,22 @@
                                                {{$fournisseur->created_at->format('d/m/y')}}
                                             </td>
                                             <td>
-                                                <a href="{{route('fournisseur.show',$fournisseur->id)}}">
-                                                    <button style=" background: var(--main-color); border-radius: 9px; color: #fff; font-size: .6rem; padding: .5rem 1rem; border: 1px solid var(--main-color);">Voir Plus  </button>
+                                                <a href="{{route('fournisseur.show',$fournisseur->id)}}" style="color: blue; text-decoration: none;">
+                                                    {{-- <button style=" background: var(--main-color); border-radius: 9px; color: #fff; font-size: .6rem; padding: .5rem 1rem; border: 1px solid var(--main-color);">Voir Plus  </button> --}}Voir Plus
                                                </a>
                                             </td>
+                                             <td><h6>
+
+                                      <a href="{{route('fournisseur.edit', $fournisseur->id)}}" style="color: green; text-decoration: none;">Modifier</a></h6>
+                                      </td>
+                                      <td>
+                                      <h6>
+                                      <form action="{{route('fournisseur.destroy', $fournisseur->id)}}" method="POST">
+                                          @csrf
+                                          @method('DELETE')
+                                          <input type="submit" style="color: red; border: none; background: white;" value="Supprimer">
+                                      </form>
+                                             </h6></td>
                                         </tr>
                                     </tbody>
                                     @endforeach

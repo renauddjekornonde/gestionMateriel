@@ -61,7 +61,7 @@ class EntreeController extends Controller
         $data = $request->all();
         $entree = new Entree();
         $entree->fournisseur_id = $data['fournisseur'];
-        $entree->created_at = $data['created_at'];
+        // $entree->created_at = $data['created_at'];
         $entree->save();
 
         return redirect()->route('entree.index',  compact('materiels', 'entrees', 'affectations', 'categories', 'fournisseurs'))->with('sucess', 'Materiel ajoute avec succes');
@@ -114,8 +114,8 @@ class EntreeController extends Controller
          //cette requete oblige à ne pas laisser les champs vides
          $request->validate([
             // 'matricule'=> 'required',
-            'created_at'=> 'required',
-            'updated_at'=> 'required',
+            // 'created_at'=> 'required',
+            // 'updated_at'=> 'required',
 
 
         ]);
@@ -123,7 +123,7 @@ class EntreeController extends Controller
         $entree= Entree::find($id);
         // $entree->matricule= $request->matricule;
         $entree->fournisseur_id = $request->fournisseur;
-        $entree->created_at= $request->created_at;
+        // $entree->created_at= $request->created_at;
         // $entree->updated_at= $request->updated_at;
         $entree->save();
 

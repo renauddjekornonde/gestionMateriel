@@ -63,8 +63,11 @@ class CampusController extends Controller
         $campuses->intitule = $data['intitule'];
         $campuses->lieu = $data['lieu'];
         $campuses->telephone = $data['telephone'];
+<<<<<<< HEAD
         // $campuses->created_at = $data['created_at'];
         // $campuses->updated_at = $data['updated_at'];
+=======
+>>>>>>> 3e33f2a (update de index et show)
         $campuses->save();
         return redirect()->route('campus.index', compact('campuses', 'entrees', 'categories','affectations','materiels'))->with('sucess', 'Campus ajouter avec sucess');
 
@@ -79,12 +82,13 @@ class CampusController extends Controller
          //Cette fonction permet de voir une affectation en detaille
     public function show($id)
     {
-        $campuses= Campus::findOrFail($id);
+        $campus= Campus::findOrFail($id);
         $entrees= Entree::get();
+        $campuses= Campus::get();
         $categories= Category::get();
         $affectations= Affectation::get();
         $materiels= Materiel::get();
-         return view('campus.show', compact('campuses', 'entrees', 'categories','affectations','materiels'));
+         return view('campus.show', compact('campuses', 'campus','entrees', 'categories','affectations','materiels'));
     }
 
     /**
@@ -101,9 +105,10 @@ class CampusController extends Controller
         $categories= Category::get();
         $affectations= Affectation::get();
         $materiels= Materiel::get();
+        $campuses= Campus::get();
         
-        $campuses= Campus::findOrFail($id);
-        return view('campus.edit', compact('campuses', 'entrees', 'categories','affectations','materiels'));
+        $campus= Campus::findOrFail($id);
+        return view('campus.edit', compact('campuses', 'campus', 'entrees', 'categories','affectations','materiels'));
     }
 
     /**
@@ -120,9 +125,12 @@ class CampusController extends Controller
         //cette requete oblige à ne pas laisser les champs vides
         $request->validate([
             'intitule'=> 'required',
-            'lieu'=> 'required',
             'telephone'=> 'required',
+<<<<<<< HEAD
             // 'updated_at'=> 'required',
+=======
+           
+>>>>>>> 3e33f2a (update de index et show)
 
         ]);
         $entrees= Entree::get();
@@ -135,13 +143,17 @@ class CampusController extends Controller
         $campuses->intitule= $request->intitule;
         $campuses->lieu= $request->lieu;
         $campuses->telephone= $request->telephone;
-        $campuses->created_at= $request->created_at;
-        $campuses->updated_at= $request->updated_at;
+        // $campuses->created_at= $request->created_at;
+        // $campuses->updated_at= $request->updated_at;
         $campuses->save();
 
         //redirection dans la page index contenant les campus apres modification et accompagner d'un message de confirmation
 
+<<<<<<< HEAD
         return redirect()->route('campus.index',compact('campuses', 'entrees', 'categories','affectations','materiels'))->with('sucess', 'Modification effectuer avec succes');
+=======
+        return redirect()->route('campus.index', compact('campuses', 'entrees', 'categories','affectations','materiels'))->with('sucess', 'Modification effectuer avec succes');
+>>>>>>> 3e33f2a (update de index et show)
     }
 
     /**

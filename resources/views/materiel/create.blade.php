@@ -3,7 +3,7 @@
 @section('content')
         
                       <form action="{{route('materiel.store')}}" method="POST">
-                        @csrf
+                      @csrf
             <fieldset>
               <legend>Ajouter un materiel</legend>
               <div class="mb-3">
@@ -26,18 +26,7 @@
                         @endforeach
                 </select>
               </div>
-              <div class="mb-3">
-                <select id="fournisseur" name="fournisseur" class="form-select">
-                   <option value= "..." >Fournisseur</option>
-                        @foreach ($fournisseurs as $fournisseur)
-                            <option value="{{ $fournisseur->id }}">{{ $fournisseur->boutique }}</option>
-                        @endforeach
-                </select>
-              </div>
-              <div class="mb-3">
-                <label for="date_creation" class="form-label">Date</label>
-                <input type="date" id="date_creation" class="form-control" placeholder="Date de creation" name="created_at">
-              </div>
+             
               
               <button type="submit" class="btn btn-primary">Ajouter</button>
             </fieldset>

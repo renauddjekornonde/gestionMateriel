@@ -49,8 +49,8 @@ class OperationController extends Controller
         $operation = new Operation();
         $operation->quantite = $data['quantite'];
         $operation->typeOperation = $data['typeOperation'];
-        $operation->created_at = $data['created_at'];
-        $operation->updated_at = $data['updated_at'];
+        // $operation->created_at = $data['created_at'];
+        // $operation->updated_at = $data['updated_at'];
         $operation->user_id = $data['user'];
         $operation->materiel_id = $data['materiel'];
         $operation->entree_id = $data['entree'];
@@ -100,8 +100,8 @@ class OperationController extends Controller
         $request->validate([
             'quantite'=> 'required',
             'typeOperation'=> 'required',
-            'created_at'=> 'required',
-            'updated_at'=> 'required',
+            // 'created_at'=> 'required',
+            // 'updated_at'=> 'required',
             'user_id'=> 'required',
             'materiel_id'=> 'required',
             'entree_id'=> 'required',
@@ -112,8 +112,8 @@ class OperationController extends Controller
         $operation= Operation::find($id);
         $operation->quantite= $request->created_at;
         $operation->typeOperation= $request->created_at;
-        $operation->created_at= $request->created_at;
-        $operation->updated_at= $request->updated_at;
+        // $operation->created_at= $request->created_at;
+        // $operation->updated_at= $request->updated_at;
         $operation->user_id= $request->user_id;
         $operation->materiel_id= $request->materiel_id;
         $operation->entree_id= $request->entree_id;
@@ -141,4 +141,6 @@ class OperationController extends Controller
 
         return redirect()->route('operation.index')->with('sucess', 'Supprimer');
     }
+
+   
 }

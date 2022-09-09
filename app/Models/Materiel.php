@@ -27,7 +27,7 @@ class Materiel extends Model
     // cette fonction permet de repucerer les materiels dans une operations
     public function operations()
     {
-        return $this->hasMany(Operation::class, 'materiel_id', 'id');
+        return $this->hasMany(Operation::class);
     }
 
     // cette fonction permet de repucerer les fournisseurs

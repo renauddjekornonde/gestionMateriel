@@ -20,6 +20,8 @@
                                             <td>Nom campus</td>
                                             <td>Date</td>
                                              <td>Status</td>
+                                             <td>Modifier</td>
+                                             <td>Supprimer</td>
                                               
                                         </tr>
                                     </thead>
@@ -35,10 +37,22 @@
                                                {{$salle->created_at->format('d/m/y')}}
                                             </td>
                                             <td>
-                                                <a href="{{route('salle.show',$salle->id)}}">
-                                                    <button style=" background: var(--main-color); border-radius: 9px; color: #fff; font-size: .6rem; padding: .5rem 1rem; border: 1px solid var(--main-color);">Voir Plus  </button>
+                                                <a href="{{route('salle.show',$salle->id)}}" style="color: blue; text-decoration: none;">
+                                                    Voir Plus
                                                </a>
                                             </td>
+                                             <td><h6>
+
+                                      <a href="{{route('salle.edit', $salle->id)}}" style="color: green; text-decoration: none;">Modifier</a></h6>
+                                      </td>
+                                      <td>
+                                      <h6>
+                                      <form action="{{route('salle.destroy', $salle->id)}}" method="POST">
+                                          @csrf
+                                          @method('DELETE')
+                                          <input type="submit" style="color: red; border: none; background: white;" value="Supprimer">
+                                      </form>
+                                             </h6></td> 
                                         </tr>
                                     </tbody>
                                     @endforeach

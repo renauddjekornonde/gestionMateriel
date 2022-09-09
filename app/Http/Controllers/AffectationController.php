@@ -63,7 +63,6 @@ class AffectationController extends Controller
      
         $data = $request->all();
         $affectation = new Affectation();
-        $affectation->created_at = $data['created_at'];
         $affectation->salle_id = $data['salle'];
         $affectation->save();
         return redirect()->route('affectation.index', compact('affectations', 'entrees', 'categories', 'materiels','salles' ))->with('sucess', 'Affecation ajouter avec sucess');
@@ -81,10 +80,11 @@ class AffectationController extends Controller
     {
         $affectations= Affectation::findOrFail($id);
         $entrees= Entree::get();
+        $affectation= Affectation::get();
         $categories=Category::get();
         $materiels=Materiel::get();
         $fournisseurs= Fournisseur::get();
-        return view('affectation.show', compact('affectations', 'entrees', 'categories', 'materiels','fournisseurs'));
+        return view('affectation.show', compact('affectation', 'affectations','entrees', 'categories', 'materiels','fournisseurs'));
 
     }
 
@@ -98,10 +98,11 @@ class AffectationController extends Controller
     public function edit($id)
     {
         $affectations= Affectation::findOrFail($id);
+        $affectation= Affectation::get();
         $entrees= Entree::get();
         $categories=Category::get();
         $materiels=Materiel::get();
-         return view('affectation.edit', compact('affectations',  'entrees', 'categories', 'materiels'));
+         return view('affectation.edit', compact('affectations','affectation',   'entrees', 'categories', 'materiels'));
     }
 
     /**
@@ -117,15 +118,15 @@ class AffectationController extends Controller
 
         //cette requete oblige à ne pas laisser les champs vides
         $request->validate([
-            'created_at'=> 'required',
-            'updated_at'=> 'required',
+            // 'created_at'=> 'required',
+            // 'updated_at'=> 'required',
             'salle_id'=> 'required',
 
         ]);
 
         $affectation= Affectation::find($id);
-        $affectation->created_at= $request->created_at;
-        $affectation->updated_at= $request->updated_at;
+        // $affectation->created_at= $request->created_at;
+        // $affectation->updated_at= $request->updated_at;
         $affectation->salle_id= $request->salle_id;
         $affectation->save();
 

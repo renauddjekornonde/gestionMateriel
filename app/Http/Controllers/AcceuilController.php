@@ -22,7 +22,9 @@ class AcceuilController extends Controller
         $entrees= Entree::get();
         $affectations= Affectation::get();
 
-        return view('home', compact('fournisseurs', 'materiels', 'categories', 'entrees', 'affectations'));
+        // $operations= Operation::with('materiel')->get();
+        // dd($operations);
+        return view('home', compact('fournisseurs', 'materiels','categories', 'entrees', 'affectations'));
     }
     
 }

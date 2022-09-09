@@ -65,7 +65,7 @@ class FournisseurController extends Controller
         $fournisseur->prenom = $data['prenom'];
         $fournisseur->telephone = $data['telephone'];
         $fournisseur->boutique = $data['boutique'];
-        $fournisseur->created_at = $data['created_at'];
+        // $fournisseur->created_at = $data['created_at'];
         // $fournisseur->updated_at = $data['updated_at'];
         $fournisseur->save();
         return view('fournisseur.index', compact('fournisseurs', 'entrees', 'affectations', 'materiels', 'categories'));
@@ -123,7 +123,7 @@ class FournisseurController extends Controller
         'nom'=> 'required',
         'prenom'=> 'required',
         'boutique'=> 'required',
-        'created_at'=> 'required',
+        // 'created_at'=> 'required',
         'telephone'=> 'required',
 
     ]);
@@ -138,7 +138,7 @@ class FournisseurController extends Controller
     $fournisseur->prenom= $request->prenom;
     $fournisseur->telephone= $request->telephone;
     $fournisseur->boutique= $request->boutique;
-    $fournisseur->created_at= $request->created_at;
+    // $fournisseur->created_at= $request->created_at;
     // $fournisseur->updated_at= $request->updated_at;
     $fournisseur->save();
 

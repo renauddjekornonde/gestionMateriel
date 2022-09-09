@@ -10,7 +10,7 @@
         <div class="sidebar-menu">
             <ul>
                 <li> 
-                    <a href="#" class="active"><span class="las la-home"></span>
+                    <a href="{{url('/home')}}" class="active"><span class="las la-home"></span>
                     <span>Tableau de bord</span></a>
                 </li>
 

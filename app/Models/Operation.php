@@ -12,7 +12,7 @@ use App\Model\Materiel;
 class Operation extends Model
 {
     use HasFactory;
-
+    
     protected $fillable=[
         'quantite',
         'typeOperation',
@@ -33,7 +33,8 @@ class Operation extends Model
       //Permet de recuperer toutes les materiels dans une operation
     public function materiel()
     {
-        return $this->belongsTo(Materiel::class, 'materiel_id');
+       
+        return $this->belongsTo(Materiel::class);
     }
 
      //Permet de recuperer toutes les utilisateurs qui ont effectuer une operation

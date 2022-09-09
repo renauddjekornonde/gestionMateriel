@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Campus;
 use App\Models\Entree;
 use App\Models\Salle;
+use App\Models\Campus;
 use Illuminate\Http\Request;
 
 class SalleController extends Controller
@@ -44,8 +45,13 @@ class SalleController extends Controller
         $affectations= Affectation::get();
         $categories= Category::get();
         $salles= Salle::get();
+        $campuses= Campus::get();
         
+<<<<<<< HEAD
         return view('salle.create',   compact('materiels','campuses', 'entrees', 'affectations', 'categories', 'salles'));
+=======
+        return view('salle.create',   compact('materiels', 'campuses','entrees', 'affectations', 'categories', 'salles'));
+>>>>>>> 3e33f2a (update de index et show)
     }
 
     /**
@@ -68,9 +74,15 @@ class SalleController extends Controller
         $data = $request->all();
         $salle = new Salle();
         $salle->numeroSalle = $data['numeroSalle'];
+<<<<<<< HEAD
         $salle->campus_id = $data['campus'];
         $salle->save();
         return redirect()->route('salle.index',  compact('materiels','campuses', 'entrees', 'affectations', 'categories', 'salles'))->with('sucess', 'Salle ajoute avec succes');
+=======
+        $salle->campus_id= $data['campus_id'];
+        $salle->save();
+        return redirect()->route('salle.index',  compact('materiels', 'entrees', 'affectations', 'categories', 'salles'))->with('sucess', 'Salle ajouter avec succes');
+>>>>>>> 3e33f2a (update de index et show)
     }
 
 
@@ -101,6 +113,7 @@ class SalleController extends Controller
         //Cette fonction permet de renvoyer la page d'edition d'une salle
     public function edit($id)
     {
+<<<<<<< HEAD
         $materiels= Materiel::get();
         $campuses= Campus::get();
         $entrees= Entree::get();
@@ -110,6 +123,17 @@ class SalleController extends Controller
 
         $salle= Salle::findOrFail($id);
         return view('salle.edit', compact('salles','salle', 'materiels', 'entrees', 'affectations', 'categories', 'campuses' ));
+=======
+        $salles= Salle::findOrFail($id);
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+        $campuses= Campus::get();
+
+        $salle= Salle::findOrFail($id);
+        return view('salle.edit', compact('salles','materiels', 'campuses', 'entrees', 'affectations', 'categories'));
+>>>>>>> 3e33f2a (update de index et show)
     }
 
     /**
@@ -124,20 +148,34 @@ class SalleController extends Controller
     {
          //cette requete oblige à ne pas laisser les champs vides
     $request->validate([
+<<<<<<< HEAD
         'intitule'=> 'required',
          'campus_id'=> 'required',
+=======
+        'numeroSalle'=> 'required',
+        'campus_id'=> 'required',
+>>>>>>> 3e33f2a (update de index et show)
 
     ]);
     $salles= Salle::get();
     $salle= Salle::find($id);
+<<<<<<< HEAD
     $salle->intitule= $request->intitule;
 
     $salle->campus_id= $request->campus;
+=======
+    $salle->numeroSalle= $request->numeroSalle;
+    $salle->campus_id= $request->campus_id;
+>>>>>>> 3e33f2a (update de index et show)
     $salle->save();
 
     //redirection dans la page index contenant les salles apres modification de la salle accompagner d'un message de confirmation
 
+<<<<<<< HEAD
     return redirect()->route('salle.index', compact('salles'))->with('sucess', 'Modification Mffectuer Avec Succes');
+=======
+    return redirect()->route('salle.index')->with('sucess', 'Modification Effectuer Avec Succes');
+>>>>>>> 3e33f2a (update de index et show)
     }
 
     /**

@@ -59,7 +59,7 @@ class CategoryController extends Controller
         $data = $request->all();
         $category = new Category();
         $category->intitule = $data['intitule'];
-        $category->created_at = $data['created_at'];
+        // $category->created_at = $data['created_at'];
         // $category->updated_at = $data['updated_at'];
         $category->save();
         return redirect()->route('category.index',  compact('materiels', 'entrees', 'affectations', 'categories'))->with('sucess', 'Category ajoute avec succes');
@@ -112,15 +112,15 @@ class CategoryController extends Controller
         //cette requete oblige à ne pas laisser les champs vides
         $request->validate([
             'intitule'=> 'required',
-            'created_at'=> 'required',
-            'updated_at'=> 'required',
+            // 'created_at'=> 'required',
+            // 'updated_at'=> 'required',
 
         ]);
 
         $category= Category::find($id);
         $category->intitule= $request->intitule;
-        $category->created_at= $request->created_at;
-        $category->updated_at= $request->updated_at;
+        // $category->created_at= $request->created_at;
+        // $category->updated_at= $request->updated_at;
         $category->save();
 
         //redirection dans la page index contenant les categories apres la modification et accompagner d'un message de confirmation

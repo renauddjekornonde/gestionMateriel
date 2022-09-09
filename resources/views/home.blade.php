@@ -161,6 +161,10 @@
                                             <td>{{$materiel->intitule}}</td>
                                             <td>{{$materiel->description}}</td>
                                             <td>{{$materiel->matricule}}</td>
+                                            {{-- @foreach ($operations as $operation)
+                                                <td>{{$operation->materiel->quantite}}</td>
+                                            @endforeach --}}
+                                            
                                             <td>
                                                 <span class="status purple"></span>
                                                {{$materiel->created_at->format('d/m/y')}}
