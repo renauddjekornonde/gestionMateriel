@@ -22,6 +22,8 @@
                                             <td>Boutique</td>
                                             <td>Date</td>
                                              <td>Status</td>
+                                             <td>Modifier</td>
+                                             <td>Supprimer</td>
                                               
                                         </tr>
                                     </thead>
@@ -38,7 +40,7 @@
                                             </td>
                                             <td>
                                                 <a href="{{route('fournisseur.show',$fournisseur->id)}}" style="color: blue; text-decoration: none;">
-                                                    {{-- <button style=" background: var(--main-color); border-radius: 9px; color: #fff; font-size: .6rem; padding: .5rem 1rem; border: 1px solid var(--main-color);">Voir Plus  </button> --}}Voir Plus
+                                                Voir Plus
                                                </a>
                                             </td>
                                              <td><h6>

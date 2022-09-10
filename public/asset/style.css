@@ -146,7 +146,7 @@ header label span{
 .search-wrapper input{
     height: 100%;
     padding: .5rem;
-    border: none;
+    /* border: none; */
     outline: none;
 
 }

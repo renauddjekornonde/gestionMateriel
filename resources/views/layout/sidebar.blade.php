@@ -4,8 +4,9 @@
       <input type="checkbox" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h2><span class="#"><ion-icon name="school-outline"></ion-icon></span>Supdeco</h2>
-
+            <a href="{{url('/home')}}" style="text-decoration: none; color: white;">
+                <h2><span class=""><ion-icon name="school-outline"></ion-icon></span>Supdeco</h2>
+            </a>
         </div>
         <div class="sidebar-menu">
             <ul>

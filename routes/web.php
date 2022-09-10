@@ -42,7 +42,7 @@ Route::get('/entree/index', [EntreeController::class, 'index'] );
 Route::get('/affectation/index', [AffectationController::class, 'index'] );
 Route::get('/opeartion/index', [OperationController::class, 'index'] );
 Route::get('/user/index', [UserController::class, 'index'] );
-Route::get('/profil', [AcceuilController::class, 'index'] );
+Route::get('/profil', [AcceuilController::class, 'profil'] );
 
 Route::resource('materiel', MaterielController::class);
 

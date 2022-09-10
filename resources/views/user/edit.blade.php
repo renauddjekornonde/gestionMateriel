@@ -23,10 +23,18 @@
                 <label for="email" class="form-label">Email</label>
                 <input type="email" id="email" class="form-control" placeholder="Email" name="email" value="{{$users->email}}">
               </div>
-              <div class="mb-3">
-                <label for="role" class="form-label">Role</label>
-                <input type="role" id="role" class="form-control" placeholder="Role" name="role" value="{{$users->role}}">
-              </div>      
+               <div class="mb-3">
+                <select id="role" name="role"  class="form-select">
+                   <option value= "..." >Role</option>
+                   @if ($users->role == "Gerant")
+                     <option selected>Gerant</option>
+                  @elseif ($users->role == "Administrateur")
+                    <option selected>Administrateur</option>
+                   @endif
+                  <option>Gerant</option>
+                  <option >Administrateur</option>
+                </select>
+              </div>    
               <button type="submit" class="btn btn-primary">Modifier</button>
               <a href="{{back()}}"><button type="" class="btn btn-danger">Annuler</button></a>
             </fieldset>

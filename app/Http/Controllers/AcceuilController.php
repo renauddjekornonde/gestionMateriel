@@ -29,6 +29,13 @@ class AcceuilController extends Controller
     }
     public function profil()
     {
-         return view('/profil');
+        $categories= Category::select()->inRandomOrder('created_at')->Limit(2)->get();
+        $fournisseurs= Fournisseur::select()->inRandomOrder('created_at')->Limit(2)->get();
+        $materiels= Materiel::select()->inRandomOrder('created_at')->Limit(2)->get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+
+    
+        return view('profil', compact('fournisseurs', 'materiels','categories', 'entrees', 'affectations'));
     }
 }

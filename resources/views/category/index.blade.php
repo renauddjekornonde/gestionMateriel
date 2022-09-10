@@ -20,6 +20,8 @@
                                            <td>Intitule</td>
                                             <td>Date</td>
                                              <td>Status</td>
+                                             <td>Modifier</td>
+                                             <td>Suprimer</td>
                                         </tr>
                                     </thead>
                                    @foreach ($categories as $category)

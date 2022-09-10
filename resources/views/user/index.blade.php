@@ -22,6 +22,8 @@
                                             <td>Telephone</td>
                                             <td>Email</td>
                                             <td>Status</td>
+                                            <td>Modifier</td>
+                                            <td>Supprimer</td>
                                          
                                         </tr>
                                     </thead>
