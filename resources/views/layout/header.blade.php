@@ -19,8 +19,12 @@
 
                     </div>
                     <div class="dropdown-content">
-                       <a href="{{url('profil')}}"> Profil </p></a>
-                        <a href=""><p>Deconnexion</p> </a>
+                        @guest
+                            <a  href="{{url('profil')}}"> Profil </p></a>
+                        @else
+                        <a  href="{{url('profil')}}"> Profil </p></a>
+                        <a  href="{{ route('logout') }}"><p>Deconnexion</p> </a> 
+                       @endguest
                     </div>
 
                </div>

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Campus;
 use App\Models\Entree;
 use App\Models\Salle;
+use Session;
 use Illuminate\Http\Request;
 
 class SalleController extends Controller

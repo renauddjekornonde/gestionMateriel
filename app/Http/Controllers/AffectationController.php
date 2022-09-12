@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Entree;
 use App\Models\Fournisseur;
 use App\Models\Materiel;
+use Session;
 use App\Models\Salle;
 use Illuminate\Http\Request;
 

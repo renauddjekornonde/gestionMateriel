@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AcceuilController;
 
 use App\Http\Controllers\MaterielController;
@@ -14,7 +15,7 @@ use App\Http\Controllers\SalleController;
 use App\Http\Controllers\CategoryController;
 
 use App\Http\Controllers\AffectationController;
-
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EntreeController;
 
 use App\Http\Controllers\OperationController;
@@ -31,34 +32,49 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/home', [AcceuilController::class, 'index'] );
-Route::get('/materiel/index', [MaterielController::class, 'index'] );
+// Auth::routes();
 
-Route::get('/campus/index', [CampusController::class, 'index'] );
-Route::get('/fournisseur/index', [FournisseurController::class, 'index'] );
-Route::get('/category/index', [CategoryController::class, 'index'] );
-Route::get('/salle/index', [SalleController::class, 'index'] );
-Route::get('/entree/index', [EntreeController::class, 'index'] );
-Route::get('/affectation/index', [AffectationController::class, 'index'] );
-Route::get('/opeartion/index', [OperationController::class, 'index'] );
-Route::get('/user/index', [UserController::class, 'index'] );
-Route::get('/profil', [AcceuilController::class, 'profil'] );
+Route::controller(AcceuilController::class)->group(function(){
 
-Route::resource('materiel', MaterielController::class);
+    Route::get('/', 'indexe')->name('login');
 
-Route::resource('category', CategoryController::class);
+    Route::get('logout', 'logout')->name('logout');
 
-Route::resource('campus', CampusController::class);
+    Route::post('validate_login', 'validate_login')->name('auth.validate_login');
 
-Route::resource('salle', SalleController::class);
+    Route::get('/home', 'home')->name('home');
+});
 
-Route::resource('entree', EntreeController::class);
-
-Route::resource('fournisseur', FournisseurController::class);
-
-Route::resource('affectation', AffectationController::class);
-
-Route::resource('operation', OperationController::class);
-Route::resource('user', UserController::class);
+Route::prefix('')->middleware(['auth','isAdmin'])->group(function(){
+    Route::get('/home', [AcceuilController::class, 'index'] );
+    Route::get('/materiel/index', [MaterielController::class, 'index'] );
+    
+    Route::get('/campus/index', [CampusController::class, 'index'] );
+    Route::get('/fournisseur/index', [FournisseurController::class, 'index'] );
+    Route::get('/category/index', [CategoryController::class, 'index'] );
+    Route::get('/salle/index', [SalleController::class, 'index'] );
+    Route::get('/entree/index', [EntreeController::class, 'index'] );
+    Route::get('/affectation/index', [AffectationController::class, 'index'] );
+    Route::get('/opeartion/index', [OperationController::class, 'index'] );
+    Route::get('/user/index', [UserController::class, 'index'] );
+    Route::get('/profil', [AcceuilController::class, 'profil'] );
+    
+    Route::resource('materiel', MaterielController::class);
+    
+    Route::resource('category', CategoryController::class);
+    
+    Route::resource('campus', CampusController::class);
+    
+    Route::resource('salle', SalleController::class);
+    
+    Route::resource('entree', EntreeController::class);
+    
+    Route::resource('fournisseur', FournisseurController::class);
+    
+    Route::resource('affectation', AffectationController::class);
+    
+    Route::resource('operation', OperationController::class);
+    Route::resource('user', UserController::class);
+});
 
 

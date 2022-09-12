@@ -6,6 +6,7 @@ use App\Models\Materiel;
 use App\Models\Category;
 use App\Models\Fournisseur;
 use App\Models\Entree;
+use Session;
 use Illuminate\Http\Request;
 
 class EntreeController extends Controller

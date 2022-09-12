@@ -5,6 +5,7 @@ use App\Models\Affectation;
 use App\Models\Materiel;
 use App\Models\Entree;
 use App\Models\Category;
+use Session;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller

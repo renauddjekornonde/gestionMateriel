@@ -5,6 +5,8 @@ use App\Models\Materiel;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Entree;
+use Illuminate\Support\Facades\Hash;
+use Session;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -55,13 +57,21 @@ class UserController extends Controller
         $categories= Category::get();
         $materiels= Materiel::get();
 
+        $request->validate([
+            // 'name' => 'required',
+            // 'prenom' => 'required',
+            // 'telephone' => 'required',
+            // 'email' => 'required|email|unique:users',
+            // 'password' => 'required|min:8',
+          
+        ]);
         $data = $request->all();
         $user = new User();
         $user->nom = $data['nom'];
         $user->prenom = $data['prenom'];
         $user->telephone = $data['telephone'];
         $user->email = $data['email'];
-        $user->password = $data['password'];
+        $user->password = Hash::make($data['password']);
         $user->role = $data['role'];
 
        

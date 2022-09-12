@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Affectation;
 use App\Models\Materiel;
 use App\Models\Category;
+use Session;
 use App\Models\Entree;
 use App\Models\Fournisseur;
 

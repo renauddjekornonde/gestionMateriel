@@ -1,6 +1,11 @@
 @extends('layout.app')
 
 @section('content')
+@if ($message= Session::get('sucess'))
+  <div class="alert alert-info">
+  {{$message}}
+  </div>
+@endif
   <form action="{{route('category.update', $category->id)}}" method="POST">
                         @csrf
                         @method('PATCH')

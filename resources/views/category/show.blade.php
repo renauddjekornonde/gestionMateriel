@@ -1,6 +1,10 @@
 @extends('layout.app')
 @section('content')
-
+@if ($message= Session::get('sucess'))
+  <div class="alert alert-info">
+  {{$message}}
+  </div>
+@endif
       <div class="recents-grids">
                 <div class="projects">
                     <div class="card">

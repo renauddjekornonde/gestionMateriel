@@ -8,6 +8,7 @@ use App\Models\Affectation;
 use App\Models\Materiel;
 use App\Models\Category;
 use App\Models\Entree;
+use Session;
 use App\Models\Fournisseur;
 
 class OperationController extends Controller
@@ -49,8 +50,6 @@ class OperationController extends Controller
         $operation = new Operation();
         $operation->quantite = $data['quantite'];
         $operation->typeOperation = $data['typeOperation'];
-        // $operation->created_at = $data['created_at'];
-        // $operation->updated_at = $data['updated_at'];
         $operation->user_id = $data['user'];
         $operation->materiel_id = $data['materiel'];
         $operation->entree_id = $data['entree'];

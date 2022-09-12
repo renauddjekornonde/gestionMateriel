@@ -1,6 +1,11 @@
 @extends('layout.app')
 
 @section('content')
+@if ($message= Session::get('sucess'))
+  <div class="alert alert-info">
+  {{$message}}
+  </div>
+@endif
                               <center>
         <fieldset style="width: 70%;">
             <form action="{{route('operation.store')}}" method="POST">

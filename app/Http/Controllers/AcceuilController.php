@@ -11,6 +11,9 @@ use App\Models\Category;
 use App\Models\Entree;
 use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Support\Facades\Auth;
+use Hash;
+use Session;
 
 class AcceuilController extends Controller
 {
@@ -37,5 +40,68 @@ class AcceuilController extends Controller
 
     
         return view('profil', compact('fournisseurs', 'materiels','categories', 'entrees', 'affectations'));
+    }
+
+    function indexe()
+    {
+        $categories= Category::get();
+        $fournisseurs= Fournisseur::get();
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+
+        return view('auth.login', compact('fournisseurs', 'materiels','categories', 'entrees', 'affectations'));
+    }
+
+    function validate_login(Request $request)
+    {
+        $categories= Category::get();
+        $fournisseurs= Fournisseur::get();
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+
+        $request->validate([
+            'email' =>'required',
+            'password' => 'required',
+        ]);
+
+        $credentials= $request->only('email', 'password');
+        
+        if(Auth::attempt($credentials))
+        {
+            return view('/home', compact('fournisseurs', 'materiels','categories', 'entrees', 'affectations'));
+        }
+         else
+          {
+             return view('')->with('sucess', 'Authentification non valide');
+          }  
+    }
+
+     function home()
+     {
+        $categories= Category::get();
+        $fournisseurs= Fournisseur::get();
+        $materiels= Materiel::get();
+        $entrees= Entree::get();
+        $affectations= Affectation::get();
+
+         if(Auth::check())
+         {
+             return view('/home', compact('fournisseurs', 'materiels','categories', 'entrees', 'affectations'));
+         }
+         else
+     {
+             return redirect('')->with('Vous n\'etes pas autoriser à acceder à cette page' );
+         }
+     }
+
+    function logout()
+    {
+        Session::flush();
+
+        Auth::logout();
+
+        return Redirect('');
     }
 }
