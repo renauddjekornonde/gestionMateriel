@@ -21,7 +21,7 @@
              
               
               <button type="submit" class="btn btn-primary">Ajouter</button>
-               <a href="{{back()}}"><button type="" class="btn btn-danger">Annuler</button></a>
+               <button class="btn btn-danger"><a class="nav-link" href="{{route('salle.index')}}">Annuler</a></button>
             </fieldset>
           </form>
 @endsection

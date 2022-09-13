@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('operations', function (Blueprint $table) {
             $table->id();
             $table->integer('quantite');
-            $table->string('typeOperation');
+            $table->string('typeOperation')->nulable();
             $table->timestamps();
 
             $table->unsignedBigInteger('materiel_id');
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->unsignedBigInteger('affectation_id')->nullable();
             $table->foreign('affectation_id')->references('id')->on('affectations')-> onDelete('cascade')-> onUpdate('cascade');
 
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')-> onDelete('cascade')-> onUpdate('cascade');
         });
     }

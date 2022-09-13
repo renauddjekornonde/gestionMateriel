@@ -54,6 +54,7 @@
                                        
                                 </table>
                     </div>
+                     <button class="btn btn-danger"><a class="nav-link" href="{{route('materiel.index')}}">Retour</a></button>
                   </div>
                   </td>
                   </td>

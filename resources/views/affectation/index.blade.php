@@ -37,24 +37,24 @@
                                                 <span class="status purple"></span>
                                                {{$affectation->created_at->format('d/m/y')}}
                                             </td>
-                                            <td>
+                                            <td><h4>
                                                 <a href="{{route('affectation.show',$affectation->id)}}"  style="color: blue; text-decoration: none;">
-                                                    {{-- <button style=" background: var(--main-color); border-radius: 9px; color: #fff; font-size: .6rem; padding: .5rem 1rem; border: 1px solid var(--main-color);">Voir Plus  </button> --}}
-                                                    Voir Plus
-                                               </a>
+                                                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                                               </a></h4>
                                             </td>
-                                            <td><h6>
+                                            <td><h5>
                 
-                                      <a href="{{route('affectation.edit', $affectation->id)}}" style="color: green; text-decoration: none;">Modifier</a></h6>
+                                      <a href="{{route('affectation.edit', $affectation->id)}}" style="color: green; text-decoration: none;"><ion-icon name="pencil-outline"></ion-icon></a></h5>
                                       </td>
                                       <td>
-                                      <h6>
+                                      <h5>
                                       <form action="{{route('affectation.destroy', $affectation->id)}}" method="POST">
                                           @csrf
                                           @method('DELETE')
-                                          <input type="submit" style="color: red; border: none; background: white;" value="Supprimer">
+                                          {{-- <input type="submit" style="color: red; border: none; background: white;" value="Supprimer"> --}}
+                                          <button type="submit" style="color: red; border: none; background: white;"><ion-icon name="trash-outline"></ion-icon></button>
                                       </form>
-                                             </h6></td>
+                                             </h5></td>
                                         </tr>
                                     </tbody>
                                     @endforeach

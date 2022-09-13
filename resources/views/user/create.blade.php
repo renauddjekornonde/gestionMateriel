@@ -50,6 +50,7 @@
                 
               </div> 
               <button type="submit" class="btn btn-primary">Ajouter</button>
+               <button class="btn btn-danger"><a class="nav-link" href="{{route('user.index')}}">Annuler</a></button>
             </fieldset>
           </form>
 @endsection

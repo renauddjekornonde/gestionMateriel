@@ -1,6 +1,11 @@
 @extends('layout.master')
 
 @section('content')
+@if ($message= Session::get('sucess'))
+  <div class="alert alert-info">
+  {{$message}}
+  </div>
+@endif
 <section class="vh-100" style="background-color: #fefdfd">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">

@@ -213,7 +213,7 @@ main{
     display: flex;
     justify-content: space-between;
     background: #fff;
-    padding:2rem;
+    padding:1.5rem;
     border-radius:2px;
 }
 .card-single div:last-child span{
@@ -514,6 +514,10 @@ tr td:last-child {
     .cards {
         grid-template-columns: 100%;
     }
+}
+
+h5{
+    margin-left:20px;
 }
 
 /* .menu ul{
