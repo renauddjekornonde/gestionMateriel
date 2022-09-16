@@ -38,7 +38,7 @@
                                                {{$affectation->created_at->format('d/m/y')}}
                                             </td>
                                             <td><h4>
-                                                <a href="{{route('affectation.show',$affectation->id)}}"  style="color: blue; text-decoration: none;">
+                                                <a href="{{route('gerant.show',$affectation->id)}}"  style="color: blue; text-decoration: none;">
                                                     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
                                                </a></h4>
                                             </td>

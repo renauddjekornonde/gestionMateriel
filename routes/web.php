@@ -35,7 +35,7 @@ use App\Http\Controllers\UserController;
 
 // Auth::routes();
 Route::resource('gerant', GerantController::class);
-Route::get('/gerant/index', [GerantController::class, 'index'] );
+// Route::get('/gerant/index', [GerantController::class, 'index'] );
 
 Route::controller(AcceuilController::class)->group(function(){
 

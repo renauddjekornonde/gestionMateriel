@@ -54,7 +54,7 @@
                     <span>Utilisateurs</span></a>
                 </li>
                 <li> 
-                    <a href="{{url('gerant/index')}}"><span class=""> <ion-icon name="folder-open-outline"></ion-icon></span>
+                    <a href="{{route('gerant.index')}}"><span class=""> <ion-icon name="folder-open-outline"></ion-icon></span>
                     <span>Historique</span></a>
                 </li>
             </ul>

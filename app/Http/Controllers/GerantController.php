@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Entree;
 use App\Models\Fournisseur;
 use App\Models\Materiel;
-use Session;
 use App\Models\Salle;
 use Illuminate\Http\Request;
 
@@ -56,6 +55,7 @@ class GerantController extends Controller
      */
     public function show($id)
     {
+        
         $affectations= Affectation::findOrFail($id);
         $entrees= Entree::get();
         $salles= Salle::get();
@@ -64,6 +64,7 @@ class GerantController extends Controller
         $materiels=Materiel::get();
         $fournisseurs= Fournisseur::get();
         return view('gerant.show', compact('affectation', 'affectations','entrees', 'categories', 'materiels','fournisseurs', 'salles'));
+
     }
 
     /**
@@ -80,7 +81,7 @@ class GerantController extends Controller
         $salles= Salle::get();
         $categories=Category::get();
         $materiels=Materiel::get();
-         return view('gerant.edit', compact('affectations','affectation',   'entrees', 'categories', 'materiels', 'salles'));  
+         return view('gerant.edit', compact('affectations','affectation',   'entrees', 'categories', 'materiels', 'salles'));
     }
 
     /**
@@ -92,8 +93,8 @@ class GerantController extends Controller
      */
     public function update(Request $request, $id)
     {
-         //cette requete oblige à ne pas laisser les champs vides
-         $request->validate([
+        //cette requete oblige à ne pas laisser les champs vides
+        $request->validate([
             // 'created_at'=> 'required',
             // 'updated_at'=> 'required',
             'salle_id'=> 'required',
@@ -108,7 +109,7 @@ class GerantController extends Controller
 
         //redirection dans la page index contenant les affectations apres modification de l'affectation accompagner d'un message de confirmation
 
-        return redirect()->route('geran t.index', compact('salles'))->with('sucess', 'Modification effectuer avec succes');
+        return redirect()->route('gerant.index', compact('salles'))->with('sucess', 'Modification effectuer avec succes');
     }
 
     /**
