@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layoutGerant.app')
 
 @section('content')
    <div class="recents-grids">
@@ -21,8 +21,8 @@
                                              <td>Quantite</td>
                                             <td>Date</td>
                                              <td>Status</td>
-                                             <td>Modifier</td>
-                                             <td>Supprimer</td>
+                                             {{-- <td>Modifier</td>
+                                             <td>Supprimer</td> --}}
                                              
                                               
                                         </tr>
@@ -42,20 +42,20 @@
                                                     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
                                                </a></h4>
                                             </td>
-                                            <td><h5>
+                                            {{-- <td><h5>
                 
                                       <a href="{{route('affectation.edit', $affectation->id)}}" style="color: green; text-decoration: none;"><ion-icon name="pencil-outline"></ion-icon></a></h5>
-                                      </td>
-                                      <td>
+                                      </td> --}}
+                                      {{-- <td>
                                       <h5>
                                       <form action="{{route('affectation.destroy', $affectation->id)}}" method="POST">
                                           @csrf
                                           @method('DELETE')
                                           {{-- <input type="submit" style="color: red; border: none; background: white;" value="Supprimer"> --}}
-                                          <button type="submit" style="color: red; border: none; background: white;"><ion-icon name="trash-outline"></ion-icon></button>
+                                          {{-- <button type="submit" style="color: red; border: none; background: white;"><ion-icon name="trash-outline"></ion-icon></button>
                                       </form>
-                                             </h5></td>
-                                        </tr>
+                                             </h5></td> --}} 
+                                       </tr>
                                     </tbody>
                                     @endforeach
                                        

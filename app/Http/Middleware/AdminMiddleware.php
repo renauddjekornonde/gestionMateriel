@@ -24,8 +24,17 @@ class AdminMiddleware
                 return redirect('')->with('sucess','Vous n\'êtes pas un administrateur');
             }
         }
-        else{
-            return redirect('')->with('sucess','Veuillez vous connecter d\'abord');
-        }
+        elseif(Auth::user()->role == 'Gerant'){
+                return $next($request);
+            }else{
+                return  view('gerant.auth.login')->with('sucess','Vous n\'êtes pas un gerant');
+            }
+        // else
+        // {
+        //     return redirect('')->with('sucess','Veuillez vous connecter d\'abord');
+    
+        // }
+
     }
+   
 }

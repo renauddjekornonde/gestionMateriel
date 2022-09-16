@@ -33,7 +33,7 @@ class GerantController extends Controller
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -44,7 +44,7 @@ class GerantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
@@ -120,6 +120,7 @@ class GerantController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        
     }
 }

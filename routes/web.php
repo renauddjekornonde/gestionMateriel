@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AcceuilController;
-use App\Http\Controllers\GerantController;
 
 use App\Http\Controllers\MaterielController;
 
@@ -34,8 +33,6 @@ use App\Http\Controllers\UserController;
 */
 
 // Auth::routes();
-Route::resource('gerant', GerantController::class);
-// Route::get('/gerant/index', [GerantController::class, 'index'] );
 
 Route::controller(AcceuilController::class)->group(function(){
 
@@ -47,7 +44,6 @@ Route::controller(AcceuilController::class)->group(function(){
 
     Route::get('/home', 'home')->name('home');
 });
-
 
 Route::prefix('')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('/home', [AcceuilController::class, 'index'] );
@@ -79,7 +75,6 @@ Route::prefix('')->middleware(['auth','isAdmin'])->group(function(){
     
     Route::resource('operation', OperationController::class);
     Route::resource('user', UserController::class);
-    
 });
 
 
