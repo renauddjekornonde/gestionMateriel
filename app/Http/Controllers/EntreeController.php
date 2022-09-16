@@ -6,8 +6,10 @@ use App\Models\Materiel;
 use App\Models\Category;
 use App\Models\Fournisseur;
 use App\Models\Entree;
+use App\Models\Operation;
 use Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class EntreeController extends Controller
 {
@@ -53,6 +55,7 @@ class EntreeController extends Controller
     public function store(Request $request)
     {
         
+
         $fournisseurs= Fournisseur::get();
         $entrees= Entree::get();  
         $materiels= Materiel::get();
@@ -60,10 +63,35 @@ class EntreeController extends Controller
         $categories= Category::get();
 
         $data = $request->all();
-        $entree = new Entree();
-        $entree->fournisseur_id = $data['fournisseur'];
-        // $entree->created_at = $data['created_at'];
-        $entree->save();
+        $newEntree= Entree::create([
+            'fournisseur_id'=>$data['fournisseur']
+        ]);
+
+        // foreach($request->operations as $operation)
+        // {
+        //     Operation::create([
+        //     'materiel_id'=>$operation['materiel'],
+        //     'entree_id'=> $entree->id,
+        // ]);
+        // }
+        $request->validate([
+            'moreFields.*.quantite' => 'required',
+            'moreFields.*.typeOperation' => 'required',
+            'moreFields.*.materiel_id' => 'required',
+            'moreFields.*.entree_id' => 'required',
+        ]);
+
+        // foreach ($request->moreFields as $key => $value) {
+        //     Operation::create([$value]);
+        // }
+
+        $datas = $request->all();
+        $operation = new Operation();
+        $operation->quantite = $datas['quantite'];
+        $operation->typeOperation = 1;
+        $operation->materiel_id = $datas['materiel_id'];
+        $operation->entree_id = $newEntree->id;
+        $operation->save();
 
         return redirect()->route('entree.index',  compact('materiels', 'entrees', 'affectations', 'categories', 'fournisseurs'))->with('sucess', 'Materiel ajoute avec succes');
     }

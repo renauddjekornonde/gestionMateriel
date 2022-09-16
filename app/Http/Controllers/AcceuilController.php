@@ -74,17 +74,17 @@ class AcceuilController extends Controller
         }
          else
           {
-             return view('')->with('sucess', 'Authentification non valide');
+             return redirect('')->with('sucess', 'Authentification non valide');
           }  
     }
 
      function home()
      {
-        $categories= Category::get();
-        $fournisseurs= Fournisseur::get();
-        $materiels= Materiel::get();
-        $entrees= Entree::get();
-        $affectations= Affectation::get();
+        $categories= Category::select()->inRandomOrder('created_at')->Limit(2)->get();
+        $fournisseurs= Fournisseur::select()->inRandomOrder('created_at')->Limit(2)->get();
+        $materiels= Materiel::select()->inRandomOrder('created_at')->Limit(2)->get();
+        $entrees= Entree::select()->inRandomOrder('created_at')->Limit(2)->get();
+        $affectations= Affectation::select()->inRandomOrder('created_at')->Limit(2)->get();
 
          if(Auth::check())
          {

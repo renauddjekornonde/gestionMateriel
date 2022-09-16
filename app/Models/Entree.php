@@ -12,6 +12,7 @@ class Entree extends Model
 
     protected $fillable=[
         // 'matricule',
+        'fournisseur_id',
     ];
 
 

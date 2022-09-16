@@ -21,11 +21,11 @@ class AdminMiddleware
             if(Auth::user()->role == 'Administrateur'){
                 return $next($request);
             }else{
-                return redirect('/home')->with('status','Vous n\'êtes pas un administrateur');
+                return redirect('')->with('sucess','Vous n\'êtes pas un administrateur');
             }
         }
         else{
-            return redirect('/')->with('status','Veuillez vous connecter d\'abord');
+            return redirect('')->with('sucess','Veuillez vous connecter d\'abord');
         }
     }
 }

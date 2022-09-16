@@ -55,7 +55,7 @@ class OperationController extends Controller
         $operation->entree_id = $data['entree'];
         $operation->affectation_id = $data['affectation'];
         $operation->save();
-        return redirect()->back();
+        return redirect()->route('operation.index');
     }
 
     /**

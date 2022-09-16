@@ -7,11 +7,20 @@
             <fieldset>
               <legend>Ajouter un materiel</legend>
               <div class="mb-3">
-                <label for="matricule" class="form-label">Matricule</label>
-                <input type="text" id="matricule" class="form-control" placeholder="Matricule" name="matricule">
+                <label for="quantite" class="form-label">Quantite</label>
+                <input type="number" id="quantite" class="form-control" placeholder="Quantite" name="quantite">
               </div>
               <div class="mb-3">
-                <label for="intitule" class="form-label">Intitule</label>
+                <select id="materiel_id" name="materiel_id"  class="form-select">
+                   <option value= "..." >Materiel</option>
+                        @foreach ($materiels as $materiel)
+                            <option value="{{ $materiel->id }}">{{ $materiel->intitule }}</option>
+                        @endforeach
+                </select>
+              </div>
+
+              {{-- <div class="mb-3">
+                <label for="entree_id" class="form-label">Intitule</label>
                 <input type="text" id="intitule" class="form-control" placeholder="Intitule" name="intitule">
               </div>
               <div class="mb-3">
@@ -25,7 +34,7 @@
                             <option value="{{ $category->id }}">{{ $category->intitule }}</option>
                         @endforeach
                 </select>
-              </div>
+              </div> --}}
              
               
               <button type="submit" class="btn btn-primary">Ajouter</button>
