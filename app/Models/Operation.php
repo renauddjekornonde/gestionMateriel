@@ -4,14 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Model\User;
-use App\Model\Entree;
-use App\Model\Affectation;
-use App\Model\Materiel;
+// use App\Model\User;
+// use App\Model\Entree;
+// use App\Model\Affectation;
+// use App\Model\Materiel;
 
 class Operation extends Model
 {
     use HasFactory;
+
     
     protected $fillable=[
         'quantite',

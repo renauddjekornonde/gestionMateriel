@@ -26,7 +26,8 @@ class EntreeController extends Controller
         $materiels= Materiel::get();
         $affectations= Affectation::get();
         $categories= Category::get();
-        return view('entree.index', compact('entrees', 'materiels', 'affectations', 'categories'));
+        $operations= Operation::with('materiel')->where('typeOperation','1')->get();
+        return view('entree.index', compact('entrees', 'materiels', 'affectations', 'categories', 'operations'));
     }
 
     /**
@@ -64,34 +65,24 @@ class EntreeController extends Controller
 
         $data = $request->all();
         $newEntree= Entree::create([
-            'fournisseur_id'=>$data['fournisseur']
+            'fournisseur_id'=>$data['fournisseur'],
         ]);
 
-        // foreach($request->operations as $operation)
-        // {
-        //     Operation::create([
-        //     'materiel_id'=>$operation['materiel'],
-        //     'entree_id'=> $entree->id,
-        // ]);
-        // }
-        $request->validate([
-            'moreFields.*.quantite' => 'required',
-            'moreFields.*.typeOperation' => 'required',
-            'moreFields.*.materiel_id' => 'required',
-            'moreFields.*.entree_id' => 'required',
-        ]);
 
-        // foreach ($request->moreFields as $key => $value) {
-        //     Operation::create([$value]);
-        // }
+           $datas = $request->all();
+           
+        for($i=0; $i< count($datas['materiel_id']); $i++){
+            $operation = new Operation();
+         
+            $operation->typeOperation = 1;
 
-        $datas = $request->all();
-        $operation = new Operation();
-        $operation->quantite = $datas['quantite'];
-        $operation->typeOperation = 1;
-        $operation->materiel_id = $datas['materiel_id'];
-        $operation->entree_id = $newEntree->id;
-        $operation->save();
+            $operation->entree_id = $newEntree->id;
+            $operation->materiel_id = $datas['materiel_id'][$i];
+            $operation->quantite = $datas['quantite'][$i];
+          $operation->save();
+    }
+
+      
 
         return redirect()->route('entree.index',  compact('materiels', 'entrees', 'affectations', 'categories', 'fournisseurs'))->with('sucess', 'Materiel ajoute avec succes');
     }

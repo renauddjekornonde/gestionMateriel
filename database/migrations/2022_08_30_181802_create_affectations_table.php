@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('affectations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-
             $table->unsignedBigInteger('salle_id');
             $table->foreign('salle_id')->references('id')->on('salles')-> onDelete('cascade')-> onUpdate('cascade');
         });

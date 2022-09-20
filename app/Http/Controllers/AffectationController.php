@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Entree;
 use App\Models\Fournisseur;
 use App\Models\Materiel;
+use App\Models\Campus;
+use App\Models\Operation;
 use Session;
 use App\Models\Salle;
 use Illuminate\Http\Request;
@@ -26,7 +28,11 @@ class AffectationController extends Controller
         $affectations= Affectation::get();
         $materiels= Materiel::get();
         $fournisseurs= Fournisseur::get();
-        return view('affectation.index', compact('affectations', 'entrees', 'categories', 'materiels','fournisseurs' ));
+        $salles= Salle::get();
+        $operations= Operation::with('materiel')->where('typeOperation','0')->get();
+        // dd($operations);
+        $campuses= Campus::get();
+        return view('affectation.index', compact('affectations', 'entrees', 'categories','fournisseurs', 'campuses', 'salles', 'operations', 'materiels' ));
     }
 
     /**
@@ -43,7 +49,8 @@ class AffectationController extends Controller
         $affectations= Affectation::get();
         $categories= Category::get();
         $salles= Salle::get();
-        return view('affectation.create', compact('affectations', 'entrees', 'categories', 'materiels','salles' ));
+        $campuses= Campus::get();
+        return view('affectation.create', compact('affectations', 'entrees', 'categories', 'materiels','salles', 'campuses' ));
     }
 
     /**
@@ -55,18 +62,39 @@ class AffectationController extends Controller
         //cette fonction permet d'ajouter une affectation
     public function store(Request $request)
     {
-         
+        
+
+        $fournisseurs= Fournisseur::get();
+        $entrees= Entree::get();  
         $materiels= Materiel::get();
-        $entrees= Entree::get();
         $affectations= Affectation::get();
         $categories= Category::get();
-        $salles= Salle::get();
-     
+
         $data = $request->all();
-        $affectation = new Affectation();
-        $affectation->salle_id = $data['salle'];
-        $affectation->save();
-        return redirect()->route('affectation.index', compact('affectations', 'entrees', 'categories', 'materiels','salles' ))->with('sucess', 'Affecation ajouter avec sucess');
+        $newAffectation= Affectation::create([
+            'salle_id'=>$data['salle']
+        ]);
+
+       
+           $datas = $request->all();
+       
+         
+        for($i=0; $i< count($datas['materiel_id']); $i++){
+
+            // echo $i;
+            $operation = new Operation();
+           $operation->typeOperation = 0;
+
+          $operation->affectation_id = $newAffectation->id;
+          $operation->materiel_id = $datas['materiel_id'][$i];
+          $operation->quantite = $datas['quantite'][$i];
+    //   dd($operation);
+          $operation->save();
+        }
+
+      
+
+        return redirect()->route('affectation.index',  compact('materiels', 'entrees', 'affectations', 'categories', 'fournisseurs'))->with('sucess', 'Materiel ajoute avec succes');
     }
 
     /**

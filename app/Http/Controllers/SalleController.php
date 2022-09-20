@@ -20,7 +20,7 @@ class SalleController extends Controller
     //cette fonction permet de recuperer toutes les salles et les retourner
     public function index()
     {
-        $salles= Salle::get();
+        $salles= Salle::with('campus')->get();
         $materiels= Materiel::get();
         $entrees= Entree::get();
         $affectations= Affectation::get();

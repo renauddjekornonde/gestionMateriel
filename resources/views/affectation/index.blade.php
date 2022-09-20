@@ -27,11 +27,11 @@
                                               
                                         </tr>
                                     </thead>
-                                   @foreach ($affectations as $affectation)
+                                   @foreach ($operations as $affectation)
                                         <tbody>
                                         <tr>
-                                            <td>Nom materiel</td>
-                                            <td>Quantite materiels</td>
+                                            <td><?= $affectation->materiel->intitule ?></td>
+                                            <td><?= $affectation->materiel->quantite ?></td>
                                             
                                             <td>
                                                 <span class="status purple"></span>

@@ -16,12 +16,12 @@ class OperationController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responses
      */
     //cette fonction permet de recuperer toutes les operations et les retourner
     public function index()
     {
-        $operations= Operation::get();
+        $operations= Operation::with('materiel')->get();
         return view('operation.index', compact('operations'));
     }
 

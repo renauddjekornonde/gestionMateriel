@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Operation;
-use App\Model\Salle;
+// use App\Model\Operation;
+// use App\Model\Salle;
 
 class Affectation extends Model
 {
     use HasFactory;
+    protected $fillable=[
+        'salle_id',
+    ];
 
      // cette fonction permet de repucerer les salles
      public function salle()

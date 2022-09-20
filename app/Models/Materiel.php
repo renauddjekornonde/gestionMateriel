@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Model\category;
-use App\Model\Operation;
-use App\Model\Fournisseur;
+// use App\Model\category;
+// // use App\Model\Operation;
+// use App\Model\Fournisseur;
 
 class Materiel extends Model
 {

@@ -30,11 +30,12 @@
                                               
                                         </tr>
                                     </thead>
-                                   @foreach ($entrees as $entree)
+                                   @foreach ($operations as $entree)
                                         <tbody>
                                         <tr>
-                                            <td>Nom materiel</td>
-                                            <td>Quantite materiels</td>
+                                           <td><?= $entree->materiel->intitule ?></td>
+                                              <td><?= $entree->materiel->quantite ?></td>
+                                          
                                           
                                             <td>
                                                 <span class="status purple"></span>

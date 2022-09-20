@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Campus;
-use App\Model\Affectation;
+// use App\Model\Campus;
+// use App\Model\Affectation;
 
 class Salle extends Model
 {

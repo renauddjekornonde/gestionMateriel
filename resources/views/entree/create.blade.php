@@ -32,7 +32,7 @@
                <td>
               <div class="mb-3">
               <label for="materiel" class="form-label">Materiel</label>
-                <select  style="margin-top: 1px;" id="materiel_id" name="moreFields[0][materiel_id]"  class="form-select">
+                <select  style="margin-top: 1px;" id="materiel_id" name="materiel_id[]"  class="form-select">
                    <option value= "..." >Materiel</option>
                         @foreach ($materiels as $materiel)
                             <option value="{{ $materiel->id }}">{{ $materiel->intitule }}</option>
@@ -44,7 +44,8 @@
               <td>
               <div class="mb-3">
                 <label for="quantite" class="form-label">Quantite</label>
-                <input style="margin-top: 1px;" type="number" id="quantite" class="form-control" placeholder="Quantite" name="moreFields[0][quantite]">
+                <input style="margin-top: 1px;" type="number" id="quantite" class="form-control" placeholder="Quantite" name="quantite[]">
+                <input type="hidden" name="moreFields[0][typeOperation]" value="1">
               </div>
               </td>
 
@@ -63,7 +64,7 @@
     var i = 0;
     $("#add-btn").click(function(){
     ++i;
-    $("#dynamicAddRemove").append('<tr><td> <label for="materiel" class="form-label">Materiel</label><select style="margin-top: 7px;" id="materiel_id" name="moreFields['+i+'][materiel_id]"  class="form-select"><option value= "..." >Materiel</option>@foreach ($materiels as $materiel)<option value="{{ $materiel->id }}">{{ $materiel->intitule }}</option>@endforeach</select></td><td><label for="quantite" class="form-label">Quantite</label><input type="number" id="quantite" name="moreFields['+i+'][quantite]" placeholder="Quantite" class="form-control" /></td><td><button style="margin-top: 30px;" type="button" class="btn btn-danger remove-tr"><ion-icon name="close-circle-sharp"></ion-icon></button></td></tr>');
+    $("#dynamicAddRemove").append('<tr><td> <label for="materiel" class="form-label">Materiel</label><select style="margin-top: 7px;" id="materiel_id" name="materiel_id[]"  class="form-select"><option value= "..." >Materiel</option>@foreach ($materiels as $materiel)<option value="{{ $materiel->id }}">{{ $materiel->intitule }}</option>@endforeach</select></td><td><label for="quantite" class="form-label">Quantite</label><input type="number" id="quantite" name="quantite[]" placeholder="Quantite" class="form-control" /> <input type="hidden" name="moreFields['+i+'][typeOperation]" value="1"></td><td><button style="margin-top: 30px;" type="button" class="btn btn-danger remove-tr"><ion-icon name="close-circle-sharp"></ion-icon></button></td></tr>');
     });
     $(document).on('click', '.remove-tr', function(){  
     $(this).parents('tr').remove();
