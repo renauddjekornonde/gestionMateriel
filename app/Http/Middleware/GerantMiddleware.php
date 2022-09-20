@@ -3,10 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class AdminMiddleware
+class GerantMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,10 +17,10 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if(Auth::check()){
-            if(Auth::user()->role == 'Administrateur'){
+            if(Auth::user()->role == 'Gerant'){
                 return $next($request);
             }else{
-                return redirect('')->with('sucess','Vous n\'êtes pas un administrateur');
+                return redirect('')->with('sucess','Vous n\'êtes pas un gerant');
             }
         }
         // elseif(Auth::user()->role == 'Gerant'){
@@ -34,7 +33,5 @@ class AdminMiddleware
         //     return redirect('')->with('sucess','Veuillez vous connecter d\'abord');
     
         // }
-
     }
-   
 }

@@ -32,6 +32,7 @@ class AcceuilController extends Controller
     }
     public function profil()
     {
+        $user=Auth::user();
         $categories= Category::select()->inRandomOrder('created_at')->Limit(2)->get();
         $fournisseurs= Fournisseur::select()->inRandomOrder('created_at')->Limit(2)->get();
         $materiels= Materiel::select()->inRandomOrder('created_at')->Limit(2)->get();
@@ -39,7 +40,7 @@ class AcceuilController extends Controller
         $affectations= Affectation::get();
 
     
-        return view('profil', compact('fournisseurs', 'materiels','categories', 'entrees', 'affectations'));
+        return view('profil', compact('fournisseurs', 'materiels','categories', 'entrees', 'affectations', 'user'));
     }
 
     function indexe()
@@ -104,4 +105,18 @@ class AcceuilController extends Controller
 
         return Redirect('');
     }
-}
+
+            //cette requete oblige à ne pas laisser les champs vides
+         
+            public function update(Request $request, $id)
+            {
+            $profil= User::find($id);
+            $profil->password= $request->password;
+            $materiel->save();
+    
+            //redirection dans la page index contenant les materiels apres modification de données du materiel accompagner d'un message de confirmation
+    
+            return view('profil')->with('sucess', 'Modification Effectuer Avec Succes');
+        }
+
+        }

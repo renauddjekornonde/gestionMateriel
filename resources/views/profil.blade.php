@@ -32,7 +32,7 @@ rel="stylesheet"
                     <div class="col-sm-4 bg-info rounded-left">
                         <div class="card-block text-center text-white">
                             <i class="fas fa-user-tie fa-7x mt-5"></i>
-                            <h2 class="font-weight-bold mt-4"> Cheikh Tidiane Boiro</h2>
+                            <h2 class="font-weight-bold mt-4">{{dd($user-­>nom) }}</h2>
                             <p>admin</p>
                             <i class="far fa-edit fa-2x mb-4"></i>
                         </div>

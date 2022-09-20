@@ -45,6 +45,22 @@ Route::controller(AcceuilController::class)->group(function(){
     Route::get('/home', 'home')->name('home');
 });
 
+Route::controller(AcceuilGerantController::class)->group(function(){
+
+    Route::get('/', 'indexe')->name('gerantLogin');
+
+    Route::get('logout', 'logout')->name('logout');
+
+    Route::post('validate_login', 'validate_login')->name('gerant.validate_login');
+
+    Route::get('gerant/index', 'gerant/index')->name('gerant_index');
+});
+
+
+Route::prefix('')->middleware(['auth','isGerant'])->group(function(){
+    Route::resource('gerant', GerantController::class);
+});
+
 Route::prefix('')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('/home', [AcceuilController::class, 'index'] );
     Route::get('/materiel/index', [MaterielController::class, 'index'] );
