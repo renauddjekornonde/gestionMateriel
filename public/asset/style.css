@@ -280,7 +280,7 @@ main{
     border-radius: 10px;
     color: #fff;
     font-size: .8rem;
-    padding: .5rem 1rem;
+    padding: .4rem 0.8rem;
     border: 1px solid var(--main-color);
 }
 table{
