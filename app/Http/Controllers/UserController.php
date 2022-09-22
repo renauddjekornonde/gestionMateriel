@@ -115,13 +115,14 @@ class UserController extends Controller
     public function edit($id)
     {
         $users= User::findOrFail($id);
+        $user= User::get();
         $entrees= Entree::get();
         $affectations= Affectation::get();
         $categories= Category::get();
         $materiels= Materiel::get();
         $campuses= Campus::get();
         $salles= Salle::get();
-        return view('user.edit', compact('materiels', 'entrees', 'affectations', 'categories', 'users', 'campuses', 'salles'));
+        return view('user.edit', compact('materiels', 'user', 'entrees', 'affectations', 'categories', 'users', 'campuses', 'salles'));
     }
 
     /**

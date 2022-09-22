@@ -11,8 +11,8 @@
                <div id="dropdown" class="user-wrapper">
                     <img class="logo-admin" src="{{asset('asset/img/2.jpng')}}" width="40px" height="40px" alt="" >
                     <div>
-                        <h6>Cheikh Tidiane Boiro</h6>
-                        <small>Super admin</small>
+                        <h6>{{Auth::user()->nom . " ".  Auth::user()->prenom }}</h6>
+                        <small>{{Auth::user()->role }}</small>
 
                     </div>
                     <div class="dropdown-content">

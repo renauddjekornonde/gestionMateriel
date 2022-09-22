@@ -26,6 +26,7 @@
                                            <td>Materiel</td>
                                              <td>Quantite</td>
                                             <td>Date</td>
+                                            <td>Update</td>
                                              {{-- <td>Status</td>
                                              <td>Modifier</td>
                                              <td>Supprimer</td> --}}
@@ -42,6 +43,10 @@
                                         <td>
                                                 <span class="status purple"></span>
                                                {{$affectation->created_at->format('d/m/y')}}
+                                        </td>
+                                        <td>
+                                                <span class="status orange"></span>
+                                               {{$affectation->updated_at->format('d/m/y')}}
                                         </td>
                                         {{-- <td><h4>
                                                 <a href="{{route('affectation.show',$affectation->id)}}"  style="color: blue; text-decoration: none;">

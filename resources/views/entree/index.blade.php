@@ -26,6 +26,7 @@
                                            <td>Fournisseur</td>
                                           
                                             <td>Date</td>
+                                            <td>Update</td>
                                              <td>Status</td>
                                              <td>Modifier</td>
                                              <td>Supprimer</td>
@@ -43,6 +44,10 @@
                                             <td>
                                                 <span class="status purple"></span>
                                                {{$entree->created_at->format('d/m/y')}}
+                                            </td>
+                                            <td>
+                                                <span class="status orange"></span>
+                                               {{$entree->updated_at->format('d/m/y')}}
                                             </td>
                                             <td><h4>
                                                 <a href="{{route('entree.show', $entree->id)}}" style="color: blue; text-decoration: none;">

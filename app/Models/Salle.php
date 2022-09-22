@@ -13,6 +13,7 @@ class Salle extends Model
 
     protected $fillable =[
         'numeroSalle',
+        'campus_id',
     ];
 
 
