@@ -21,4 +21,10 @@ class Campus extends Model
     {
         return $this->hasMany(Salle::class);
     }
+
+      //Permet de recuperer toutes le user dans un campus
+      public function users()
+      {
+          return $this->hasMany(User::class);
+      }
 }

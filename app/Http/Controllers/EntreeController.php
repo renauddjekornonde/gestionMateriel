@@ -22,7 +22,7 @@ class EntreeController extends Controller
     public function index()
     {
         
-        $entrees= Entree::get();  
+        $entrees= Entree::get();
         $materiels= Materiel::get();
         $affectations= Affectation::get();
         $categories= Category::get();
@@ -98,11 +98,19 @@ class EntreeController extends Controller
     public function show($id)
     {
         $entrees= Entree::findOrFail($id);
+       dd($entrees);
         $materiels= Materiel::get();
         $affectations= Affectation::get();
         $categories= Category::get();
-        return view('entree.show', compact('entrees', 'materiels', 'affectations', 'categories'));
+        $operations= Operation::with('materiel')->where('typeOperation','1')->get();
+    
+        return view('entree.show', compact('entrees', 'materiels', 'affectations', 'categories', 'operations'));
     }
+
+    public function test_show($id)
+    {
+        echo "bonjour";
+        }
 
     /**
      * Show the form for editing the specified resource.
@@ -118,7 +126,8 @@ class EntreeController extends Controller
         $affectations= Affectation::get();
         $categories= Category::get();
         $entrees= Entree::findOrFail($id);
-        return view('entree.edit', compact('entrees', 'materiels', 'affectations', 'categories', 'fournisseurs'));
+        $operations= Operation::with('materiel')->where('typeOperation','1')->get();
+        return view('entree.edit', compact('entrees', 'materiels', 'affectations', 'categories', 'fournisseurs', 'operations'));
     }
 
     /**

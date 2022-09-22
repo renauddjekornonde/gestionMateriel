@@ -18,22 +18,17 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if(Auth::check()){
-            if(Auth::user()->role == 'Administrateur'){
+            if(Auth::user()->role == 'Administrateur' || Auth::user()->role == 'Gerant'){
                 return $next($request);
             }else{
-                return redirect('')->with('sucess','Vous n\'êtes pas un administrateur');
+                return redirect('/')->with('sucess','Accès interdit');
             }
         }
-        // elseif(Auth::user()->role == 'Gerant'){
-        //         return $next($request);
-        //     }else{
-        //         return  view('gerant.auth.login')->with('sucess','Vous n\'êtes pas un gerant');
-        //     }
-        // else
-        // {
-        //     return redirect('')->with('sucess','Veuillez vous connecter d\'abord');
+         else
+         {
+             return redirect('/')->with('sucess','Veuillez vous connecter d\'abord');
     
-        // }
+         }
 
     }
    

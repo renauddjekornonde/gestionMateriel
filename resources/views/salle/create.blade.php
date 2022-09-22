@@ -1,7 +1,12 @@
 @extends('layout.app')
 
 @section('content')
-        
+     @section('content')
+@if ($message= Session::get('sucess'))
+  <div class="alert alert-info">
+  {{$message}}
+  </div>
+@endif   
                       <form action="{{route('salle.store')}}" method="POST">
                       @csrf
             <fieldset>

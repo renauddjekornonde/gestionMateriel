@@ -33,8 +33,9 @@
                                    @foreach ($salles as $salle)
                                         <tbody>
                                         <tr>
-                                         <td><?= $salles->campus->numeroSalle ?></td>
-                                          <td><?= $salles->campus->intitule ?></td>
+                                         <td><?= $salle->numeroSalle ?></td>
+                                          <td><?= $salle->campus->intitule ?></td>
+                                         
                                          
                                         
                                           

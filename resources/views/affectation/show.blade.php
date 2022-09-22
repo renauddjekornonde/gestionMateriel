@@ -1,6 +1,11 @@
 @extends('layout.app')
 @section('content')
-
+@section('content')
+@if ($message= Session::get('sucess'))
+  <div class="alert alert-info">
+  {{$message}}
+  </div>
+@endif
       <div class="recents-grids">
                 <div class="projects">
                     <div class="card">
@@ -32,8 +37,8 @@
                                         <tbody>
                                         <tr>
                                             <td><h6>{{$affectations->id}}</h6></td>
-                                            <td>Nom materiel</td>
-                                            <td>Quantite materiels</td>
+                                  <td><?= $operations->materiel->intitule ?></td>
+                                            <td><?= $operations->materiel->quantite ?></td>
                                     
                                             <td><h6>
                                                 <span class="status purple"></span>

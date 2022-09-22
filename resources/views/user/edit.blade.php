@@ -39,7 +39,20 @@
                   <option>Gerant</option>
                   <option >Administrateur</option>
                 </select>
-              </div>    
+              </div>
+
+               <div class="mb-3">
+                <select id="campus_id" name="campus_id"  class="form-select">
+                   <option value= "..." >Campus</option>
+                        @foreach ($campuses as $campus)
+                        @if ($campus->id == $salles->campus_id)
+                            <option value="{{ $campus->id }}" selected>{{ $campus->intitule }}</option>
+                        @endif
+                            <option value="{{ $campus->id }}">{{ $campus->intitule }}</option>
+                        @endforeach
+                </select>
+              </div>
+
               <button type="submit" class="btn btn-primary">Modifier</button>
               <button class="btn btn-danger"><a class="nav-link" href="{{route('user.index')}}">Annuler</a></button>
             </fieldset>

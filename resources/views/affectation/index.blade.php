@@ -1,6 +1,12 @@
 @extends('layout.app')
 
 @section('content')
+@section('content')
+@if ($message= Session::get('sucess'))
+  <div class="alert alert-info">
+  {{$message}}
+  </div>
+@endif
    <div class="recents-grids">
                 <div class="projects">
                     <div class="card">
@@ -33,14 +39,15 @@
                                             <td><?= $affectation->materiel->intitule ?></td>
                                             <td><?= $affectation->materiel->quantite ?></td>
                                             
-                                            <td>
+                                        <td>
                                                 <span class="status purple"></span>
                                                {{$affectation->created_at->format('d/m/y')}}
-                                            </td>
-                                            <td><h4>
+                                        </td>
+                                        <td><h4>
                                                 <a href="{{route('affectation.show',$affectation->id)}}"  style="color: blue; text-decoration: none;">
                                                     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
-                                               </a></h4>
+                                               </a>
+                                               </h4>
                                             </td>
                                             <td><h5>
                 

@@ -28,8 +28,8 @@
                                         <tbody>
                                         <tr>
                                             <td><h6>{{$salles->id}}</h6></td>
-                                            <td>Numero salle</td>
-                                            <td>Nom campus</td>
+                                            <td><?= $salle->numeroSalle ?></td>
+                                          <td><?= $salle->campus->intitule ?></td>
                                            <td><h6>
                                                 <span class="status purple"></span>
                                                {{$salles->created_at->format('d/m/y')}}

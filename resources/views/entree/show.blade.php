@@ -35,12 +35,12 @@
                                  
                                         <tbody>
                                         <tr>
-                                            <td><h6>{{$entrees->id}}</h6></td>
+                                            <td><h6>{{$operations->id}}</h6></td>
                                             <td>Nom materiel</td>
                                            <td>Quantite materiels</td>
                                             <td><h6>
                                                 <span class="status purple"></span>
-                                               {{$entrees->created_at->format('d/m/y')}}
+                                               {{$operations->created_at->format('d/m/y')}}
                                             </h6></td>
                                             
                                         </tr>

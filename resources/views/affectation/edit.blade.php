@@ -1,6 +1,12 @@
 @extends('layout.app')
 
 @section('content')
+@section('content')
+@if ($message= Session::get('sucess'))
+  <div class="alert alert-info">
+  {{$message}}
+  </div>
+@endif
 <form action="{{route('affectation.update', $affectations->id)}}" method="POST">
     @csrf
     @method('PATCH')

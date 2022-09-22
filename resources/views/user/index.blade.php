@@ -41,7 +41,7 @@
                                             <td>{{$user->email}}</td>
                                             <td>
                                                 <span class="status purple"></span>
-                                               {{$user->created_at->format('d/m/y')}}
+                                               {{-- {{$user->created_at->format('d/m/y')}} --}}
                                             </td>
                                             <td><h4>
                                                 <a href="{{route('user.show',$user->id)}}" style="color: blue; text-decoration: none;">

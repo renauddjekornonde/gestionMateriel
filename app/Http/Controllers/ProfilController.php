@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
 use App\Models\Affectation;
 use App\Models\Category;
 use App\Models\Entree;
@@ -12,9 +14,10 @@ use App\Models\Campus;
 use App\Models\User;
 use Hash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 
-class GerantController extends Controller
+
+
+class ProfilController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,9 +34,9 @@ class GerantController extends Controller
         $salles= Salle::get();
         $campuses= Campus::get();
         // dd($salles);
-        $operations= Operation::with('materiel')->where('typeOperation','0')->get();
+        // $operations= Operation::with('materiel')->where('typeOperation','0')->get();
         
-        return view('gerant.index', compact('affectations', 'entrees', 'categories','fournisseurs', 'campuses', 'salles', 'operations', 'materiels' ));
+        return view('/profil', compact('affectations', 'entrees', 'categories','fournisseurs', 'campuses', 'salles', 'materiels' ));
     }
 
     /**
@@ -43,17 +46,7 @@ class GerantController extends Controller
      */
     public function create()
     {
-        $entrees= Entree::get();
-        $categories= Category::get();
-        $affectations= Affectation::get();
-        $materiels= Materiel::get();
-        $fournisseurs= Fournisseur::get();
-        $salles= Salle::get();
-        $campuses= Campus::get();
-        // dd($salles);
-        $operations= Operation::with('materiel')->where('typeOperation','0')->get();
-        
-        return view('gerant.profil', compact('affectations', 'entrees', 'categories','fournisseurs', 'campuses', 'salles', 'operations', 'materiels' ));
+        //
     }
 
     /**
@@ -64,7 +57,7 @@ class GerantController extends Controller
      */
     public function store(Request $request)
     {
-       //
+        //
     }
 
     /**
@@ -75,7 +68,6 @@ class GerantController extends Controller
      */
     public function show($id)
     {
-        
         $categories= Category::select()->inRandomOrder('created_at')->Limit(2)->get();
         $fournisseurs= Fournisseur::select()->inRandomOrder('created_at')->Limit(2)->get();
         $materiels= Materiel::select()->inRandomOrder('created_at')->Limit(2)->get();
@@ -83,8 +75,7 @@ class GerantController extends Controller
         $affectations= Affectation::get();
 
     
-        return view('gerant.profil', compact('fournisseurs', 'materiels','categories', 'entrees', 'affectations'));
-
+        return view('profil', compact('fournisseurs', 'materiels','categories', 'entrees', 'affectations'));
     }
 
     /**
@@ -102,7 +93,7 @@ class GerantController extends Controller
         $affectations= Affectation::get();
 
     
-        return view('gerant.edit', compact('fournisseurs', 'materiels','categories', 'entrees', 'affectations'));
+        return view('profil.edit', compact('fournisseurs', 'materiels','categories', 'entrees', 'affectations'));
     }
 
     /**
@@ -114,8 +105,8 @@ class GerantController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //cette requete oblige à ne pas laisser les champs vides
-        $request->validate([
+         //cette requete oblige à ne pas laisser les champs vides
+         $request->validate([
             'password'=> 'required',
 
         ]);
@@ -126,7 +117,7 @@ class GerantController extends Controller
 
         //redirection dans la page index contenant les affectations apres modification de l'affectation accompagner d'un message de confirmation
 
-        return view('gerant.profil')->with('sucess', 'Modification effectuer avec succes');
+        return view('profil')->with('sucess', 'Modification effectuer avec succes');
     }
 
     /**
@@ -137,19 +128,6 @@ class GerantController extends Controller
      */
     public function destroy($id)
     {
-        
-        
+        //
     }
-
-    // public function profil()
-    // {
-    //     $categories= Category::select()->inRandomOrder('created_at')->Limit(2)->get();
-    //     $fournisseurs= Fournisseur::select()->inRandomOrder('created_at')->Limit(2)->get();
-    //     $materiels= Materiel::select()->inRandomOrder('created_at')->Limit(2)->get();
-    //     $entrees= Entree::get();
-    //     $affectations= Affectation::get();
-
-    
-    //     return view('gerant.profil', compact('fournisseurs', 'materiels','categories', 'entrees', 'affectations'));
-    // }
 }

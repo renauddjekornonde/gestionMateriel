@@ -7,10 +7,7 @@
                 </label> 
                 Tableau de bord
             </h2>
-            <div class="search-warpper">
-                <span class="las la-search"></span>
-                <input type="search" placeholder="recherche" />
-            </div>
+            @include('partials.search')
                <div id="dropdown" class="user-wrapper">
                     <img class="logo-admin" src="{{asset('asset/img/2.jpng')}}" width="40px" height="40px" alt="" >
                     <div>
@@ -20,9 +17,9 @@
                     </div>
                     <div class="dropdown-content">
                         @guest
-                            <a  href="{{url('profil')}}"> Profil </p></a>
+                            {{-- <a  href="{{url('profil')}}"> Profil </p></a> --}}
                         @else
-                        <a  href="{{url('profil')}}"> Profil </p></a>
+                        <a  href="{{asset('/profil')}}"> Profil </p></a>
                         <a  href="{{ route('logout') }}"><p>Deconnexion</p> </a> 
                        @endguest
                     </div>

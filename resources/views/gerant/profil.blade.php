@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('content')
 
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ rel="stylesheet"
                             <i class="fas fa-user-tie fa-7x mt-5"></i>
                             <h2 class="font-weight-bold mt-4">{{Auth::user()->nom;}}</h2>
                             <p>{{Auth::user()->role;}}</p>
-                            <a href="{{route('profil.edit', Auth::user()->id)}}"><i class="far fa-edit fa-2x mb-4"></i></a>
+                            <a href="{{route('gerant.edit', Auth::user()->id)}}"><i class="far fa-edit fa-2x mb-4"></i></a>
                         </div>
                     </div>
                     <div class="col-sm-8 bg-white rounder-right">

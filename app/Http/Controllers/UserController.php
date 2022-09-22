@@ -5,6 +5,8 @@ use App\Models\Materiel;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Entree;
+use App\Models\Campus;
+use App\Models\Salle;
 use Illuminate\Support\Facades\Hash;
 use Session;
 use Illuminate\Http\Request;
@@ -23,8 +25,10 @@ class UserController extends Controller
         $entrees= Entree::get();
         $affectations= Affectation::get();
         $categories= Category::get();
+        $campuses= Campus::get();
+        $salles= Salle::get();
      
-        return view('user.index', compact('users','materiels', 'entrees', 'affectations', 'categories'));
+        return view('user.index', compact('users','materiels', 'entrees', 'affectations', 'categories', 'campuses', 'salles'));
     }
 
     /**
@@ -39,8 +43,10 @@ class UserController extends Controller
         $affectations= Affectation::get();
         $categories= Category::get();
         $materiels= Materiel::get();
+        $campuses= Campus::get();
+        $salles= Salle::get();
         
-        return view('user.create', compact('materiels', 'entrees', 'affectations', 'categories', 'users'));
+        return view('user.create', compact('materiels', 'entrees', 'affectations', 'categories', 'users', 'campuses', 'salles'));
     }
 
     /**
@@ -56,6 +62,7 @@ class UserController extends Controller
         $affectations= Affectation::get();
         $categories= Category::get();
         $materiels= Materiel::get();
+        $campuses= Campus::get();
 
         $request->validate([
             // 'name' => 'required',
@@ -73,6 +80,7 @@ class UserController extends Controller
         $user->email = $data['email'];
         $user->password = Hash::make($data['password']);
         $user->role = $data['role'];
+        $user->campus_id = $data['campus'];
 
        
         $user->save();
@@ -93,7 +101,9 @@ class UserController extends Controller
         $affectations= Affectation::get();
         $categories= Category::get();
         $materiels= Materiel::get();
-        return view('user.show', compact('materiels', 'entrees', 'affectations', 'categories', 'users'));
+        $campuses= Campus::get();
+        $salles= Salle::get();
+        return view('user.show', compact('materiels', 'entrees', 'affectations', 'categories', 'users', 'campuses', 'salles'));
     }
 
     /**
@@ -109,7 +119,9 @@ class UserController extends Controller
         $affectations= Affectation::get();
         $categories= Category::get();
         $materiels= Materiel::get();
-        return view('user.edit', compact('materiels', 'entrees', 'affectations', 'categories', 'users'));
+        $campuses= Campus::get();
+        $salles= Salle::get();
+        return view('user.edit', compact('materiels', 'entrees', 'affectations', 'categories', 'users', 'campuses', 'salles'));
     }
 
     /**
@@ -129,6 +141,7 @@ class UserController extends Controller
                   $user->prenom= $request->prenom;
                   $user->telephone= $request->telephone;
                   $user->email= $request->email;
+                  $user->campus_id= $request->campus_id;
                   $user->save();
           
                   //redirection dans la page index contenant les materiels apres modification de données du materiel accompagner d'un message de confirmation

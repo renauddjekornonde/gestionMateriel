@@ -1,7 +1,12 @@
 @extends('layout.app')
 
 @section('content')
-        
+ @section('content')
+@if ($message= Session::get('sucess'))
+  <div class="alert alert-info">
+  {{$message}}
+  </div>
+@endif       
                       <form action="{{route('user.store')}}" method="POST">
                       @csrf
             <fieldset>
@@ -49,6 +54,14 @@
                 </select>
                 
               </div> 
+              <div class="mb-3">
+                <select id="campus_id" name="campus"  class="form-select">
+                   <option value= "..." >Campus</option>
+                        @foreach ($campuses as $campus)
+                            <option value="{{ $campus->id }}">{{ $campus->intitule }}</option>
+                        @endforeach
+                </select>
+              </div>
               <button type="submit" class="btn btn-primary">Ajouter</button>
                <button class="btn btn-danger"><a class="nav-link" href="{{route('user.index')}}">Annuler</a></button>
             </fieldset>

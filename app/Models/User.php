@@ -50,6 +50,10 @@ class User extends Authenticatable
      {
          return $this->hasMany(Operation::class);
      }
- 
+ // cette fonction permet de repucerer les campus
+ public function campus()
+ {
+     return $this->belongsTo(Campus::class);
+ }
       
 }

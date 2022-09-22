@@ -15,10 +15,12 @@ use App\Http\Controllers\SalleController;
 use App\Http\Controllers\CategoryController;
 
 use App\Http\Controllers\AffectationController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GerantController;
 use App\Http\Controllers\EntreeController;
 
 use App\Http\Controllers\OperationController;
+use App\Http\Controllers\HistoriqueController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -34,6 +36,7 @@ use App\Http\Controllers\UserController;
 
 // Auth::routes();
 
+
 Route::controller(AcceuilController::class)->group(function(){
 
     Route::get('/', 'indexe')->name('login');
@@ -45,22 +48,6 @@ Route::controller(AcceuilController::class)->group(function(){
     Route::get('/home', 'home')->name('home');
 });
 
-Route::controller(AcceuilGerantController::class)->group(function(){
-
-    Route::get('/', 'indexe')->name('gerantLogin');
-
-    Route::get('logout', 'logout')->name('logout');
-
-    Route::post('validate_login', 'validate_login')->name('gerant.validate_login');
-
-    Route::get('gerant/index', 'gerant/index')->name('gerant_index');
-});
-
-
-Route::prefix('')->middleware(['auth','isGerant'])->group(function(){
-    Route::resource('gerant', GerantController::class);
-});
-
 Route::prefix('')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('/home', [AcceuilController::class, 'index'] );
     Route::get('/materiel/index', [MaterielController::class, 'index'] );
@@ -70,12 +57,18 @@ Route::prefix('')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('/category/index', [CategoryController::class, 'index'] );
     Route::get('/salle/index', [SalleController::class, 'index'] );
     Route::get('/entree/index', [EntreeController::class, 'index'] );
+    //Route::get('/test_entrees/detail/{id}', [EntreeController::class, 'show'] )->name('entree.detail');
     Route::get('/affectation/index', [AffectationController::class, 'index'] );
     Route::get('/opeartion/index', [OperationController::class, 'index'] );
     Route::get('/user/index', [UserController::class, 'index'] );
     Route::get('/profil', [AcceuilController::class, 'profil'] );
+    Route::get('/historique/index', [HistoriqueController::class, 'index'] )->name('historique.index');
+
+    Route::get('/search', [AcceuilController::class, 'search'] )->name('products.search');
+    Route::get('/searchGerant', [AcceuilController::class, 'searchGerant'] )->name('productsGerant.search');
     
     Route::resource('materiel', MaterielController::class);
+   
     
     Route::resource('category', CategoryController::class);
     
@@ -89,8 +82,14 @@ Route::prefix('')->middleware(['auth','isAdmin'])->group(function(){
     
     Route::resource('affectation', AffectationController::class);
     
+    
     Route::resource('operation', OperationController::class);
+    
     Route::resource('user', UserController::class);
+
+    Route::resource('gerant', GerantController::class);
+
+    Route::resource('profil', ProfilController::class);
 });
 
 

@@ -134,14 +134,14 @@
 @endif
     
     <!-- =======Start sidebar========= -->
-  @include('layout.sidebar')
+  @include('layouts.sidebar')
 <!-- =========End sidebar============ -->
 
 <!-- ================Start=============== -->
     <div class="main-content">
 
         <!-- ============Start header============= -->
-       @include('layout.header')
+       @include('layouts.header')
         <!-- ==============End header====================== -->
 
         <!-- ===================Start main====================== -->

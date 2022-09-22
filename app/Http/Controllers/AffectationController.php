@@ -114,7 +114,8 @@ class AffectationController extends Controller
         $categories=Category::get();
         $materiels=Materiel::get();
         $fournisseurs= Fournisseur::get();
-        return view('affectation.show', compact('affectation', 'affectations','entrees', 'categories', 'materiels','fournisseurs', 'salles'));
+        $operations= Operation::with('materiel')->where('typeOperation','0')->get();
+        return view('affectation.show', compact('affectation', 'affectations','entrees', 'categories', 'materiels','fournisseurs', 'salles', 'operations'));
 
     }
 
@@ -133,7 +134,8 @@ class AffectationController extends Controller
         $salles= Salle::get();
         $categories=Category::get();
         $materiels=Materiel::get();
-         return view('affectation.edit', compact('affectations','affectation',   'entrees', 'categories', 'materiels', 'salles'));
+        $operations= Operation::with('materiel')->where('typeOperation','0')->get();
+         return view('affectation.edit', compact('affectations','affectation',   'entrees', 'categories', 'materiels', 'salles', 'operations'));
     }
 
     /**

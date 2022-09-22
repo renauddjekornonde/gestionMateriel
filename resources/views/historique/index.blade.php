@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout.app')
 
 @section('content')
 @if ($message= Session::get('sucess'))
@@ -25,26 +25,54 @@
                                            <td>Materiel</td>
                                              <td>Quantite</td>
                                             <td>Date</td>
-                                             <td>Status</td>
+                                            <td>Type Operation</td>
+                                           
                                            
                                              
                                               
                                         </tr>
                                     </thead>
-                                   @foreach ($operations as $affectation)
+                                   @foreach ($operations as $operation)
                                         <tbody>
                                         <tr>
-                                            <td><?= $affectation->materiel->intitule ?></td>
-                                            <td><?= $affectation->materiel->quantite ?></td>
+                                            <td><?= $operation->materiel->intitule ?></td>
+                                            <td><?= $operation->materiel->quantite ?></td>
                                             
                                         <td>
                                                 <span class="status purple"></span>
-                                               {{$affectation->created_at->format('d/m/y')}}
+                                               {{$operation->created_at->format('d/m/y')}}
                                         </td>
-                                        <td><h4>
-                                                <a href="{{route('affectation.show',$affectation->id)}}"  style="color: blue; text-decoration: none;">
+                                        
+                                                {{-- <a href="{{route('operation.show',$operation->id)}}"  style="color: blue; text-decoration: none;">
                                                     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
-                                               </a>
+                                               </a> --}}
+                                               @if ($operation->typeOperation== 1)
+                                                <?= 
+                                               
+                                                '<td>'; $operation->materiel->quantite=$operation->materiel->quantite + 1;
+                                                 ' </td>';
+                                            
+
+                                                '<td>';
+                                                echo "Entree"; 
+                                                ' </td>';
+                                            
+                                               ?>
+                                               @else
+
+                                                <?=
+                                                  '<td>';
+                                                 $operation->materiel->quantite= $operation->materiel->quantite - 1;
+                                                    ' </td>';
+                                            
+
+                                                 '<td>';
+                                                echo "Sortie";
+                                                '  </td>';
+                                           
+                                               
+                                                  ?> 
+                                               @endif
                                                </h4>
                                             </td>
                                        
