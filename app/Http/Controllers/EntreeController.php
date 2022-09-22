@@ -22,12 +22,13 @@ class EntreeController extends Controller
     public function index()
     {
         
-        $entrees= Entree::get();
+        $entrees= Entree::with('fournisseur')->get();
         $materiels= Materiel::get();
         $affectations= Affectation::get();
+        $fournisseurs= Fournisseur::get();
         $categories= Category::get();
         $operations= Operation::with('materiel')->where('typeOperation','1')->get();
-        return view('entree.index', compact('entrees', 'materiels', 'affectations', 'categories', 'operations'));
+        return view('entree.index', compact('entrees', 'fournisseurs', 'materiels', 'affectations', 'categories', 'operations'));
     }
 
     /**
@@ -64,9 +65,25 @@ class EntreeController extends Controller
         $categories= Category::get();
 
         $data = $request->all();
-        $newEntree= Entree::create([
-            'fournisseur_id'=>$data['fournisseur'],
-        ]);
+        // $newEntree= Entree::create([
+        //     'fournisseur_id'=>$data['fournisseur'],
+            
+        // ]);
+        // Entree::create(['matricule'=>$data['matricule'],]);
+
+        $entree= new Entree();
+        $entree->fournisseur_id = $data['fournisseur'];
+        $entree->matricule = $data['matricule'];
+        $entree->save();
+
+        $entrees= Entree::all(); 
+        foreach($entrees as $key)
+        {
+            $newEntree= $key->id;
+        }
+        //dd($newEntree);
+        
+
 
 
            $datas = $request->all();
@@ -76,7 +93,7 @@ class EntreeController extends Controller
          
             $operation->typeOperation = 1;
 
-            $operation->entree_id = $newEntree->id;
+            $operation->entree_id = $newEntree;
             $operation->materiel_id = $datas['materiel_id'][$i];
             $operation->quantite = $datas['quantite'][$i];
           $operation->save();
@@ -97,20 +114,23 @@ class EntreeController extends Controller
      //Cette fonction permet de voir une entree en detaille
     public function show($id)
     {
-        $entrees= Entree::findOrFail($id);
-       dd($entrees);
+        $entree= Entree::findOrFail($id);
+        $entrees= Entree::get();
+
+      // dd($entrees);
+      $fournisseurs= Fournisseur::get();
         $materiels= Materiel::get();
         $affectations= Affectation::get();
         $categories= Category::get();
-        $operations= Operation::with('materiel')->where('typeOperation','1')->get();
+        $operations= Operation::with('materiel')->where('entree_id',"$entree->id")->get();
     
-        return view('entree.show', compact('entrees', 'materiels', 'affectations', 'categories', 'operations'));
+        return view('entree.show', compact('entrees', 'materiels', 'affectations', 'categories', 'operations', 'fournisseurs', 'entree'));
     }
 
-    public function test_show($id)
-    {
-        echo "bonjour";
-        }
+    // public function test_show($id)
+    // {
+    //     echo "bonjour";
+    //     }
 
     /**
      * Show the form for editing the specified resource.
@@ -125,9 +145,10 @@ class EntreeController extends Controller
         $materiels= Materiel::get();
         $affectations= Affectation::get();
         $categories= Category::get();
-        $entrees= Entree::findOrFail($id);
+        $entree= Entree::findOrFail($id);
+        $entrees= Entree::get();
         $operations= Operation::with('materiel')->where('typeOperation','1')->get();
-        return view('entree.edit', compact('entrees', 'materiels', 'affectations', 'categories', 'fournisseurs', 'operations'));
+        return view('entree.edit', compact('entree', 'entrees', 'materiels', 'affectations', 'categories', 'fournisseurs', 'operations'));
     }
 
     /**
@@ -140,20 +161,11 @@ class EntreeController extends Controller
     //cette fonction permet de modifier les entrees
     public function update(Request $request, $id)
     {
-         //cette requete oblige à ne pas laisser les champs vides
-         $request->validate([
-            // 'matricule'=> 'required',
-            // 'created_at'=> 'required',
-            // 'updated_at'=> 'required',
-
-
-        ]);
+       
 
         $entree= Entree::find($id);
-        // $entree->matricule= $request->matricule;
+        $entree->matricule= $request->matricule;
         $entree->fournisseur_id = $request->fournisseur;
-        // $entree->created_at= $request->created_at;
-        // $entree->updated_at= $request->updated_at;
         $entree->save();
 
         //redirection dans la page index contenant les entrees apres modification de l'entree accompagner d'un message de confirmation

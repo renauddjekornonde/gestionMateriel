@@ -10,11 +10,8 @@
                 <div class="projects">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Affectation</h3>
-{{--                             
-                             <a href="{{url('affectation/create')}}">
-                            <button> <ion-icon name="add-sharp" style="font-size: 1.5rem"></ion-icon></button>
-                            </a> --}}
+                            <h3>Historique</h3>
+
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -42,10 +39,7 @@
                                                 <span class="status purple"></span>
                                                {{$operation->created_at->format('d/m/y')}}
                                         </td>
-                                        
-                                                {{-- <a href="{{route('operation.show',$operation->id)}}"  style="color: blue; text-decoration: none;">
-                                                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
-                                               </a> --}}
+
                                                @if ($operation->typeOperation== 1)
                                                 <?= 
                                                

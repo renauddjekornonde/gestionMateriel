@@ -16,6 +16,7 @@ return new class extends Migration
     {
         Schema::create('entrees', function (Blueprint $table) {
             $table->id();
+            $table->string('matricule');
             $table->timestamps();
             $table->unsignedBigInteger('fournisseur_id');
             $table->foreign('fournisseur_id')->references('id')->on('fournisseurs')-> onDelete('cascade')-> onUpdate('cascade');

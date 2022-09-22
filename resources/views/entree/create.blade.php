@@ -20,7 +20,15 @@
                         @csrf
             <fieldset>
               <legend>Ajouter une Entree</legend>
-          
+
+               <td>
+              <div class="mb-3">
+                <label for="matricule" class="form-label">Matricule</label>
+                <input type="text" id="matricule" class="form-control" placeholder="Matricule" name="matricule">
+              </div>
+              </td>
+
+              <td>
               <div class="mb-3">
                 <select id="fournisseur" name="fournisseur" class="form-select">
                    <option value= "..." >Fournisseur</option>
@@ -29,6 +37,7 @@
                         @endforeach
                 </select>
               </div>
+              </td>
               <hr>
               <td><button type="button" name="add" id="add-btn" class="btn btn-success"><ion-icon name="duplicate-sharp"></ion-icon></button></td>
   

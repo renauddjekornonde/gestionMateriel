@@ -67,8 +67,16 @@ class OperationController extends Controller
       //Cette fonction permet de voir une operation en detaille
     public function show($id)
     {
-        $operations= Operation::findOrFail($id);
-         return view('operation.show', compact('operations'));
+       
+        $entrees= Entree::findOrFail($id);
+       dd($entrees);
+        $materiels= Materiel::get();
+        $affectations= Affectation::get();
+        $categories= Category::get();
+        $operations= Operation::with('materiel')->where('typeOperation','1')->get();
+    
+        return view('entree.show', compact('entrees', 'materiels', 'affectations', 'categories', 'operations'));
+        //  return view('operation.show', compact('operations'));
     }
 
     /**

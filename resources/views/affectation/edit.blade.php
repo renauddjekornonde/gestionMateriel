@@ -1,7 +1,6 @@
 @extends('layout.app')
 
 @section('content')
-@section('content')
 @if ($message= Session::get('sucess'))
   <div class="alert alert-info">
   {{$message}}
@@ -16,7 +15,7 @@
 <select id="salle" name="salle_id"  class="form-select">
 <option value= "..." >Salle</option>
     @foreach ($salles as $salle)
-    @if ($salle->id==$affectation->salle_id)
+    @if ($salle->id==$affectations->salle_id)
          <option value="{{ $salle->id }}" selected>{{ $salle->numeroSalle}}</option>
     @endif
         <option value="{{ $salle->id }}">{{ $salle->numeroSalle}}</option>

@@ -24,9 +24,9 @@ class Entree extends Model
      }
 
           //Permet de recuperer toutes les entrees d'un fournisseur
-          public function fournisseurs()
+          public function fournisseur()
           {
-              return $this->hasMany(Fournisseur::class);
+              return $this->belongsTo(Fournisseur::class);
           }
 
 

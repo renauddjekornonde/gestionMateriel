@@ -21,8 +21,10 @@
                                 <table width="100%">
                                     <thead>
                                         <tr>
-                                           <td>Materiel</td>
-                                           <td>Quantite</td>
+                                           <td>Identifiant</td>
+                                           <td>Matricule</td>
+                                           <td>Fournisseur</td>
+                                          
                                             <td>Date</td>
                                              <td>Status</td>
                                              <td>Modifier</td>
@@ -30,11 +32,12 @@
                                               
                                         </tr>
                                     </thead>
-                                   @foreach ($operations as $entree)
+                                   @foreach ($entrees as $entree)
                                         <tbody>
                                         <tr>
-                                           <td><?= $entree->materiel->intitule ?></td>
-                                              <td><?= $entree->materiel->quantite ?></td>
+                                           <td>{{ $entree->id}}</td>
+                                            <td>{{ $entree->matricule}}</td>
+                                             <td>{{$entree->fournisseur->boutique}}</td>
                                           
                                           
                                             <td>
@@ -55,7 +58,6 @@
                                       <form action="{{route('entree.destroy', $entree->id)}}" method="POST">
                                           @csrf
                                           @method('DELETE')
-                                          {{-- <input type="submit" style="color: red; border: none; background: white;" value="Supprimer"> --}}
                                           <button type="submit" style="color: red; border: none; background: white;"><ion-icon name="trash-outline"></ion-icon></button>
                                       </form>
                                              </h5></td>

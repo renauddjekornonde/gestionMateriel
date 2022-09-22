@@ -25,7 +25,7 @@ class AffectationController extends Controller
     {
         $entrees= Entree::get();
         $categories= Category::get();
-        $affectations= Affectation::get();
+        $affectations= Affectation::with('salle')->get();
         $materiels= Materiel::get();
         $fournisseurs= Fournisseur::get();
         $salles= Salle::get();
@@ -114,7 +114,7 @@ class AffectationController extends Controller
         $categories=Category::get();
         $materiels=Materiel::get();
         $fournisseurs= Fournisseur::get();
-        $operations= Operation::with('materiel')->where('typeOperation','0')->get();
+        $operations= Operation::with('materiel')->where('affectation_id', "$affectations->id")->get();
         return view('affectation.show', compact('affectation', 'affectations','entrees', 'categories', 'materiels','fournisseurs', 'salles', 'operations'));
 
     }
@@ -151,15 +151,11 @@ class AffectationController extends Controller
 
         //cette requete oblige à ne pas laisser les champs vides
         $request->validate([
-            // 'created_at'=> 'required',
-            // 'updated_at'=> 'required',
             'salle_id'=> 'required',
-
         ]);
+        
         $salles= Salle::get();
         $affectation= Affectation::find($id);
-        // $affectation->created_at= $request->created_at;
-        // $affectation->updated_at= $request->updated_at;
         $affectation->salle_id= $request->salle_id;
         $affectation->save();
 

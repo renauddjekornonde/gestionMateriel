@@ -23,8 +23,8 @@
                                     <thead>
                                         <tr>
                                     
-                                           <td>Materiel</td>
-                                             <td>Quantite</td>
+                                           <td>Identifiant</td>
+                                             <td>Salle</td>
                                             <td>Date</td>
                                              <td>Status</td>
                                              <td>Modifier</td>
@@ -33,11 +33,11 @@
                                               
                                         </tr>
                                     </thead>
-                                   @foreach ($operations as $affectation)
+                                   @foreach ($affectations as $affectation)
                                         <tbody>
                                         <tr>
-                                            <td><?= $affectation->materiel->intitule ?></td>
-                                            <td><?= $affectation->materiel->quantite ?></td>
+                                            <td>{{$affectation->id}}</td>
+                                            <td>{{$affectation->salle->numeroSalle}}</td>
                                             
                                         <td>
                                                 <span class="status purple"></span>
