@@ -24,8 +24,9 @@
                                     
                                            <td>Materiel</td>
                                              <td>Quantite</td>
+                                             <td>Salle</td>
                                             <td>Date</td>
-                                             <td>Status</td>
+                                             
                                            
                                              
                                               
@@ -36,17 +37,19 @@
                                         <tr>
                                             <td><?= $affectation->materiel->intitule ?></td>
                                             <td><?= $affectation->materiel->quantite ?></td>
-                                            
+                                            @foreach($affectations as $affectatio)
+                                                <td><?= $affectatio->salle->numeroSalle ?></td>
+                                            @endforeach
                                         <td>
                                                 <span class="status purple"></span>
                                                {{$affectation->created_at->format('d/m/y')}}
                                         </td>
-                                        <td><h4>
+                                        {{-- <td><h4>
                                                 <a href="{{route('affectation.show',$affectation->id)}}"  style="color: blue; text-decoration: none;">
                                                     <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
                                                </a>
                                                </h4>
-                                            </td>
+                                            </td> --}}
                                        
                                         </tr>
                                     </tbody>

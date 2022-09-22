@@ -119,13 +119,13 @@ class CampusController extends Controller
     {
 
         //cette requete oblige à ne pas laisser les champs vides
-        $request->validate([
-            'intitule'=> 'required',
-            'lieu'=> 'required',
-            'telephone'=> 'required',
-            // 'updated_at'=> 'required',
+        // $request->validate([
+        //     'intitule'=> 'required',
+        //     'lieu'=> 'required',
+        //     'telephone'=> 'required',
+        //     // 'updated_at'=> 'required',
 
-        ]);
+        // ]);
         $entrees= Entree::get();
         $categories= Category::get();
         $affectations= Affectation::get();
@@ -136,8 +136,6 @@ class CampusController extends Controller
         $campuses->intitule= $request->intitule;
         $campuses->lieu= $request->lieu;
         $campuses->telephone= $request->telephone;
-        $campuses->created_at= $request->created_at;
-        $campuses->updated_at= $request->updated_at;
         $campuses->save();
 
         //redirection dans la page index contenant les campus apres modification et accompagner d'un message de confirmation

@@ -156,13 +156,13 @@ class AcceuilController extends Controller
         $categories= Category::get();
         $affectations= Affectation::get();
         $fournisseurs= Fournisseur::get();
-        $q= request()->input('q');
+        $q= request()->input('p');
 
         $operations= Operation::with('materiel')->where('typeOperation','0')
-                ->orwhere('intitule', 'like', "%$q%")
+                ->orwhere('intitule', 'like', "%$p%")
                 ->paginate(6);
 
-                return view('products.search', compact('fournisseurs', 'categories', 'entrees', 'affectations'))->with('materiels', $operations);
+                return view('productsGerand.search', compact('fournisseurs', 'categories', 'entrees', 'affectations'))->with('materiels', $operations);
 
     }
 

@@ -65,6 +65,7 @@ Route::prefix('')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('/historique/index', [HistoriqueController::class, 'index'] )->name('historique.index');
 
     Route::get('/search', [AcceuilController::class, 'search'] )->name('products.search');
+    
     Route::get('/searchGerant', [AcceuilController::class, 'searchGerant'] )->name('productsGerant.search');
     
     Route::resource('materiel', MaterielController::class);
