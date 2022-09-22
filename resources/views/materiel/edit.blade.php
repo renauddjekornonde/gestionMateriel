@@ -25,6 +25,10 @@
                 <input type="text" id="description" class="form-control" placeholder="Description" name="description" value="{{$materiels->description}}">
               </div>
               <div class="mb-3">
+                <label for="quantite" class="form-label">Quantite</label>
+                <input type="number" id="quantite" class="form-control" placeholder="Quantite" name="quantite" value="{{$materiels->quantite}}">
+              </div>
+              <div class="mb-3">
                 <select id="category" name="category"  class="form-select">
                    <option value= "..." >Categorie</option>
                         @foreach ($categories as $category)

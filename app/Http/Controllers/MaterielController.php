@@ -69,6 +69,7 @@ class MaterielController extends Controller
         $materiel->intitule = $data['intitule'];
         $materiel->description = $data['description'];
         $materiel->category_id = $data['category'];
+        $materiel->quantite = $data['quantite'];
        
         $materiel->save();
 
@@ -131,6 +132,7 @@ class MaterielController extends Controller
         $materiel->intitule= $request->intitule;
         $materiel->description= $request->description;
         $materiel->category_id= $request->category;
+        $materiel->quantite= $request->quantite;
         $materiel->save();
 
         //redirection dans la page index contenant les materiels apres modification de données du materiel accompagner d'un message de confirmation

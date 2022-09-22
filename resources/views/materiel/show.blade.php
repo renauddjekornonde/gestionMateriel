@@ -26,6 +26,7 @@
                                            <td>Intitule</td>
                                            <td>Matricule</td>
                                             <td>Description</td>
+                                            <td>Quantite</td>
                                             
                                             <td>Creer</td>
                                             
@@ -40,6 +41,7 @@
                                            
                                             <td><h6>{{$materiels->matricule}}</h6></td>
                                              <td><h6>{{$materiels->description}}</h6></td>
+                                             <td><h6>{{$materiels->quantite}}</h6></td>
                                             <td><h6>
                                                 <span class="status purple"></span>
                                                {{$materiels->created_at->format('d/m/y')}}
