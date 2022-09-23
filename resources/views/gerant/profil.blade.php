@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon espace</title>
+     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Font Awesome -->
 <link
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -56,9 +56,9 @@ rel="stylesheet"
                                 <h6 class="text-muted">{{Auth::user()->telephone;}}</h6>
                             </div>
                         </div>
-                        <h4 class="mt-3">Campus</h4>
-                        <hr class="bg-primary">
-                        <div class="row">
+                        {{-- <h4 class="mt-3">Campus</h4>
+                        <hr class="bg-primary"> --}}
+                        {{-- <div class="row">
                             <div class="col-sm-6">
                                 <p class="font-weight-bold">Nom Campus</p>
                                 <h6 class="text-muted">Localite</h6>
@@ -67,13 +67,13 @@ rel="stylesheet"
                                 <p class="font-weight-bold">Most viwed</p>
                                 <h6 class="text-muted">Dinoter Hussan</h6>
                             </div>
-                        </div>
+                        </div> --}}
                         <hr class="bg-primary">
-                        <ul class="list-unstyled d-flex justify-content-content-center mt-4">
-                            <li><a href="#"><i class="fab fa-facebook-f px-3 h4 text-info"></i></a></li>
-                            <li><a href="#"><i class="fab fa-youtube px-3 h4 text-info"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter px-3 h4 text-info"></i></a></li>
-                        </ul>
+                         <ul class="list-unstyled d-flex justify-content-content-center mt-4">
+                            <li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f px-3 h4 text-info"></i></a></li>
+                            {{-- <li><a href="#"><i class="fab fa-youtube px-3 h4 text-info"></i></a></li> --}}
+                            <li><a href="https://twitter.com/login/"><i class="fab fa-twitter px-3 h4 text-info"></i></a></li>
+                        </ul> 
                     </div>
                 </div>
             </div>

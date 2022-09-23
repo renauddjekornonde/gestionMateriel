@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('matricule');
             $table->string('intitule');
             $table->mediumText('description');
+            $table->interger('quantite');
             
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');

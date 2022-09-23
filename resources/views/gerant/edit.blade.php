@@ -73,7 +73,7 @@ rel="stylesheet"
                                 <h6 class="text-muted">{{Auth::user()->telephone;}}</h6>
                             </div>
                         </div>
-                        <h4 class="mt-3">Campus</h4>
+                        {{-- <h4 class="mt-3">Campus</h4>
                         <hr class="bg-primary">
                         <div class="row">
                             <div class="col-sm-6">
@@ -84,12 +84,12 @@ rel="stylesheet"
                                 <p class="font-weight-bold">Most viwed</p>
                                 <h6 class="text-muted">Dinoter Hussan</h6>
                             </div>
-                        </div>
+                        </div> --}}
                         <hr class="bg-primary">
                         <ul class="list-unstyled d-flex justify-content-content-center mt-4">
-                            <li><a href="#"><i class="fab fa-facebook-f px-3 h4 text-info"></i></a></li>
-                            <li><a href="#"><i class="fab fa-youtube px-3 h4 text-info"></i></a></li>
-                            <li><a href="#"><i class="fab fa-twitter px-3 h4 text-info"></i></a></li>
+                            <li><a href="https://www.facebook.com/"><i class="fab fa-facebook-f px-3 h4 text-info"></i></a></li>
+                            {{-- <li><a href="#"><i class="fab fa-youtube px-3 h4 text-info"></i></a></li> --}}
+                            <li><a href="https://twitter.com/login/"><i class="fab fa-twitter px-3 h4 text-info"></i></a></li>
                         </ul>
                     </div>
                 </div>

@@ -72,9 +72,9 @@
                                     </div>
                                 </div>
                                 <div class="contact">
-                                    <span class=""><ion-icon name="logo-facebook"></ion-icon></span>
-                                    <span class=""><ion-icon name="logo-whatsapp"></ion-icon></span>
-                                    <span class=""><ion-icon name="call-outline"></ion-icon></span>
+                                    <a href="https://www.facebook.com/"><span class=""><ion-icon name="logo-facebook"></ion-icon></span></a>
+                                    <a href="https://web.whatsapp.com/"><span class=""><ion-icon name="logo-whatsapp"></ion-icon></span></a>
+                                    <a href="mailto:djekornonderenaud@gmail.com"><span class=""><ion-icon name="mail-sharp"></ion-icon></span></a>
                                 </div>
                             </div>
 
